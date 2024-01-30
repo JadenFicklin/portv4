@@ -1,19 +1,17 @@
-# This is my fourth portfolio built using the following
+# Jaden Ficklins Portfolio code (v. #4)
 
-## + React
+### + React
 
-## + TypeScript
+### + TypeScript
 
-## + Vite
+### + JavaScript
 
-### also using
+### + Vite
 
-### + emailjs
+### + Tailwind
 
-### + tailwind
+### + React router
 
-### + react router
+### + Emailjs
 
-### + javascript
-
-### + vercel
+### + Vercel
