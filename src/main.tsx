@@ -4,6 +4,6 @@ import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <div className="">test</div>
+    <div className="w-full min-h-screen bg-background text-text">test</div>
   </React.StrictMode>,
 )
