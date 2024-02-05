@@ -20,15 +20,3 @@ body {
 body.stop-transitions * {
   transition: none !important;
 }
-
-html,
-body,
-#root {
-  height: 100%;
-  margin: 0;
-}
-
-/* Add this to disable the default scrolling */
-body {
-  overflow: hidden;
-}

@@ -103,7 +103,7 @@ export const PageLoad = () => {
               ? 'w-[95vw] h-[90vh] duration-500'
               : 'w-[100vw] h-[100vh] ',
             videoShrunk &&
-              'w-[40vw] h-[80vh] translate-x-[-140%] translate-y-[-20%] duration-[1500ms] ',
+              'w-[45vw] h-[100vh] translate-x-[6%] translate-y-[-5%] duration-[1500ms] ',
           )}
           src={Video}
           autoPlay
