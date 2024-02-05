@@ -6,9 +6,6 @@ export const Nav = () => {
       <Link to="/">
         <p>Home</p>
       </Link>
-      <Link to="/case-study">
-        <p>Case Study</p>
-      </Link>
       <Link to="/archive">
         <p>Archive</p>
       </Link>
