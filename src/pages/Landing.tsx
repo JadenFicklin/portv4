@@ -1,7 +1,11 @@
+import { PageLoad } from '~/components/PageLoad'
+
 export const Landing = () => {
   return (
     <>
-      <div>Landing</div>
+      <div className="w-full min-h-screen">
+        <PageLoad />
+      </div>
     </>
   )
 }

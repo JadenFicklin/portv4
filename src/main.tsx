@@ -8,14 +8,12 @@ import { Nav } from '~/components/Nav'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <div className="w-full min-h-screen bg-background text-text">
-      <Router>
-        <Nav />
-        <Routes>
-          <Route path="/" element={<Landing />} />
-          <Route path="/archive" element={<Archive />} />
-        </Routes>
-      </Router>
-    </div>
+    <Router>
+      <Nav />
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="/archive" element={<Archive />} />
+      </Routes>
+    </Router>
   </React.StrictMode>,
 )

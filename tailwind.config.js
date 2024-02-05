@@ -11,7 +11,7 @@ export default {
     },
     extend: {
       colors: {
-        background: '#E1E1E1',
+        // background: '#E1E1E1',
         text: '#202020',
       },
     },
