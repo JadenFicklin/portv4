@@ -13,7 +13,6 @@ export const PageLoad = () => {
     profession: '-bottom-10',
     attributes: '-bottom-10',
   })
-  // State to control video size
   const [textFinished, setTextFinished] = useState(false)
   const [videoShrunk, setVideoShrunk] = useState(false)
 
@@ -67,11 +66,11 @@ export const PageLoad = () => {
     <>
       <div
         className={cn(
-          'w-full h-screen bg-black duration-1000 absolute z-20',
+          'w-full h-screen bg-black duration-1000 absolute z-20 pointer-events-none',
           videoLoaded ? 'opacity-0' : 'opacity-1',
         )}
       ></div>
-      <div className="absolute top-0 left-0 w-full h-screen ">
+      <div className="absolute top-0 left-0 w-full h-screen pointer-events-none">
         <div className="w-full h-[40px] z-20 absolute left-1/2 top-1/2 translate-x-[-50%] translate-y-[-50%] overflow-hidden">
           {Object.entries(textPositions).map(([key, position]) => (
             <p
@@ -103,7 +102,7 @@ export const PageLoad = () => {
               ? 'w-[95vw] h-[90vh] duration-500'
               : 'w-[100vw] h-[100vh] ',
             videoShrunk &&
-              'w-[45vw] h-[100vh] translate-x-[6%] translate-y-[-5%] duration-[1500ms] ',
+              'w-[53vw] h-[100vh] translate-x-[-10%] translate-y-[-5%] duration-[1500ms] ',
           )}
           src={Video}
           autoPlay

@@ -20,3 +20,8 @@ body {
 body.stop-transitions * {
   transition: none !important;
 }
+
+body,
+html {
+  overflow-x: hidden;
+}
