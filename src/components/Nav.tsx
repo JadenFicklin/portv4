@@ -15,15 +15,17 @@ export const Nav = () => {
   return (
     <div
       className={cn(
-        'w-full h-min duration-[2000ms] absolute',
+        'w-full fixed z-50 top-0 duration-[2000ms] h-[61px] xxl:bg-transparent bg-black ',
         videoFinished ? 'top-[0%]' : 'top-[-100%]',
       )}
     >
-      <div className="fixed z-50 left-8 size-[60px] bg-text text-white text-[26px] font-black grid place-content-center cursor-pointer duration-200 hover:opacity-90">
+      <div className="fixed z-50 left-[5%] size-[60px] bg-text text-white text-[26px] font-black grid place-content-center cursor-pointer duration-200 hover:opacity-90">
         JF
       </div>
       <div
-        className="fixed z-50 right-8 rounded-full size-[50px] mt-[10px] bg-text font-black grid place-content-center cursor-pointer duration-200 hover:opacity-90"
+        className={cn(
+          'fixed z-50 right-[5%] rounded-full size-[50px] mt-[5px] xxl:mt-[10px] bg-text font-black grid place-content-center cursor-pointer duration-200 hover:opacity-90',
+        )}
         onClick={() => setMenuClicked(!menuClicked)}
       >
         <div

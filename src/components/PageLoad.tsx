@@ -94,7 +94,7 @@ export const PageLoad = () => {
       {windowWidth >= 1400 && (
         <div
           className={cn(
-            'w-full h-screen duration-300 absolute z-20',
+            'w-full h-screen duration-300 absolute z-20 pointer-events-none',
             textFinished ? 'bg-transparent' : 'bg-[#1e1d1c33]',
           )}
         ></div>
