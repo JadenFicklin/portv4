@@ -1,17 +1,50 @@
-// import { SlideIn } from '~/utils/SlideIn'
+import { useState } from 'react'
 import { cn } from '~/utils/cn'
 
 export const Nav = () => {
+  const [menuClicked, setMenuClicked] = useState(false)
+  const [videoFinished, setVideoFinished] = useState(false)
+
+  setTimeout(
+    () => {
+      setVideoFinished(true)
+    },
+    window.innerWidth > 1400 ? 5500 : 0,
+  )
+
   return (
     <div
-      className={cn('fixed top-0 z-30 flex justify-center w-full py-6 h-min ')}
+      className={cn(
+        'w-full h-min duration-[2000ms] absolute',
+        videoFinished ? 'top-[0%]' : 'top-[-100%]',
+      )}
     >
-      {/* <SlideIn
-        text="JADEN FICKLIN"
-        className="text-lg font-bold tracking-wide -skew-x-[10deg] text-black"
-        speed={20}
-        initialDelay={7000}
-      /> */}
+      <div className="fixed z-50 left-8 size-[60px] bg-text text-white text-[26px] font-black grid place-content-center cursor-pointer duration-200 hover:opacity-90">
+        JF
+      </div>
+      <div
+        className="fixed z-50 right-8 rounded-full size-[50px] mt-[10px] bg-text font-black grid place-content-center cursor-pointer duration-200 hover:opacity-90"
+        onClick={() => setMenuClicked(!menuClicked)}
+      >
+        <div
+          className={cn(
+            'w-[20px] h-[1px] bg-textCounter my-[1.5px] duration-200 relative ',
+            menuClicked && 'rotate-[-40deg] bottom-[-1.8px] w-[20px]',
+          )}
+        ></div>
+        <div
+          className={cn(
+            'w-[20px] h-[1px] bg-textCounter my-[1.5px] duration-200',
+            menuClicked && 'hidden',
+          )}
+        ></div>
+        <div
+          className={cn(
+            'w-[20px] h-[1px] bg-textCounter my-[1.5px] duration-200 relative',
+            menuClicked && 'rotate-[-135deg] bottom-[2.2px] w-[20px]',
+          )}
+        ></div>
+      </div>
     </div>
   )
 }

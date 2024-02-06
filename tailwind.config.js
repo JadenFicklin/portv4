@@ -8,12 +8,14 @@ export default {
       md: '768px',
       lg: '1024px',
       xl: '1200px',
+      xxl: '1400px',
     },
     extend: {
       colors: {
         // background: '#E1E1E1',
         background: '#ffffff',
-        text: '#202020',
+        text: '#000000',
+        textCounter: '#ffffff',
       },
       keyframes: {
         'slide-up': {

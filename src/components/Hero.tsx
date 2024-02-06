@@ -1,38 +1,68 @@
+import { useEffect, useState } from 'react'
 import { SlideIn } from '~/utils/SlideIn'
+import Video from '~/assets/videos/GroupAtWork.mp4'
+import { cn } from '~/utils/cn'
 
 export const Hero = () => {
+  const [windowWidth, setWindowWidth] = useState(0)
+  const [video, setVideo] = useState(false)
+
+  setTimeout(() => {
+    setVideo(true)
+  }, 700)
+  useEffect(() => {
+    const updateWindowWidth = () => {
+      setWindowWidth(window.innerWidth)
+    }
+    updateWindowWidth()
+    window.addEventListener('resize', updateWindowWidth)
+    return () => window.removeEventListener('resize', updateWindowWidth)
+  }, [])
+
   return (
     <>
-      <div className="relative z-10 flex flex-col flex-wrap w-max top-64 left-32">
+      <div className="z-10 flex flex-col flex-wrap ml-[5%] xxl:relative w-max pt-48 xxl:pt-0 xxl:ml-[0%] xxl:top-64 xxl:left-32">
         <h1 className=" pb-[26px]">
           <SlideIn
             text="Jaden Ficklin, Website Developer"
-            className="text-text text-[26px] italic"
+            className="text-text text-[20px] xxl:text-[26px] italic font-light tracking-tight"
             speed={20}
-            initialDelay={5800}
+            initialDelay={window.innerWidth > 1400 ? 5800 : 200}
           />
         </h1>
-        <div className="text-[128px] text-text">
+        <div className="text-[37px] xxl:text-[128px] text-text">
           <SlideIn
             text="Innovative web dev"
             className=""
             speed={20}
-            initialDelay={6000}
+            initialDelay={window.innerWidth > 1400 ? 6000 : 400}
           />
           <SlideIn
             text="built to engage"
-            className="-mt-8"
+            className="xxl:-mt-8"
             speed={20}
-            initialDelay={6200}
+            initialDelay={window.innerWidth > 1400 ? 6200 : 400}
           />
           <SlideIn
             text="and preform"
-            className="-mt-8"
+            className="xxl:-mt-8"
             speed={20}
-            initialDelay={6400}
+            initialDelay={window.innerWidth > 1400 ? 6400 : 600}
           />
         </div>
       </div>
+      {windowWidth < 1400 && (
+        <video
+          className={cn(
+            'w-[90vw] h-[60vh] object-cover mx-auto mt-10 duration-700',
+            video ? 'opacity-1' : 'opacity-0',
+          )}
+          src={Video}
+          autoPlay
+          muted
+          loop
+        />
+      )}
     </>
   )
 }

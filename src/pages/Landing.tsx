@@ -1,4 +1,3 @@
-import { About } from '~/components/About'
 import { Hero } from '~/components/Hero'
 import { Nav } from '~/components/Nav'
 import { PageLoad } from '~/components/PageLoad'
@@ -10,9 +9,6 @@ export const Landing = () => {
         <PageLoad />
         <Nav />
         <Hero />
-        <About />
-        <About />
-        <About />
       </div>
     </>
   )

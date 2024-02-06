@@ -15,18 +15,16 @@ export const PageLoad = () => {
   })
   const [textFinished, setTextFinished] = useState(false)
   const [videoShrunk, setVideoShrunk] = useState(false)
+  const [windowWidth, setWindowWidth] = useState(0)
 
   useEffect(() => {
-    // Disable scrolling when the video is not yet shrunk
-    if (!videoShrunk) {
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = ''
+    const updateWindowWidth = () => {
+      setWindowWidth(window.innerWidth)
     }
-    return () => {
-      document.body.style.overflow = ''
-    }
-  }, [videoShrunk])
+    updateWindowWidth()
+    window.addEventListener('resize', updateWindowWidth)
+    return () => window.removeEventListener('resize', updateWindowWidth)
+  }, [])
 
   useEffect(() => {
     if (videoLoaded) {
@@ -64,37 +62,44 @@ export const PageLoad = () => {
 
   return (
     <>
-      <div
-        className={cn(
-          'w-full h-screen bg-black duration-1000 absolute z-20 pointer-events-none',
-          videoLoaded ? 'opacity-0' : 'opacity-1',
-        )}
-      ></div>
-      <div className="absolute top-0 left-0 w-full h-screen pointer-events-none">
-        <div className="w-full h-[40px] z-20 absolute left-1/2 top-1/2 translate-x-[-50%] translate-y-[-50%] overflow-hidden">
-          {Object.entries(textPositions).map(([key, position]) => (
-            <p
-              key={key}
-              className={cn(
-                position,
-                'absolute text-3xl text-white tracking-widest font-medium w-max mx-auto duration-[750ms] ease-in-out left-1/2 -translate-x-[50%]',
-              )}
-            >
-              {key === 'name'
-                ? 'Jaden Ficklin'
-                : key === 'attributes'
-                ? 'Creative Thinker'
-                : 'Website Developer'}
-            </p>
-          ))}
+      {windowWidth >= 1400 && (
+        <div
+          className={cn(
+            'w-full h-screen bg-black duration-1000 absolute z-20 pointer-events-none',
+            videoLoaded ? 'opacity-0' : 'opacity-1',
+          )}
+        ></div>
+      )}
+      {windowWidth >= 1400 && (
+        <div className="absolute top-0 left-0 w-full h-screen pointer-events-none">
+          <div className="w-full h-[40px] z-30 absolute left-1/2 top-1/2 translate-x-[-50%] translate-y-[-50%] overflow-hidden">
+            {Object.entries(textPositions).map(([key, position]) => (
+              <p
+                key={key}
+                className={cn(
+                  position,
+                  'absolute text-3xl text-white tracking-widest font-medium w-max mx-auto duration-[750ms] ease-in-out left-1/2 -translate-x-[50%]',
+                )}
+              >
+                {key === 'name'
+                  ? 'Jaden Ficklin'
+                  : key === 'attributes'
+                  ? 'Creative Thinker'
+                  : 'Website Developer'}
+              </p>
+            ))}
+          </div>
         </div>
-      </div>
-      <div
-        className={cn(
-          'w-full h-screen duration-300 absolute',
-          textFinished ? 'bg-transparent' : 'bg-[#1e1d1c33]',
-        )}
-      >
+      )}
+      {windowWidth >= 1400 && (
+        <div
+          className={cn(
+            'w-full h-screen duration-300 absolute z-20',
+            textFinished ? 'bg-transparent' : 'bg-[#1e1d1c33]',
+          )}
+        ></div>
+      )}
+      {windowWidth >= 1400 && (
         <video
           className={cn(
             'absolute top-1/2 z-10 left-1/2 translate-x-[-50%] translate-y-[-50%] object-cover duration-1000 ease-in-out',
@@ -110,7 +115,7 @@ export const PageLoad = () => {
           loop
           onLoadedData={handleVideoLoad}
         />
-      </div>
+      )}
     </>
   )
 }
