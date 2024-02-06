@@ -11,11 +11,24 @@ export default {
     },
     extend: {
       colors: {
-        // background: '#E1E1E1',
         background: '#ffffff',
         text: '#202020',
       },
+      keyframes: {
+        'slide-up': {
+          '0%': {
+            opacity: '1',
+            transform: 'translateY(100%)',
+          },
+          '100%': {
+            opacity: '1',
+            transform: 'translateY(0%)',
+          },
+        },
+      },
+      animation: {
+        'slide-up': 'slide-up 500ms ease-out',
+      },
     },
   },
-  plugins: [],
 }
