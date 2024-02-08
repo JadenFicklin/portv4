@@ -27,6 +27,7 @@ export const SlideIn: React.FC<SlideInProps> = ({
 
         return (
           <p
+            key={index}
             className={cn(
               'relative duration-[700ms] ease-in-out animate-slide-up opacity-0  fill-mode-forwards text-black',
               className,
