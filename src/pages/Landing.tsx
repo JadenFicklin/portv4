@@ -1,4 +1,5 @@
-import { Hero } from '~/components/Hero'
+import { HeroDesktop } from '~/components/desktop/HeroDesktop'
+import { HeroMobile } from '~/components/mobile/HeroMobile'
 import { NavDesktop } from '~/components/desktop/NavDesktop'
 import { NavMobile } from '~/components/mobile/NavMobile'
 import { PageLoadDesktop } from '~/components/desktop/PageLoadDesktop'
@@ -16,7 +17,8 @@ export const Landing = () => {
         <NavMobile />
 
         {/* hero */}
-        <Hero />
+        <HeroDesktop />
+        <HeroMobile />
         <PageLoadMobile />
       </div>
     </>
