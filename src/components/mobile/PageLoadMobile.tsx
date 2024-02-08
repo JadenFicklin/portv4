@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { cn } from '~/utils/cn'
-import Video from '~/assets/videos/GroupAtWork.gif'
+import Video from '~/assets/videos/GroupAtWork.mp4'
 
 type TextPositionKey = 'name' | 'profession' | 'attributes'
 
