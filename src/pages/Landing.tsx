@@ -1,7 +1,6 @@
 import { HeroDesktop } from '~/components/desktop/HeroDesktop'
 import { HeroMobile } from '~/components/mobile/HeroMobile'
-import { NavDesktop } from '~/components/desktop/NavDesktop'
-import { NavMobile } from '~/components/mobile/NavMobile'
+import { Nav } from '~/components/Nav'
 import { PageLoadDesktop } from '~/components/desktop/PageLoadDesktop'
 import { PageLoadMobile } from '~/components/mobile/PageLoadMobile'
 
@@ -13,8 +12,7 @@ export const Landing = () => {
         <PageLoadDesktop />
 
         {/* nav */}
-        <NavDesktop />
-        <NavMobile />
+        <Nav />
 
         {/* hero */}
         <HeroDesktop />

@@ -9,19 +9,17 @@ interface SlideInProps {
 
 export const SlideIn: React.FC<SlideInProps> = ({
   text,
-  className,
-  speed: delay,
+  speed,
   initialDelay,
+  className,
 }) => {
-  const letters = text
-    .split('')
-    .map((letter) => (letter === ' ' ? '\u00A0' : letter))
+  const letters = text.split('')
 
   return (
-    <div className="flex overflow-hidden w-max h-min">
+    <div className="flex overflow-hidden whitespace-pre w-max h-min">
       {letters.map((letter, index) => {
         const letterStyle = {
-          animationDelay: `${index * delay + initialDelay}ms`,
+          animationDelay: `${index * speed + initialDelay}ms`,
           animationFillMode: 'forwards',
         }
 

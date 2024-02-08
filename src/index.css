@@ -11,17 +11,15 @@
   font-style: normal;
   box-sizing: border-box;
 }
+
 body {
   background-color: #000;
-}
-@utilities {
-}
-
-body.stop-transitions * {
-  transition: none !important;
 }
 
 body,
 html {
   overflow-x: hidden;
+}
+
+@utilities {
 }

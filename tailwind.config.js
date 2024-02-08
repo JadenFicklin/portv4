@@ -1,3 +1,5 @@
+import { tailwindKeyframes } from './src/data/tailwindKeyframes'
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
@@ -12,25 +14,14 @@ export default {
     },
     extend: {
       colors: {
-        // background: '#E1E1E1',
         background: '#ffffff',
         text: '#000000',
-        textCounter: '#ffffff',
+        counterText: '#ffffff',
       },
-      keyframes: {
-        'slide-up': {
-          '0%': {
-            opacity: '1',
-            transform: 'translateY(100%)',
-          },
-          '100%': {
-            opacity: '1',
-            transform: 'translateY(0%)',
-          },
-        },
-      },
+      keyframes: tailwindKeyframes,
       animation: {
         'slide-up': 'slide-up 500ms ease-out',
+        'outline-hover': 'outline-hover 100ms ease-out',
       },
     },
   },
