@@ -35,7 +35,7 @@ export const Nav = () => {
           className={cn(
             'w-[160%] z-10 left-[-40%] h-[60px] fixed bg-text duration-700 ease-in-out justify-center',
             displayNav ? 'top-[0%]' : 'top-[-100%]',
-            menuClicked && ' left-[5%] w-[60px] duration-700',
+            // menuClicked && ' left-[5%] w-[60px] duration-700',
           )}
         ></div>
         <div
@@ -105,6 +105,16 @@ export const Nav = () => {
             />
           ))}
         </div>
+
+        <p className="text-counterText pl-[8%] bottom-16 md:left-[45%] md:pl-0 md:pt-0 md:top-[90%] absolute">
+          <a className="mx-2 font-semibold cursor-pointer">Github</a> /{' '}
+          <a className="mx-2 font-semibold cursor-pointer">Linkedin</a> /{' '}
+          <a className="mx-2 font-semibold cursor-pointer">Resume</a>
+        </p>
+
+        <p className="mx-2 font-semibold cursor-pointer text-counterText pl-[8%] md:right-[5%] md:hidden lg:block md:pl-0 md:pt-0 md:top-[90%] bottom-10 absolute">
+          FullstackJaden@gmail.com
+        </p>
       </div>
     </>
   )

@@ -3,7 +3,7 @@ import { SlideIn } from '~/utils/SlideIn'
 export const HeroDesktop = () => {
   return (
     <>
-      <div className="z-10  flex-col flex-wrap ml-[5%] absolute w-max pt-48 xxl:pt-0 xxl:ml-[0%]  xxl:opacity-100 opacity-0 xxl:top-64 xxl:left-32 pointer-events-none">
+      <div className="z-10 flex-col flex-wrap ml-[5%] absolute w-max pt-48 xxl:pt-0 xxl:ml-[0%] xxl:opacity-100 opacity-0 xxl:top-64 xxl:left-32">
         <>
           <h1 className=" pb-[26px]">
             <SlideIn

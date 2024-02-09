@@ -3,7 +3,7 @@ import { SlideIn } from '~/utils/SlideIn'
 export const HeroMobile = () => {
   return (
     <>
-      <div className="z-10 flex-col flex-wrap ml-[5%] xxl:relative w-max pt-48 xxl:pt-0 xxl:ml-[0%] opacity-100 xxl:opacity-0 xxl:top-64 xxl:left-32 ">
+      <div className="z-10 flex-col flex-wrap ml-[5%] xxl:relative w-max pt-48 xxl:pt-0 xxl:ml-[0%] opacity-100 xxl:opacity-0 xxl:top-64 xxl:left-32">
         <>
           <h1 className=" pb-[26px]">
             <SlideIn

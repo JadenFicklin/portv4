@@ -7,18 +7,16 @@ import { PageLoadMobile } from '~/components/mobile/PageLoadMobile'
 export const Landing = () => {
   return (
     <>
-      <div className="w-full min-h-screen bg-background">
-        {/* page load */}
-        <PageLoadDesktop />
+      {/* page load */}
+      <PageLoadDesktop />
 
-        {/* nav */}
-        <Nav />
+      {/* nav */}
+      <Nav />
 
-        {/* hero */}
-        <HeroDesktop />
-        <HeroMobile />
-        <PageLoadMobile />
-      </div>
+      {/* hero */}
+      <HeroDesktop />
+      <HeroMobile />
+      <PageLoadMobile />
     </>
   )
 }
