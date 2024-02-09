@@ -20,6 +20,9 @@ body,
 html {
   overflow-x: hidden;
 }
-
-@utilities {
+body.stop-transitions * {
+  transition: none !important;
 }
+
+/* @utilities {
+} */

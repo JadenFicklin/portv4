@@ -101,6 +101,11 @@ export const PageLoadDesktop = () => {
         loop
         onLoadedData={handleVideoLoad}
       />
+
+      <p className="text-lg italic font-light mx-[10%] top-[110%] z-50  absolute max-w-80">
+        “I’m a full-stack website developer specializing in JavaScript.
+        <div className="w-1/2 bg-text opacity-50 h-[1px] mt-6"></div>
+      </p>
     </div>
   )
 }
