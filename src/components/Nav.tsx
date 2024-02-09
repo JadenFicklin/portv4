@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { HoverText } from '~/utils/HoverText'
 import { cn } from '~/utils/cn'
 import Video from '~/assets/videos/GroupAtWork.mp4'
+// import Video from '~/assets/videos/code.mp4'
 
 export const Nav = () => {
   const [menuClicked, setMenuClicked] = useState(false)
