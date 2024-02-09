@@ -1,4 +1,5 @@
 import { skillsArray } from '~/data/Skills'
+import { HoverSwitch } from '~/utils/HoverSwitch'
 
 export const About = () => {
   return (
@@ -12,6 +13,18 @@ export const About = () => {
             <div className="w-[90%] h-[90%] "></div>
           </div>
           <div className="w-full lg:w-[60%] h-full">
+            <div>
+              <p>01</p>
+              <p>
+                <HoverSwitch
+                  textOne="How it"
+                  textTwo=" all started"
+                  className=""
+                  speed={0}
+                />
+              </p>
+              <div>+</div>
+            </div>
             <div className="flex flex-wrap mt-5 h-max">
               {skillsArray.map((item) => (
                 <div className="p-2 m-1 bg-black rounded ">

@@ -15,7 +15,7 @@ export const PageLoadDesktop = () => {
     attributes: '-bottom-10',
   })
   const [textFinished, setTextFinished] = useState(false)
-  const [videoShrunk, setVideoShrunk] = useState(false)
+  const [videoState, setVideoState] = useState('initial')
 
   useEffect(() => {
     if (videoLoaded) {
@@ -42,8 +42,11 @@ export const PageLoadDesktop = () => {
         setTextFinished(true)
       }, 4400)
       setTimeout(() => {
-        setVideoShrunk(true)
+        setVideoState('shrinking')
       }, 5500)
+      setTimeout(() => {
+        setVideoState('finished')
+      }, 7000)
     }
   }, [videoLoaded])
 
@@ -93,8 +96,9 @@ export const PageLoadDesktop = () => {
           textFinished
             ? 'w-[95vw] h-[90vh] duration-500'
             : 'w-[100vw] h-[100vh] ',
-          videoShrunk &&
-            'w-[53vw] h-[100vh] translate-x-[-10%] translate-y-[-5%] duration-[1500ms] ',
+          (videoState === 'shrinking' || videoState === 'finished') &&
+            'w-[53vw] h-[100vh] translate-x-[-10%] translate-y-[-5%] duration-[1500ms]',
+          videoState === 'finished' && 'duration-0',
         )}
         src={Video}
         autoPlay
