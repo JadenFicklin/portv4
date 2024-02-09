@@ -58,13 +58,13 @@ export const PageLoadDesktop = () => {
     <div className="hidden xxl:block">
       <div
         className={cn(
-          'w-full h-screen bg-black duration-1000 absolute z-20 pointer-events-none',
+          'w-full h-screen bg-black duration-1000 absolute pointer-events-none',
           videoLoaded ? 'opacity-0' : 'opacity-1',
         )}
       ></div>
 
       <div className="absolute top-0 left-0 w-full h-screen pointer-events-none">
-        <div className="w-full h-[40px] z-30 absolute left-1/2 top-1/2 translate-x-[-50%] translate-y-[-50%] overflow-hidden">
+        <div className="w-full h-[40px] absolute left-1/2 top-1/2 translate-x-[-50%] translate-y-[-50%] overflow-hidden">
           {Object.entries(textPositions).map(([key, position]) => (
             <p
               key={key}
@@ -85,14 +85,14 @@ export const PageLoadDesktop = () => {
 
       <div
         className={cn(
-          'w-full h-screen duration-300 absolute z-20 pointer-events-none',
+          'w-full h-screen duration-300 absolute pointer-events-none',
           textFinished ? 'bg-transparent' : 'bg-[#1e1d1c33]',
         )}
       ></div>
 
       <video
         className={cn(
-          'absolute top-1/2 z-10 left-1/2 translate-x-[-50%] translate-y-[-50%] object-cover duration-1000 ease-in-out',
+          'absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] object-cover duration-1000 ease-in-out -z-10',
           textFinished
             ? 'w-[95vw] h-[90vh] duration-500'
             : 'w-[100vw] h-[100vh] ',
@@ -107,7 +107,7 @@ export const PageLoadDesktop = () => {
         onLoadedData={handleVideoLoad}
       />
 
-      <p className="text-lg italic font-light mx-[10%] top-[110%] z-50  absolute max-w-80">
+      <p className="text-lg italic font-light mx-[10%] top-[110%]  absolute max-w-80">
         “I’m a full-stack website developer specializing in JavaScript.
         <div className="w-1/2 bg-text opacity-50 h-[1px] mt-6"></div>
       </p>

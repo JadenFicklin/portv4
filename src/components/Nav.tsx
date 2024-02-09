@@ -28,20 +28,20 @@ export const Nav = () => {
     <>
       <div
         className={cn(
-          'w-full z-50 duration-[700ms] h-[60px] fixed',
+          'w-full duration-[700ms] h-[60px] fixed z-50',
           displayNav ? 'top-[0%]' : 'top-[-100%]',
         )}
       >
         <div
           className={cn(
-            'w-[160%] z-10 left-[-40%] h-[60px] fixed bg-text duration-700 ease-in-out justify-center',
+            'w-[160%] left-[-40%] h-[60px] fixed bg-text duration-700 ease-in-out justify-center',
             displayNav ? 'top-[0%]' : 'top-[-100%]',
             // menuClicked && ' left-[5%] w-[60px] duration-700',
           )}
         ></div>
         <div
           className={cn(
-            'fixed z-50 left-[5%] size-[60px] grid place-content-center cursor-pointer duration-200 bg-text',
+            'fixed left-[5%] size-[60px] grid place-content-center cursor-pointer duration-200 bg-text',
           )}
         >
           <HoverText
@@ -53,7 +53,7 @@ export const Nav = () => {
         </div>
         <div
           className={cn(
-            'fixed z-50 right-[5%] rounded-full size-[50px] mt-[6px] font-black grid place-content-center cursor-pointer duration-200',
+            'fixed right-[5%] rounded-full size-[50px] mt-[6px] font-black grid place-content-center cursor-pointer duration-200',
             menuClicked && 'md:bg-counterText',
           )}
           onClick={() => setMenuClicked(!menuClicked)}
@@ -83,7 +83,7 @@ export const Nav = () => {
       {/* black screen cover for nav */}
       <div
         className={cn(
-          'w-full h-screen top-[-100vh] bg-text fixed duration-700 ease-in-out z-20',
+          'w-full h-screen top-[-100vh] bg-text fixed duration-700 ease-in-out',
           menuClicked && 'top-0',
         )}
       >
@@ -96,7 +96,7 @@ export const Nav = () => {
           muted
           loop
         />
-        <div className="pl-[8%] pt-[100px] md:left-[45%] md:pl-0 md:pt-0 md:top-1/4  md:absolute">
+        <div className="pl-[8%] pt-[100px] md:left-[45%] md:pl-0 md:pt-0 md:top-1/4 md:absolute">
           {navOptions.map((option) => (
             <HoverText
               wrapperClassName="hover:pl-[10px] md:hover:pl-10"

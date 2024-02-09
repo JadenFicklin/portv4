@@ -16,5 +16,12 @@ body {
   background-color: #fff;
 }
 
-@utilities {
+@layer utilities {
+  .reveal {
+    @apply opacity-100 pointer-events-auto;
+  }
+
+  .conceal {
+    @apply opacity-0 pointer-events-none;
+  }
 }
