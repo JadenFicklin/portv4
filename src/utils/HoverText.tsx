@@ -1,23 +1,27 @@
 import { cn } from '~/utils/cn'
 
 interface HoverTextProps {
+  wrapperClassName: string
   text: string
   className: string
   speed: number
 }
 
 export const HoverText: React.FC<HoverTextProps> = ({
+  wrapperClassName,
   text,
   speed,
   className,
 }) => {
   const letters = text.split('')
 
-  const wrapperClasses =
-    'flex duration-300 hover:ml-10 group whitespace-pre w-max'
+  const wrapperClasses = cn(
+    'flex duration-700 hover:pl-10 group whitespace-pre w-max',
+    wrapperClassName,
+  )
   const letterClasses = cn(
-    'text-white text-[100px] font-bold',
-    'group-hover:animate-outline-hover cursor-pointer',
+    'text-white text-[100px] font-bold ',
+    'group-hover:animate-outline-hover cursor-pointer duration',
     className,
   )
 
