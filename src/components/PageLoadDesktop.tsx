@@ -6,7 +6,7 @@ import { cn } from '~/utils/cn'
 type TextPositionKey = 'name' | 'profession' | 'attributes'
 
 export const PageLoadDesktop = () => {
-  const normalDisplaySpeed = true
+  const normalDisplaySpeed = false
 
   const [videoLoaded, setVideoLoaded] = useState(false)
   const [textPositions, setTextPositions] = useState<{
@@ -93,7 +93,7 @@ export const PageLoadDesktop = () => {
     <div className={cn('hidden xxl:block')}>
       <div
         className={cn(
-          'w-full h-screen bg-black duration-1000 absolute pointer-events-none',
+          'w-full h-screen bg-black duration-1000 absolute pointer-events-none top-0',
           videoLoaded ? 'opacity-0' : 'opacity-1',
         )}
       ></div>
@@ -117,13 +117,6 @@ export const PageLoadDesktop = () => {
           ))}
         </div>
       </div>
-
-      <div
-        className={cn(
-          'w-full h-screen duration-300 absolute pointer-events-none',
-          textFinished ? 'bg-transparent' : 'bg-[#1e1d1c33]',
-        )}
-      ></div>
 
       <video
         className={cn(

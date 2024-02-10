@@ -10,11 +10,11 @@ export const PageLoadMobile = () => {
   }, 1600)
 
   return (
-    <div className="block xxl:hidden stop-transitions">
+    <div className="block xxl:hidden">
       <video
         className={cn(
-          '-mt-20 md:-mt-10 w-[90vw] h-[60vh] object-cover mx-auto duration-1000',
-          videoDisplayed ? 'opacity-100' : 'opacity-0',
+          '-mt-20 md:-mt-10 w-[90vw] h-[60vh] object-cover opacity-0 mx-auto duration-1000',
+          videoDisplayed && 'opacity-100',
         )}
         src={Video}
         autoPlay

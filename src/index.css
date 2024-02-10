@@ -16,10 +16,6 @@ body {
   background-color: #fff;
 }
 
-.stop-transitions * {
-  transition: none !important;
-}
-
 /* text highlight colors */
 ::selection {
   background-color: #5ea6ea;
