@@ -21,7 +21,7 @@ export const HoverSwitch: React.FC<HoverSwitchProps> = ({
         className,
       )}
     >
-      <p className="relative duration-300 top-0 group-hover:-top-[100%]">
+      <p className="relative top-0 duration-300 group-hover:-top-full">
         {textOne}
       </p>
       <div className="relative bottom-0 whitespace-pre duration-300 group-hover:-bottom-[20px]">

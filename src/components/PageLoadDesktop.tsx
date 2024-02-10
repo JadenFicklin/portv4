@@ -83,7 +83,7 @@ export const PageLoadDesktop = () => {
         normalDisplaySpeed ? 7000 : 0,
       )
     }
-  }, [videoLoaded])
+  }, [videoLoaded, normalDisplaySpeed])
 
   const handleVideoLoad = () => {
     setVideoLoaded(true)
@@ -99,13 +99,13 @@ export const PageLoadDesktop = () => {
       ></div>
 
       <div className="absolute top-0 left-0 w-full h-screen pointer-events-none">
-        <div className="w-full h-[40px] absolute left-1/2 top-1/2 translate-x-[-50%] translate-y-[-50%] overflow-hidden">
+        <div className="absolute w-full h-10 overflow-hidden -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2">
           {Object.entries(textPositions).map(([key, position]) => (
             <p
               key={key}
               className={cn(
                 position,
-                'absolute text-3xl text-white tracking-widest font-medium w-max mx-auto duration-[750ms] ease-in-out left-1/2 -translate-x-[50%]',
+                'absolute text-3xl text-white tracking-widest font-medium w-max mx-auto duration-700 ease-in-out left-1/2 -translate-x-1/2',
               )}
             >
               {key === 'name'
@@ -127,12 +127,10 @@ export const PageLoadDesktop = () => {
 
       <video
         className={cn(
-          'absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] object-cover duration-1000 ease-in-out -z-10',
-          textFinished
-            ? 'w-[95vw] h-[90vh] duration-500'
-            : 'w-[100vw] h-[100vh]',
+          'absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover duration-1000 ease-in-out -z-10',
+          textFinished ? 'w-[95vw] h-[90vh] duration-500' : 'w-screen h-screen',
           (videoState === 'shrinking' || videoState === 'finished') &&
-            'w-[53vw] h-[100vh] translate-x-[-10%] translate-y-[-5%] duration-[1500ms]',
+            'w-[53vw] h-screen translate-x-[-10%] translate-y-[-5%] duration-[1500ms]',
           videoState === 'finished' && 'duration-0',
         )}
         src={Video}

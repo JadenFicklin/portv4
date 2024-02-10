@@ -16,7 +16,7 @@ export const SlideIn: React.FC<SlideInProps> = ({
   const letters = text.split('')
 
   return (
-    <div className="flex overflow-hidden whitespace-pre w-max h-min">
+    <div className="flex py-3 overflow-hidden whitespace-pre w-max h-min">
       {letters.map((letter, index) => {
         const letterStyle = {
           animationDelay: `${index * speed + initialDelay}ms`,
@@ -27,7 +27,7 @@ export const SlideIn: React.FC<SlideInProps> = ({
           <p
             key={index}
             className={cn(
-              'relative duration-[700ms] ease-in-out animate-slide-up opacity-0 fill-mode-forwards text-black',
+              'relative duration-700 ease-in-out animate-slide-up opacity-0 fill-mode-forwards text-black',
               className,
             )}
             style={letterStyle}

@@ -30,54 +30,52 @@ export const Nav = () => {
     <>
       <div
         className={cn(
-          'w-full duration-[700ms] h-[60px] fixed z-50',
+          'w-full duration-[700ms] h-16 fixed z-50',
           displayNav ? 'top-[0%]' : 'top-[-100%]',
         )}
       >
         <div
           className={cn(
-            'w-[160%] left-[-40%] h-[60px] fixed bg-max duration-700 ease-in-out justify-center',
-            displayNav ? 'top-[0%]' : 'top-[-100%]',
+            'w-[160%] left-[-40%] h-16 fixed bg-max duration-700 ease-in-out justify-center',
+            displayNav ? 'top-0' : '-top-full',
             // menuClicked && 'left-[5%] w-[60px] duration-700',
           )}
         ></div>
         <div
           className={cn(
-            'fixed left-[5%] size-[60px] grid place-content-center cursor-pointer duration-200 bg-max',
+            'fixed left-[5%] size-16 grid place-content-center cursor-pointer duration-200 bg-max',
           )}
         >
           <HoverText
             wrapperClassName="hover:pl-0"
-            className="text-[26px] tracking-wider font-black cursor-pointer"
+            className="text-2xl font-black tracking-wider cursor-pointer"
             text="JF"
             speed={50}
           />
         </div>
         <div
           className={cn(
-            'fixed right-[5%] rounded-full size-[50px] mt-[6px] font-black grid place-content-center cursor-pointer duration-200',
+            'fixed right-[5%] rounded-full size-12 mt-2 font-black grid place-content-center cursor-pointer duration-200',
             menuClicked && 'md:bg-min',
           )}
           onClick={() => setMenuClicked(!menuClicked)}
         >
           <div
             className={cn(
-              'w-[20px] h-[1px] bg-min my-[1.5px] duration-200 relative ',
-              menuClicked &&
-                'rotate-[-40deg] bottom-[-1.8px] w-[20px] md:bg-max',
+              'w-5 h-[1px] bg-min my-[1.5px] duration-200 relative ',
+              menuClicked && 'rotate-[-40deg] bottom-[-1.8px] w-5 md:bg-max',
             )}
           ></div>
           <div
             className={cn(
-              'w-[20px] h-[1px] bg-min my-[1.5px] duration-200',
+              'w-5 h-[1px] bg-min my-[1.5px] duration-200',
               menuClicked && 'hidden',
             )}
           ></div>
           <div
             className={cn(
-              'w-[20px] h-[1px] bg-min my-[1.5px] duration-200 relative',
-              menuClicked &&
-                'rotate-[-135deg] bottom-[2.2px] w-[20px] md:bg-max',
+              'w-5 h-[1px] bg-min my-[1.5px] duration-200 relative',
+              menuClicked && 'rotate-[-135deg] bottom-[2.2px] w-5 md:bg-max',
             )}
           ></div>
         </div>
@@ -91,18 +89,18 @@ export const Nav = () => {
       >
         <video
           className={cn(
-            'absolute md:block top-1/2 w-[40%] h-screen hidden left-1/2 translate-x-[-125%] translate-y-[-50%] object-cover',
+            'absolute md:block top-1/2 w-2/5 h-screen hidden left-1/2 translate-x-[-125%] -translate-y-1/2 object-cover',
           )}
           src={Video}
           autoPlay
           muted
           loop
         />
-        <div className="pl-[8%] pt-[100px] md:left-[45%] md:pl-0 md:pt-0 md:top-1/4 md:absolute">
+        <div className="pl-[8%] pt-24 md:left-[45%] md:pl-0 md:pt-0 md:top-1/4 md:absolute">
           {navOptions.map((option) => (
             <HoverText
-              wrapperClassName="hover:pl-[10px] md:hover:pl-10"
-              className="text-[30px] xs:text-[50px] mt-[-10px] sm:text-[60px] md:text-[88px] tracking-wider font-semibold cursor-pointer md:mt-[-28px]"
+              wrapperClassName="hover:pl-10"
+              className="text-3xl font-semibold tracking-wider cursor-pointer xs:text-5xl sm:text-6xl md:text-8xl "
               text={option.name}
               speed={50}
             />

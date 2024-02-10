@@ -20,7 +20,7 @@ export const HoverText: React.FC<HoverTextProps> = ({
     wrapperClassName,
   )
   const letterClasses = cn(
-    'text-white text-[100px] font-bold ',
+    'text-white text-8xl font-bold ',
     'group-hover:animate-outline-hover cursor-pointer duration',
     className,
   )

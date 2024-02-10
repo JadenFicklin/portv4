@@ -9,10 +9,10 @@ export const About = () => {
           About
         </h2>
         <div className="flex flex-wrap w-full h-96">
-          <div className="hidden lg:w-[40%] h-full lg:flex justify-center items-center">
-            <div className="w-[90%] h-[90%] "></div>
+          <div className="items-center justify-center hidden h-full lg:w-4/12 lg:flex">
+            <div className="w-11/12 h-11/12 "></div>
           </div>
-          <div className="w-full lg:w-[60%] h-full">
+          <div className="w-full h-full lg:w-8/12">
             <div>
               <p>01</p>
               <p>
