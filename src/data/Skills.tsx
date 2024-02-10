@@ -20,7 +20,7 @@ import { FaGitlab } from 'react-icons/fa6'
 import { SiNetlify } from 'react-icons/si'
 import { SiTailwindcss } from 'react-icons/si'
 
-const svgClass = 'w-full h-full fill-counterText '
+const svgClass = 'w-full h-full fill-min '
 
 export const skillsArray = [
   {

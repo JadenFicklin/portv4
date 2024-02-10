@@ -34,14 +34,14 @@ export const Nav = () => {
       >
         <div
           className={cn(
-            'w-[160%] left-[-40%] h-[60px] fixed bg-text duration-700 ease-in-out justify-center',
+            'w-[160%] left-[-40%] h-[60px] fixed bg-max duration-700 ease-in-out justify-center',
             displayNav ? 'top-[0%]' : 'top-[-100%]',
             // menuClicked && ' left-[5%] w-[60px] duration-700',
           )}
         ></div>
         <div
           className={cn(
-            'fixed left-[5%] size-[60px] grid place-content-center cursor-pointer duration-200 bg-text',
+            'fixed left-[5%] size-[60px] grid place-content-center cursor-pointer duration-200 bg-max',
           )}
         >
           <HoverText
@@ -54,28 +54,28 @@ export const Nav = () => {
         <div
           className={cn(
             'fixed right-[5%] rounded-full size-[50px] mt-[6px] font-black grid place-content-center cursor-pointer duration-200',
-            menuClicked && 'md:bg-counterText',
+            menuClicked && 'md:bg-min',
           )}
           onClick={() => setMenuClicked(!menuClicked)}
         >
           <div
             className={cn(
-              'w-[20px] h-[1px] bg-counterText my-[1.5px] duration-200 relative ',
+              'w-[20px] h-[1px] bg-min my-[1.5px] duration-200 relative ',
               menuClicked &&
-                'rotate-[-40deg] bottom-[-1.8px] w-[20px] md:bg-text',
+                'rotate-[-40deg] bottom-[-1.8px] w-[20px] md:bg-max',
             )}
           ></div>
           <div
             className={cn(
-              'w-[20px] h-[1px] bg-counterText my-[1.5px] duration-200',
+              'w-[20px] h-[1px] bg-min my-[1.5px] duration-200',
               menuClicked && 'hidden',
             )}
           ></div>
           <div
             className={cn(
-              'w-[20px] h-[1px] bg-counterText my-[1.5px] duration-200 relative',
+              'w-[20px] h-[1px] bg-min my-[1.5px] duration-200 relative',
               menuClicked &&
-                'rotate-[-135deg] bottom-[2.2px] w-[20px] md:bg-text',
+                'rotate-[-135deg] bottom-[2.2px] w-[20px] md:bg-max',
             )}
           ></div>
         </div>
@@ -83,7 +83,7 @@ export const Nav = () => {
       {/* black screen cover for nav */}
       <div
         className={cn(
-          'w-full h-screen top-[-100vh] bg-text fixed duration-700 ease-in-out',
+          'w-full h-screen top-[-100vh] bg-max fixed duration-700 ease-in-out',
           menuClicked && 'top-0',
         )}
       >
@@ -107,13 +107,13 @@ export const Nav = () => {
           ))}
         </div>
 
-        <p className="text-counterText pl-[8%] bottom-16 md:left-[45%] md:pl-0 md:pt-0 md:top-[90%] absolute">
+        <p className="text-min pl-[8%] bottom-16 md:left-[45%] md:pl-0 md:pt-0 md:top-[90%] absolute">
           <a className="mx-2 font-semibold cursor-pointer">Github</a> /{' '}
           <a className="mx-2 font-semibold cursor-pointer">Linkedin</a> /{' '}
           <a className="mx-2 font-semibold cursor-pointer">Resume</a>
         </p>
 
-        <p className="mx-2 font-semibold cursor-pointer text-counterText pl-[8%] md:right-[5%] md:hidden lg:block md:pl-0 md:pt-0 md:top-[90%] bottom-10 absolute">
+        <p className="mx-2 font-semibold cursor-pointer text-min pl-[8%] md:right-[5%] md:hidden lg:block md:pl-0 md:pt-0 md:top-[90%] bottom-10 absolute">
           FullstackJaden@gmail.com
         </p>
       </div>

@@ -14,9 +14,8 @@ export default {
     },
     extend: {
       colors: {
-        background: '#ffffff',
-        text: '#000000',
-        counterText: '#ffffff',
+        max: '#000000',
+        min: '#ffffff',
       },
       keyframes: tailwindKeyframes,
       animation: {
