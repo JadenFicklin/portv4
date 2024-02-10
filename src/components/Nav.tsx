@@ -5,6 +5,8 @@ import Video from '~/assets/videos/GroupAtWork.mp4'
 // import Video from '~/assets/videos/code.mp4'
 
 export const Nav = () => {
+  const normalDisplaySpeed = true
+
   const [menuClicked, setMenuClicked] = useState(false)
   const [displayNav, setDisplayNav] = useState(false)
 
@@ -20,9 +22,9 @@ export const Nav = () => {
       () => {
         setDisplayNav(true)
       },
-      window.innerWidth > 1400 ? 7000 : 500,
+      window.innerWidth > 1400 && normalDisplaySpeed ? 7000 : 500,
     )
-  }, [])
+  }, [normalDisplaySpeed])
 
   return (
     <>
@@ -36,7 +38,7 @@ export const Nav = () => {
           className={cn(
             'w-[160%] left-[-40%] h-[60px] fixed bg-max duration-700 ease-in-out justify-center',
             displayNav ? 'top-[0%]' : 'top-[-100%]',
-            // menuClicked && ' left-[5%] w-[60px] duration-700',
+            // menuClicked && 'left-[5%] w-[60px] duration-700',
           )}
         ></div>
         <div

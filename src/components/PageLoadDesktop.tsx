@@ -6,6 +6,8 @@ import { cn } from '~/utils/cn'
 type TextPositionKey = 'name' | 'profession' | 'attributes'
 
 export const PageLoadDesktop = () => {
+  const normalDisplaySpeed = true
+
   const [videoLoaded, setVideoLoaded] = useState(false)
   const [textPositions, setTextPositions] = useState<{
     [key in TextPositionKey]: string
@@ -21,12 +23,36 @@ export const PageLoadDesktop = () => {
     if (videoLoaded) {
       const timeouts: { key: TextPositionKey; value: string; delay: number }[] =
         [
-          { key: 'name', value: 'bottom-0', delay: 500 },
-          { key: 'name', value: 'bottom-16', delay: 1750 },
-          { key: 'attributes', value: 'bottom-0', delay: 1750 },
-          { key: 'attributes', value: 'bottom-16', delay: 3000 },
-          { key: 'profession', value: 'bottom-0', delay: 3000 },
-          { key: 'profession', value: 'bottom-16', delay: 4250 },
+          {
+            key: 'name',
+            value: 'bottom-0',
+            delay: normalDisplaySpeed ? 500 : 0,
+          },
+          {
+            key: 'name',
+            value: 'bottom-16',
+            delay: normalDisplaySpeed ? 1750 : 0,
+          },
+          {
+            key: 'attributes',
+            value: 'bottom-0',
+            delay: normalDisplaySpeed ? 1750 : 0,
+          },
+          {
+            key: 'attributes',
+            value: 'bottom-16',
+            delay: normalDisplaySpeed ? 3000 : 0,
+          },
+          {
+            key: 'profession',
+            value: 'bottom-0',
+            delay: normalDisplaySpeed ? 3000 : 0,
+          },
+          {
+            key: 'profession',
+            value: 'bottom-16',
+            delay: normalDisplaySpeed ? 4250 : 0,
+          },
         ]
 
       timeouts.forEach(({ key, value, delay }) => {
@@ -38,15 +64,24 @@ export const PageLoadDesktop = () => {
         }, delay)
       })
 
-      setTimeout(() => {
-        setTextFinished(true)
-      }, 4400)
-      setTimeout(() => {
-        setVideoState('shrinking')
-      }, 5500)
-      setTimeout(() => {
-        setVideoState('finished')
-      }, 7000)
+      setTimeout(
+        () => {
+          setTextFinished(true)
+        },
+        normalDisplaySpeed ? 4400 : 0,
+      )
+      setTimeout(
+        () => {
+          setVideoState('shrinking')
+        },
+        normalDisplaySpeed ? 5500 : 0,
+      )
+      setTimeout(
+        () => {
+          setVideoState('finished')
+        },
+        normalDisplaySpeed ? 7000 : 0,
+      )
     }
   }, [videoLoaded])
 
@@ -55,7 +90,7 @@ export const PageLoadDesktop = () => {
   }
 
   return (
-    <div className="hidden xxl:block">
+    <div className={cn('hidden xxl:block')}>
       <div
         className={cn(
           'w-full h-screen bg-black duration-1000 absolute pointer-events-none',
@@ -95,7 +130,7 @@ export const PageLoadDesktop = () => {
           'absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] object-cover duration-1000 ease-in-out -z-10',
           textFinished
             ? 'w-[95vw] h-[90vh] duration-500'
-            : 'w-[100vw] h-[100vh] ',
+            : 'w-[100vw] h-[100vh]',
           (videoState === 'shrinking' || videoState === 'finished') &&
             'w-[53vw] h-[100vh] translate-x-[-10%] translate-y-[-5%] duration-[1500ms]',
           videoState === 'finished' && 'duration-0',

@@ -4,7 +4,7 @@ import { HoverSwitch } from '~/utils/HoverSwitch'
 export const About = () => {
   return (
     <>
-      <div className="w-[90%] h-min mx-[5%] mt-32 flex flex-wrap mb-96">
+      <div className="w-[90%] h-min mx-[5%] mt-32 xxl:mt-[650px] flex flex-wrap mb-96">
         <h2 className="w-full pb-3 border-b-2 border-opacity-50 text-7xl text-max border-max">
           About
         </h2>
