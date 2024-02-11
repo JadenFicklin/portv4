@@ -1,9 +1,13 @@
-import { howItStartedData } from '~/data/about'
+import { useState } from 'react'
 import { FAQDrawer } from '~/components/FAQDrawer'
-// import { myInterestsData } from '~/data/about'
-// import { skillsArray } from '~/data/Skills'
+import { skillsArray } from '~/data/Skills'
+import { cn } from '~/utils/cn'
+import { HowItStartedText } from '~/utils/HowItStartedText'
+import { MyInterestsText } from '~/utils/MyInterestsText'
 
 export const About = () => {
+  const [image, setImage] = useState('')
+
   type FAQProps = {
     title: string
     duration?: string
@@ -13,15 +17,34 @@ export const About = () => {
   const FAQs: FAQProps[] = [
     {
       title: 'How it all started',
-      content: <span>{howItStartedData}</span>,
+      content: (
+        <div className="py-10" onMouseLeave={() => setImage('')}>
+          <HowItStartedText setImage={setImage} />
+        </div>
+      ),
     },
     {
       title: 'My interests',
-      content: <div>child 2</div>,
+      content: (
+        <div className="py-10" onMouseLeave={() => setImage('')}>
+          <MyInterestsText setImage={setImage} />
+        </div>
+      ),
     },
     {
       title: 'Tech stack',
-      content: <div>child 3</div>,
+      content: (
+        <div className="flex flex-wrap py-10">
+          {skillsArray.map((skill) => (
+            <div className="p-2 m-1 rounded bg-max">
+              <div className="w-6 h-6 mx-auto ">{skill.icon}</div>
+              <div className="w-full text-sm text-center text-min">
+                {skill.name}
+              </div>
+            </div>
+          ))}
+        </div>
+      ),
     },
   ]
 
@@ -31,12 +54,19 @@ export const About = () => {
         <h2 className="w-full pb-3 border-b-2 border-opacity-50 text-7xl text-max border-max">
           About
         </h2>
-        <div className="flex flex-wrap w-full h-96">
-          <div className="items-center justify-center hidden h-full lg:w-4/12 lg:flex">
-            <div className="w-11/12 h-11/12 "></div>
+        <div className="flex flex-wrap w-full h-max">
+          <div className="items-center justify-center hidden overflow-hidden lg:w-5/12 lg:flex">
+            <div
+              className={cn(
+                'grid w-10/12  h-5/6 place-content-center relative duration-300 left-[-100%]',
+                image && 'left-0',
+              )}
+            >
+              <img src={image} alt={image} className="w-full" />
+            </div>
           </div>
           {/* FAQ section */}
-          <div className="flex flex-col w-full lg:w-8/12 h-max">
+          <div className="flex flex-col w-full lg:w-7/12 h-max">
             {FAQs.map((faqProps, index) => {
               const { title, duration, content } = faqProps
               const number = index + 1

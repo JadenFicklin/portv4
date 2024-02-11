@@ -83,11 +83,11 @@ const AnimatedWords: React.FC<AnimatedWordsProps> = (props) => {
 
   return (
     <div className={wrapperClasses}>
-      {words.map(({ item, direction }) => {
+      {words.map(({ item, direction }, index) => {
         const isUp = direction === 'up'
         const isDown = direction === 'down'
 
-        const wordClasses = 'duration-300'
+        const wordClasses = 'duration-700'
 
         const initialWordClassIsUp = 'absolute top-0 group-hover:-top-[200%]'
         const replacementWordClassIsUp = 'absolute top-[200%] group-hover:top-0'
@@ -105,7 +105,7 @@ const AnimatedWords: React.FC<AnimatedWordsProps> = (props) => {
         )
 
         return (
-          <div className="relative flex flex-col">
+          <div className="relative flex flex-col" key={index}>
             <span className="opacity-0">{item}</span>
             <span className={initialWordClasses}>{item}</span>
             <span className={replacementWordClasses}>{item}</span>
