@@ -8,8 +8,8 @@ export const AboutText = [
   `When I'm not at my computer drawing rectangles through Figma or admiring the work of others at ${Awwwards}, I'm interested in new technologies and have a strong passion for drawing, watching new shows and spending time with my family.`,
 ]
 
-export const howItStarted =
+export const howItStartedData =
   'Back in 2021, I searched heavily for a career I would feel passionate about. I really enjoy creative thinking and solving complex problems so when I tried my hand at website development it was a perfect fit.As a dedicated Devmountain Graduate I have a passion for seeing data translated into beautiful UI.  I thrive when I can see myself and team members achieve our shared professional goals.'
 
-export const myInterests =
+export const myInterestsData =
   'Besides admiring websites on Awwwards.com I enjoy playing open world games like Breath of the wild, Palworld and MineCraft or watching shows like Firefly and The Queen’s Gambit. When I’m not at the computer you can find me spending time with my family and dogs, cooking, drawing or training.'

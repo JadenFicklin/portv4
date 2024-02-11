@@ -4,29 +4,37 @@ interface HoverSwitchProps {
   textOne: string
   textTwo: string
   className: string
-  speed: number
 }
 
 export const HoverSwitch: React.FC<HoverSwitchProps> = ({
   textOne,
   textTwo,
   className,
-  speed,
 }) => {
-  console.log(speed)
   return (
     <div
       className={cn(
-        'flex bg-blue-500 w-max overflow-hidden group cursor-pointer',
+        'flex w-max overflow-hidden group relative cursor-pointer',
         className,
       )}
     >
-      <p className="relative top-0 duration-300 group-hover:-top-full">
-        {textOne}
-      </p>
-      <div className="relative bottom-0 whitespace-pre duration-300 group-hover:-bottom-[20px]">
-        <p>{textTwo}</p>
-        <p>{textTwo}</p>
+      <div className="relative whitespace-pre group">
+        <p className="opacity-0">{textOne}</p>
+        <p className="absolute duration-500 group-hover:bottom-[0%] -bottom-[150%] ease-in-out">
+          {textOne}
+        </p>
+        <p className="absolute duration-500 top-[0%] group-hover:-top-[150%] ease-in-out">
+          {textOne}
+        </p>
+      </div>
+      <div className="relative whitespace-pre group">
+        <p className="opacity-0">{textTwo}</p>
+        <p className="absolute duration-500 group-hover:top-[0%] -top-[150%] ease-in-out">
+          {textTwo}
+        </p>
+        <p className="absolute duration-500 bottom-[0%] group-hover:-bottom-[150%] ease-in-out">
+          {textTwo}
+        </p>
       </div>
     </div>
   )
