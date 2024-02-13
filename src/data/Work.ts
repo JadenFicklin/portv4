@@ -1,3 +1,7 @@
+import OakandStone from '~/assets/images/OakandStone.png'
+import PinaSoulmate from '~/assets/images/PinaSoulmate.png'
+import SVGLibrary from '~/assets/images/SVGLibrary.png'
+
 type Project = {
   name: string
   description: string
@@ -27,7 +31,7 @@ export const WorkArray: Project[] = [
       'Firebase',
       'Mailgun',
     ],
-    image: 'PinaSoulmate',
+    image: PinaSoulmate,
     link: 'https://pinasoulmate.com/',
     goalsAndObjectives:
       'To create a cost-effective and user-friendly dating platform tailored for expats and locals in the Philippines.',
@@ -51,7 +55,7 @@ export const WorkArray: Project[] = [
     description:
       'Users can customize SVG’s using range sliders to adjust size, stroke, and color of SVG’s which they can then copy the code for and use in their projects.',
     technologies: ['React', 'Javascript', 'Tailwind', 'Zustand', 'Firebase'],
-    image: 'SVGLibrary',
+    image: SVGLibrary,
     link: 'https://svg-library.web.app/',
     goalsAndObjectives:
       'To simplify the customization of SVGs for developers, enabling easy adjustment of size, stroke, and color, and to facilitate the direct use of these custom SVGs in their projects.',
@@ -75,7 +79,7 @@ export const WorkArray: Project[] = [
     description:
       'A brochure website with emphasis on interactive UI to bring an enjoyable viewing experience for the user.',
     technologies: ['React', 'Javascript', 'EmailJs', 'Maps API', 'Netlify'],
-    image: 'OakandStone',
+    image: OakandStone,
     link: 'https://oakandstone.netlify.app/',
     goalsAndObjectives: '...',
     myRole: '...',

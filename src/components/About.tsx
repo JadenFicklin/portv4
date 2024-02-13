@@ -46,11 +46,19 @@ export const About = () => {
         </div>
       ),
     },
+    {
+      title: 'My Experience',
+      content: (
+        <div className="py-10" onMouseLeave={() => setImage('')}>
+          <MyInterestsText setImage={setImage} />
+        </div>
+      ),
+    },
   ]
 
   return (
     <>
-      <div className="w-[90%] h-min mx-[5%] mt-32 xxl:mt-[650px] flex flex-wrap mb-96">
+      <div className="w-[90%] h-min mx-[5%] mt-32 xxl:mt-[650px] flex flex-wrap ">
         <h2 className="w-full pb-3 text-3xl border-b-2 border-opacity-50 xs:text-4xl sm:text-6xl md:text-7xl text-max border-max">
           About
         </h2>

@@ -5,6 +5,7 @@ import { PageLoadDesktop } from '~/components/PageLoadDesktop'
 import { PageLoadMobile } from '~/components/PageLoadMobile'
 import { About } from '~/components/About'
 import { Grid } from '~/utils/Grid'
+import { Works } from '~/components/Works'
 // import { Grid } from '~/utils/Grid'
 
 export const Landing = () => {
@@ -21,9 +22,13 @@ export const Landing = () => {
       {/* about */}
       <About />
 
+      {/* works */}
+      <Works />
+
       {/* nav */}
       <Nav />
 
+      {/* grid */}
       <Grid horizontalLines={100} verticalLines={100} />
     </>
   )
