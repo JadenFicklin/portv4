@@ -51,7 +51,7 @@ export const About = () => {
   return (
     <>
       <div className="w-[90%] h-min mx-[5%] mt-32 xxl:mt-[650px] flex flex-wrap mb-96">
-        <h2 className="w-full pb-3 border-b-2 border-opacity-50 text-7xl text-max border-max">
+        <h2 className="w-full pb-3 text-3xl border-b-2 border-opacity-50 xs:text-4xl sm:text-6xl md:text-7xl text-max border-max">
           About
         </h2>
         <div className="flex flex-wrap w-full h-max">

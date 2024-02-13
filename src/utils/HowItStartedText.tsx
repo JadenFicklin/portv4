@@ -13,8 +13,9 @@ export const HowItStartedText: React.FC<HowItStartedProps> = (props) => {
       <div>
         Back in 2021, I searched heavily for a career I would feel passionate
         about. I really enjoy creative thinking and solving complex problems so
-        when I tried my hand at website development it was a perfect fit. As a
-        dedicated{' '}
+        when I tried my hand at website development it was a perfect fit.{' '}
+        <br></br>
+        <br></br>As a dedicated{' '}
         <span
           onMouseEnter={() => setImage(devmountain)}
           className="font-semibold cursor-pointer"

@@ -52,11 +52,19 @@ export const FAQDrawer: React.FC<FAQDrawerProps> = (props) => {
       <div onClick={toggle} className={handleClasses}>
         <div className="flex gap-6">
           {showNumbers && (
-            <AnimatedWords words={animatedOrder} className="text-xl gap-0.5" />
+            <AnimatedWords
+              words={animatedOrder}
+              className="text-base md:text-xl gap-0.5"
+            />
           )}
-          <AnimatedWords words={animatedTitle} className="gap-2 text-4xl" />
+          <AnimatedWords
+            words={animatedTitle}
+            className="gap-2 text-xl xs:text-2xl sm:text-3xl md:text-4xl"
+          />
         </div>
-        <div className="text-6xl font-light">{show ? '-' : '+'}</div>
+        <div className="text-3xl font-light xs:text-4xl sm:text-6xl md:text-6xl">
+          {show ? '-' : '+'}
+        </div>
       </div>
       <Drawer show={show} duration={duration}>
         {children}

@@ -18,8 +18,8 @@ body {
 
 /* text highlight colors */
 ::selection {
-  background-color: #5ea6ea;
-  color: white;
+  @apply bg-blue-200;
+  @apply text-black;
 }
 
 @layer utilities {
