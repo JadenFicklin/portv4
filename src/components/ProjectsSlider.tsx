@@ -6,6 +6,7 @@ import OakandStone from '~/assets/images/projectsSlider/OakandStoneFull.png'
 import Portv1Full from '~/assets/images/projectsSlider/portv1Full.png'
 import Portv2Full from '~/assets/images/projectsSlider/portv2Full.png'
 import svgFull from '~/assets/images/projectsSlider/svgFull.png'
+import { Link } from 'react-router-dom'
 
 export const ProjectsSlider = () => {
   const [scrollY, setScrollY] = useState({ down: 0, up: 0 })
@@ -41,7 +42,10 @@ export const ProjectsSlider = () => {
   return (
     <>
       <div className="relative opacity-0 -top-[80vh]" ref={parentRef}></div>
-      <div className="w-full h-[60vh] md:h-[80vh] xl:h-[150vh] bg-black bg-opacity-90 overflow-hidden grid grid-cols-4 gap-4 px-4 relative">
+      <Link
+        to="/archive"
+        className="w-full h-[60vh] md:h-[80vh] xl:h-[150vh] bg-black bg-opacity-90 overflow-hidden grid grid-cols-4 gap-4 px-4 relative"
+      >
         {/* <div className="absolute top-0 left-0 z-10 w-full h-full bg-black bg-opacity-50"></div> */}
         <div
           className="flex flex-wrap gap-4 h-max"
@@ -82,7 +86,7 @@ export const ProjectsSlider = () => {
           <img src={Euka} alt="Euka" />
           <img src={Euka} alt="Euka again" />
         </div>
-      </div>
+      </Link>
     </>
   )
 }
