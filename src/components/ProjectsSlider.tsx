@@ -41,7 +41,8 @@ export const ProjectsSlider = () => {
   return (
     <>
       <div className="relative opacity-0 -top-[80vh]" ref={parentRef}></div>
-      <div className="w-full h-[60vh] md:h-[150vh] bg-black bg-opacity-90 overflow-hidden grid grid-cols-4 gap-4 px-4">
+      <div className="w-full h-[60vh] md:h-[80vh] xl:h-[150vh] bg-black bg-opacity-90 overflow-hidden grid grid-cols-4 gap-4 px-4 relative">
+        {/* <div className="absolute top-0 left-0 z-10 w-full h-full bg-black bg-opacity-50"></div> */}
         <div
           className="flex flex-wrap gap-4 h-max"
           style={{ transform: `translateY(${scrollY.down}px)` }}
@@ -54,7 +55,7 @@ export const ProjectsSlider = () => {
           <img src={Portv2Full} alt="Portv2Full again" />
         </div>
         <div
-          className="flex flex-wrap gap-4 h-max relative -top-[70vh] md:-top-[300vh]"
+          className="flex flex-wrap gap-4 h-max relative -top-[70vh] md:-top-[200vh] xl:-top-[300vh]"
           style={{ transform: `translateY(${scrollY.up}px)` }}
         >
           <img src={Portv2Full} alt="Portv2Full" />
@@ -73,7 +74,7 @@ export const ProjectsSlider = () => {
           <img src={svgFull} alt="svgFull" />
         </div>
         <div
-          className="flex flex-wrap gap-4 h-max relative -top-[70vh] md:-top-[250vh]"
+          className="flex flex-wrap gap-4 h-max relative -top-[70vh] md:-top-[180vh] xl:-top-[250vh]"
           style={{ transform: `translateY(${scrollY.up}px)` }}
         >
           <img src={Portv1Full} alt="Portv1Full" />
