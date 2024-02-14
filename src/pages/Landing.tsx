@@ -6,7 +6,8 @@ import { PageLoadMobile } from '~/components/PageLoadMobile'
 import { About } from '~/components/About'
 import { Grid } from '~/utils/Grid'
 import { Works } from '~/components/Works'
-// import { Grid } from '~/utils/Grid'
+import { ProjectsSlider } from '~/components/ProjectsSlider'
+import { Contact } from '~/components/Contact'
 
 export const Landing = () => {
   return (
@@ -24,6 +25,13 @@ export const Landing = () => {
 
       {/* works */}
       <Works />
+
+      {/* projects slider */}
+      <ProjectsSlider />
+
+      {/* contact */}
+      <Contact />
+      <Contact />
 
       {/* nav */}
       <Nav />

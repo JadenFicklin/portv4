@@ -30,6 +30,7 @@ export const Project: React.FC<ProjectProps> = ({
 }) => {
   const { name, description, technologies, image, link } = data
   const [flagAnimationState, setFlagAnimationState] = useState('')
+  const [isNarrowScreen, setIsNarrowScreen] = useState(window.innerWidth < 1000)
 
   const divStyle = {
     backgroundImage: `url(${image})`,
@@ -48,6 +49,21 @@ export const Project: React.FC<ProjectProps> = ({
   }
 
   useEffect(() => {
+    const handleResize = () => {
+      setIsNarrowScreen(window.innerWidth < 1000)
+    }
+
+    // Set up the event listener
+    window.addEventListener('resize', handleResize)
+
+    // Call the handler right away so state gets updated with initial window size
+    handleResize()
+
+    // Remove event listener on cleanup
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
+  useEffect(() => {
     handleAnimateFlag()
   }, [])
 
@@ -55,18 +71,21 @@ export const Project: React.FC<ProjectProps> = ({
     <>
       <div
         className={cn(
-          'w-full py-10 h-[65vh] lg:h-[85vh] grid grid-cols-2',
+          'w-full py-10 h-max grid grid-rows-2 lg:grid-rows-1 lg:grid-cols-2 grid-rows-auto ',
           className,
+          orientation.includes('right') && 'lg:-ml-10',
         )}
       >
         {/* image section */}
         <div
           className={cn(
-            orientation === 'right' && 'order-2 flex justify-end scale-90',
+            'flex justify-center',
+            orientation === 'right' && 'lg:order-2 lg:justify-end lg:scale-90',
+            isNarrowScreen && 'order-2',
           )}
         >
           <a
-            className="relative flex items-center w-10/12 h-full "
+            className="relative flex items-center w-full lg:w-10/12 h-[35vh] md:h-[45vh] lg:h-[55vh] xxl:h-[75vh] mt-10 lg:mt-0"
             href={link}
             target="_blank"
             rel="noreferrer"
@@ -82,10 +101,8 @@ export const Project: React.FC<ProjectProps> = ({
         </div>
         {/* text and flag section */}
         <div className="flex flex-wrap">
-          <div
-            className={cn('w-3/12', orientation.includes('right') && 'order-2')}
-          ></div>
-          <div className="flex flex-wrap content-center w-9/12">
+          <div className={cn('w-3/12 hidden lg:block ')}></div>
+          <div className="flex flex-wrap content-center w-10/12 pl-10 mx-auto mt-10 scale-90 lg:w-9/12 lg:px-0 lg:mx-0">
             <div className="relative w-full h-max">
               {/* animated flag */}
               <div
@@ -93,7 +110,7 @@ export const Project: React.FC<ProjectProps> = ({
                   'duration-1000  ease-in-out absolute bottom-0 w-1 h-full bg-max',
                   !flagAnimationState && 'h-0',
                   orientation.includes('left') && '-left-20',
-                  orientation.includes('right') && '-right-20',
+                  orientation.includes('right') && '-left-20 lg:-right-20',
                 )}
               >
                 {/* dot */}
@@ -111,17 +128,14 @@ export const Project: React.FC<ProjectProps> = ({
                     'duration-300 ease-in-out absolute top-0 h-4 w-0 bg-max',
                     flagAnimationState === 'flag' && 'w-7',
                     orientation.includes('left') && 'left-0',
-                    orientation.includes('right') && 'right-0',
+                    orientation.includes('right') && 'left-0 lg:right-0',
                   )}
                 ></div>
               </div>
               {/* text */}
-              <div className="text-4xl">{name}</div>
-              <div className="py-8">
-                {description}
-                {orientation}
-              </div>
-              <div className="flex flex-wrap gap-2">
+              <div className="text-3xl sm:text-4xl">{name}</div>
+              <div className="py-8 max-w-96">{description}</div>
+              <div className="flex flex-wrap gap-2 max-w-96">
                 {technologies.map((tech, index) => (
                   <div
                     key={index}
