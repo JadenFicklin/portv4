@@ -5,6 +5,14 @@ import { projectArchiveArray } from '~/data/projectArchive'
 import { IoMdArrowForward } from 'react-icons/io'
 import { cn } from '~/utils/cn'
 
+type ProjectProps = {
+  year: number
+  project: string
+  madeAt: string
+  builtWith: string[]
+  link: string
+}
+
 export const Archive = () => {
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -37,8 +45,11 @@ export const Archive = () => {
               </th>
             </thead>
             <tbody>
-              {projectArchiveArray.map((item) => (
-                <tr className="border-b t border-max border-opacity-80 last:border-none">
+              {projectArchiveArray.map((item: ProjectProps, index: number) => (
+                <tr
+                  key={index}
+                  className="border-b t border-max border-opacity-80 last:border-none"
+                >
                   <td className="py-4 pr-4 text-sm align-top">
                     <div className="translate-y-px">{item.year}</div>
                   </td>

@@ -75,12 +75,12 @@ export const About = () => {
           </div>
           {/* FAQ section */}
           <div className="flex flex-col w-full lg:w-7/12 h-max">
-            {FAQs.map((faqProps, index) => {
+            {FAQs.map((faqProps, index: number) => {
               const { title, duration, content } = faqProps
               const number = index + 1
-
               return (
                 <FAQDrawer
+                  key={index}
                   showNumbers
                   title={title}
                   duration={duration}

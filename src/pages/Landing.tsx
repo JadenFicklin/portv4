@@ -31,7 +31,6 @@ export const Landing = () => {
 
       {/* contact */}
       <Contact />
-      <Contact />
 
       {/* nav */}
       <Nav />

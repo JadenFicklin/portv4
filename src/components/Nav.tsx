@@ -97,8 +97,9 @@ export const Nav = () => {
           loop
         />
         <div className="pl-[8%] pt-24 md:left-[45%] md:pl-0 md:pt-0 md:top-1/4 md:absolute">
-          {navOptions.map((option) => (
+          {navOptions.map((option, index: number) => (
             <HoverText
+              key={index}
               wrapperClassName="hover:pl-10"
               className="text-3xl font-semibold tracking-wider cursor-pointer xs:text-5xl sm:text-6xl md:text-8xl "
               text={option.name}
@@ -107,11 +108,11 @@ export const Nav = () => {
           ))}
         </div>
 
-        <p className="text-min pl-[8%] bottom-16 md:left-[45%] md:pl-0 md:pt-0 md:top-[90%] absolute">
+        <div className="text-min pl-[8%] bottom-16 md:left-[45%] md:pl-0 md:pt-0 md:top-[90%] absolute">
           <a className="mx-2 font-semibold cursor-pointer">Github</a> /{' '}
           <a className="mx-2 font-semibold cursor-pointer">Linkedin</a> /{' '}
           <a className="mx-2 font-semibold cursor-pointer">Resume</a>
-        </p>
+        </div>
 
         <p className="mx-2 font-semibold cursor-pointer text-min pl-[8%] md:right-[5%] md:hidden lg:block md:pl-0 md:pt-0 md:top-[90%] bottom-10 absolute">
           FullstackJaden@gmail.com
