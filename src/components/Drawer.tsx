@@ -16,7 +16,7 @@ export const Drawer: React.FC<DrawerProps> = (props) => {
     show ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]',
   )
 
-  const drawerClasses = cn('overflow-hidden', className)
+  const drawerClasses = cn('overflow-hidden text-max', className)
 
   const styles = {
     transition: `grid-template-rows ${duration ?? '0.15s'} ease-in-out`,

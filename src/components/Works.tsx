@@ -23,7 +23,7 @@ export const Works = () => {
   }, [])
 
   return (
-    <div className="bg-max bg-opacity-[5%] pb-32">
+    <div className="pb-32 bg-lightest">
       <h2 className="relative w-full mt-32 mb-10 overflow-hidden text-3xl lg:py-6 lg:mb-32 h-min lg:mt-52 xs:text-4xl sm:text-6xl md:text-7xl lg:text-9xl">
         <span className="opacity-0">a</span>
         <span

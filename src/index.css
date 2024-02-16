@@ -12,11 +12,22 @@
   box-sizing: border-box;
 }
 
-body {
-  background-color: #fff;
+/* right now the background color is white but I would like to change it to the min value I set in my tailwind.config.js file if possible */
+:root {
+  --color-accent: #3b82f6;
+  --color-accent-light: #dbff00;
+  --color-max: #000000;
+  --color-min: #ffffff;
+  --color-lightest: #0000001f;
+  --color-custom: #ffffff;
+  --color-bubble: #242424;
+  --color-hover-accent: #ffffff;
 }
 
-/* text highlight colors */
+body {
+  background-color: var(--color-min);
+}
+
 ::selection {
   @apply bg-blue-200;
   @apply text-black;

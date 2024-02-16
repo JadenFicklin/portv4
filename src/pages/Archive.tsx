@@ -48,14 +48,14 @@ export const Archive = () => {
         />
       )}
       {/* <div className="fixed w-full h-screen bg-black -z-30"></div> */}
-      <div className="fixed w-full h-screen bg-black opacity-10 -z-10"></div>
+      <div className="fixed w-full h-screen bg-lightest -z-10"></div>
       <div
         className={cn(
           'w-full min-h-screen text-max duration-500',
-          currentImage && 'bg-opacity-10 bg-max duration-500',
+          currentImage && 'bg-lightest duration-500',
         )}
       >
-        <div className="min-h-screen px-6 py-12 mx-auto font-sans bg-white shadow-lg bg-opacity-80 max-w-screen-xxl md:px-12 md:py-20 lg:px-24 lg:py-0 backdrop-blur-lg">
+        <div className="min-h-screen px-6 py-12 mx-auto font-sans shadow-lg bg-min max-w-screen-xxl md:px-12 md:py-20 lg:px-24 lg:py-0 backdrop-blur-lg">
           <div className="lg:py-24">
             <Link to="/" className="flex py-2 group">
               <GoArrowLeft className="relative left-0 mt-1 duration-200 fill-green group-hover:-left-3" />
@@ -83,7 +83,7 @@ export const Archive = () => {
                 {projectArchiveArray.map(
                   (item: ProjectProps, index: number) => (
                     <tr
-                      className="duration-300 border-b  border-max border-opacity-30 group hover:bg-max hover:bg-opacity-[10%]"
+                      className="duration-300 border-b  border-max border-opacity-30 group hover:bg-bubble hover:bg-opacity-[10%]"
                       key={index}
                       onMouseEnter={() => handleMouseEnter(item.image)}
                       onMouseLeave={() => setCurrentImage('')}
@@ -106,7 +106,7 @@ export const Archive = () => {
                             {item.project}
                             <IoMdArrowForward
                               className={cn(
-                                '-translate-y-[2px] rotate-[-45deg] relative -bottom-[6px] left-1 group-hover:bottom-[-3px] group-hover:left-[8px] duration-300 group-hover:fill-green',
+                                '-translate-y-[2px] rotate-[-45deg] relative -bottom-[6px] left-1 group-hover:bottom-[-3px] group-hover:left-[8px] duration-300 ',
                               )}
                             />
                           </span>
@@ -118,7 +118,7 @@ export const Archive = () => {
                       <td className="hidden py-3 pr-4 align-top lg:table-cell">
                         <ul className="flex flex-wrap gap-1 ">
                           {item.builtWith.map((item) => (
-                            <div className="px-3 py-1 text-xs translate-y-1.5 bg-black rounded-full bg-opacity-80 text-min">
+                            <div className="px-3 py-1 text-xs translate-y-1.5 bg-bubble rounded-full text-custom">
                               {item}
                             </div>
                           ))}
@@ -129,12 +129,12 @@ export const Archive = () => {
                           href={item.link}
                           target="_blank"
                           rel="noreferrer"
-                          className="relative flex mb-1 text-base font-medium text-light group-hover:text-accent"
+                          className="relative flex mb-1 text-base font-medium text-light group-hover:text-hoverAccent"
                         >
                           {item.link}{' '}
                           <IoMdArrowForward
                             className={cn(
-                              'rotate-[-45deg] relative -bottom-[6px] left-1 group-hover:bottom-[-3px] group-hover:left-[8px] duration-300 group-hover:fill-accent',
+                              'rotate-[-45deg] relative -bottom-[6px] left-1 group-hover:bottom-[-3px] group-hover:left-[8px] duration-300 group-hover:fill-hoverAccent',
                             )}
                           />
                         </a>

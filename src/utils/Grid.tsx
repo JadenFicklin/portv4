@@ -73,7 +73,7 @@ export const Grid: React.FC<GridProps> = ({
         {horizontalArray.map((index) => (
           <div
             key={index}
-            className="bg-max bg-opacity-15"
+            className="bg-lightest"
             style={{
               height: '1px',
               transition: 'transform 1000ms ease-in-out',
@@ -86,7 +86,7 @@ export const Grid: React.FC<GridProps> = ({
         {verticalArray.map((index) => (
           <div
             key={index}
-            className="bg-max bg-opacity-15"
+            className="bg-lightest"
             style={{
               width: '1px',
               transition: 'transform 1000ms ease-in-out',

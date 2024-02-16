@@ -22,7 +22,7 @@ export const PageLoadMobile = () => {
         loop
       />
 
-      <div className="text-sm sm:text-lg italic font-light max-w-80 w-[80%] mx-auto md:mx-[10%] my-16">
+      <div className="text-sm sm:text-lg italic font-light bg-max max-w-80 w-[80%] mx-auto md:mx-[10%] my-16">
         “I’m a full-stack website developer specializing in JavaScript.
         <div className="w-1/2 bg-max opacity-50 h-[1px] mt-6"></div>
       </div>

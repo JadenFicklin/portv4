@@ -145,12 +145,12 @@ export const Project: React.FC<ProjectProps> = ({
                 <p></p>
               </FAQDrawer>
               {/* <div className="text-3xl sm:text-4xl">{name}</div> */}
-              <div className="py-8 max-w-96">{description}</div>
+              <div className="py-8 max-w-96 text-max">{description}</div>
               <div className="flex flex-wrap gap-2 max-w-96">
                 {technologies.map((tech, index) => (
                   <div
                     key={index}
-                    className="px-3 py-1 text-sm rounded-full text-min bg-max"
+                    className="px-3 py-1 text-sm rounded-full text-custom bg-bubble"
                   >
                     {tech}
                   </div>

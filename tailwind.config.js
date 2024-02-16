@@ -14,10 +14,15 @@ export default {
     },
     extend: {
       colors: {
-        accent: '#3B82F6',
-        accentLight: '#DBFF00',
-        max: '#000000',
-        min: '#ffffff',
+        // theme one, I have everything in my application set as min, max, accent, and accentLight so we need to change those values depending on what the theme could be, so for example it could be a pink theme instead of what I currently have
+        accent: 'var(--color-accent)',
+        accentLight: 'var(--color-accent-light)',
+        max: 'var(--color-max)',
+        min: 'var(--color-min)',
+        lightest: 'var(--color-lightest)',
+        custom: 'var(--color-custom)',
+        bubble: 'var(--color-bubble)',
+        hoverAccent: 'var(--color-hoverAccent)',
       },
       keyframes: tailwindKeyframes,
       animation: {

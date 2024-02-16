@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { HoverText } from '~/utils/HoverText'
 import { cn } from '~/utils/cn'
 import Video from '~/assets/videos/GroupAtWork.mp4'
+import { useThemeStore } from '~/globalState/themeStore'
 // import Video from '~/assets/videos/code.mp4'
 
 export const Nav = () => {
@@ -16,6 +17,7 @@ export const Nav = () => {
     { name: 'Work', to: '/' },
     { name: 'Contact', to: '/' },
   ]
+  const { theme, toggleTheme } = useThemeStore()
 
   useEffect(() => {
     setTimeout(
@@ -36,14 +38,14 @@ export const Nav = () => {
       >
         <div
           className={cn(
-            'w-[160%] left-[-40%] h-16 fixed bg-max duration-700 ease-in-out justify-center',
+            'w-[160%] left-[-40%] h-16 fixed bg-accent duration-700 ease-in-out justify-center',
             displayNav ? 'top-0' : '-top-full',
             // menuClicked && 'left-[5%] w-[60px] duration-700',
           )}
         ></div>
         <div
           className={cn(
-            'fixed left-[5%] size-16 grid place-content-center cursor-pointer duration-200 bg-max',
+            'fixed left-[5%] size-16 grid place-content-center cursor-pointer duration-200 bg-transparent',
           )}
         >
           <HoverText
@@ -53,6 +55,13 @@ export const Nav = () => {
             speed={50}
           />
         </div>
+        {/* theme changer */}
+        <button
+          onClick={toggleTheme}
+          className="absolute h-10 px-3 cursor-pointer w-max bg-min right-52 top-3 text-max"
+        >
+          Switch theme {theme}
+        </button>
         <div
           className={cn(
             'fixed right-[5%] rounded-full size-12 mt-2 font-black grid place-content-center cursor-pointer duration-200',
@@ -62,19 +71,19 @@ export const Nav = () => {
         >
           <div
             className={cn(
-              'w-5 h-[1px] bg-min my-[1.5px] duration-200 relative ',
+              'w-5 h-[1px] bg-custom my-[1.5px] duration-200 relative ',
               menuClicked && 'rotate-[-40deg] bottom-[-1.8px] w-5 md:bg-max',
             )}
           ></div>
           <div
             className={cn(
-              'w-5 h-[1px] bg-min my-[1.5px] duration-200',
+              'w-5 h-[1px] bg-custom my-[1.5px] duration-200',
               menuClicked && 'hidden',
             )}
           ></div>
           <div
             className={cn(
-              'w-5 h-[1px] bg-min my-[1.5px] duration-200 relative',
+              'w-5 h-[1px] bg-custom my-[1.5px] duration-200 relative',
               menuClicked && 'rotate-[-135deg] bottom-[2.2px] w-5 md:bg-max',
             )}
           ></div>
@@ -83,7 +92,7 @@ export const Nav = () => {
       {/* black screen cover for nav */}
       <div
         className={cn(
-          'w-full h-screen top-[-100vh] bg-max fixed duration-700 ease-in-out z-40',
+          'w-full h-screen top-[-100vh] bg-accent fixed duration-700 ease-in-out z-40',
           menuClicked && 'top-0',
         )}
       >
@@ -108,12 +117,12 @@ export const Nav = () => {
           ))}
         </div>
 
-        <div className="text-min pl-[8%] bottom-16 md:left-[45%] md:pl-0 md:pt-0 md:top-[90%] absolute">
+        <div className="text-custom pl-[8%] bottom-16 md:left-[45%] md:pl-0 md:pt-0 md:top-[90%] absolute">
           <a
             href="https://github.com/JadenFicklin"
             target="_blank"
             rel="noreferrer"
-            className="mx-2 font-semibold duration-150 cursor-pointer hover:text-accentLight"
+            className="mx-2 font-semibold duration-150 cursor-pointer hover:text-hoverAccent"
           >
             Github
           </a>{' '}
@@ -122,7 +131,7 @@ export const Nav = () => {
             href="https://www.linkedin.com/in/jaden-ficklin-b1686a21a/"
             target="_blank"
             rel="noreferrer"
-            className="mx-2 font-semibold duration-150 cursor-pointer hover:text-accentLight"
+            className="mx-2 font-semibold duration-150 cursor-pointer hover:text-hoverAccent"
           >
             Linkedin
           </a>{' '}
@@ -131,7 +140,7 @@ export const Nav = () => {
             href="https://docs.google.com/document/d/1QVo9-KNAfNvJGrWKi83bLLg9VnD8pmwkMbX9GV65tzc/edit?usp=sharing"
             target="_blank"
             rel="noreferrer"
-            className="mx-2 font-semibold duration-150 cursor-pointer hover:text-accentLight"
+            className="mx-2 font-semibold duration-150 cursor-pointer hover:text-hoverAccent"
           >
             Resume
           </a>
@@ -139,7 +148,7 @@ export const Nav = () => {
 
         <a
           href="mailto:fullstackjaden@gmail.com"
-          className="hover:text-accentLight duration-150 mx-2 font-semibold cursor-pointer text-min pl-[8%] md:right-[5%] md:hidden lg:block md:pl-0 md:pt-0 md:top-[90%] bottom-10 absolute"
+          className="hover:text-hoverAccent duration-150 mx-2 font-semibold cursor-pointer text-custom pl-[8%] md:right-[5%] md:hidden lg:block md:pl-0 md:pt-0 md:top-[90%] bottom-10 absolute"
         >
           FullstackJaden@gmail.com
         </a>

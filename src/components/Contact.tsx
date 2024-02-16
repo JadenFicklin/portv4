@@ -2,13 +2,13 @@ import { cn } from '~/utils/cn'
 
 export const Contact = () => {
   const inputStyling =
-    'w-full pt-2 pb-3 mt-5 duration-200 bg-opacity-0 border-b border-opacity-50 outline-none bg-max border-min hover:border-opacity-100 focus:border-opacity-100'
+    'w-full pt-2 pb-3 mt-5 text-custom duration-200 bg-opacity-0 border-b border-opacity-50 outline-none bg-accent border-custom hover:border-opacity-100 focus:border-opacity-100'
 
   return (
-    <div className="relative grid w-full border-t lg:grid-cols-2 bg-max text-min border-min min-h-[calc(100vh-64px)]">
+    <div className="relative grid w-full border-t lg:grid-cols-2 bg-accent text-min border-custom min-h-[calc(100vh-64px)]">
       {/* Section for the catchy headline */}
-      <div className="flex items-center py-20 pl-5 border-b md:pl-16 lg:pl-10 lg:border-r lg:border-b-0 border-min">
-        <h2 className="text-3xl xs:text-4xl sm:text-5xl md:text-8xl">
+      <div className="flex items-center py-20 pl-5 border-b md:pl-16 lg:pl-10 lg:border-r lg:border-b-0 border-custom">
+        <h2 className="text-3xl text-custom xs:text-4xl sm:text-5xl md:text-8xl">
           Lets work
           <br />
           together
@@ -16,7 +16,7 @@ export const Contact = () => {
       </div>
 
       {/* Form section for user inputs */}
-      <div className="w-full py-20 border-b border-min h-max">
+      <div className="w-full py-20 border-b border-custom h-max">
         <form className="flex flex-wrap w-10/12 mx-auto h-max">
           {/* Input fields for user details */}
           <input placeholder="Name" type="text" className={inputStyling} />
@@ -35,12 +35,12 @@ export const Contact = () => {
       {/* contact information*/}
       <div className="right-0 w-max px-5 mx-auto lg:px-0 py-14 lg:py-0 lg:absolute bottom-5 lg:left-[53%] lg:mx-0">
         <div className="flex flex-col items-center justify-center lg:flex-row lg:justify-start lg:items-end">
-          <div className="flex justify-center cursor-pointer lg:justify-start">
+          <div className="flex justify-center cursor-pointer lg:justify-start text-custom">
             <a
               href="https://github.com/JadenFicklin"
               target="_blank"
               rel="noreferrer"
-              className="mx-2 duration-150 text-min hover:text-accentLight"
+              className="mx-2 duration-150 text-custom hover:text-hoverAccent"
             >
               Github
             </a>{' '}
@@ -49,7 +49,7 @@ export const Contact = () => {
               href="https://www.linkedin.com/in/jaden-ficklin-b1686a21a/"
               target="_blank"
               rel="noreferrer"
-              className="mx-2 duration-150 text-min hover:text-accentLight"
+              className="mx-2 duration-150 text-custom hover:text-hoverAccent"
             >
               Linkedin
             </a>{' '}
@@ -58,14 +58,14 @@ export const Contact = () => {
               href="https://docs.google.com/document/d/1QVo9-KNAfNvJGrWKi83bLLg9VnD8pmwkMbX9GV65tzc/edit?usp=sharing"
               target="_blank"
               rel="noreferrer"
-              className="mx-2 duration-150 text-min hover:text-accentLight"
+              className="mx-2 duration-150 text-custom hover:text-hoverAccent"
             >
               Resume
             </a>
           </div>
           <a
             href="mailto:fullstackjaden@gmail.com"
-            className="mt-4 duration-150 cursor-pointer lg:mt-0 lg:ml-10 text-min hover:text-accentLight"
+            className="mt-4 duration-150 cursor-pointer lg:mt-0 lg:ml-10 text-custom hover:text-hoverAccent"
           >
             FullstackJaden@gmail.com
           </a>

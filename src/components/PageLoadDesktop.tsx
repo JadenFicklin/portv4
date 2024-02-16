@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import Video from '~/assets/videos/GroupAtWork.mp4'
-// import Video from '~/assets/videos/code.mp4'
+import { useThemeStore } from '~/globalState/themeStore'
+import VideoDark from '~/assets/videos/code.mp4'
 import { cn } from '~/utils/cn'
 
 type TextPositionKey = 'name' | 'profession' | 'attributes'
@@ -18,6 +19,7 @@ export const PageLoadDesktop = () => {
   })
   const [textFinished, setTextFinished] = useState(false)
   const [videoState, setVideoState] = useState('initial')
+  const { theme } = useThemeStore()
 
   useEffect(() => {
     if (videoLoaded) {
@@ -126,14 +128,14 @@ export const PageLoadDesktop = () => {
             'w-[53vw] h-screen translate-x-[-10%] translate-y-[-5%] duration-[1500ms]',
           videoState === 'finished' && 'duration-0',
         )}
-        src={Video}
+        src={theme === 'dark' || theme === 'binary' ? VideoDark : Video}
         autoPlay
         muted
         loop
         onLoadedData={handleVideoLoad}
       />
 
-      <div className="text-lg italic font-light mx-[10%] top-[110%]  absolute max-w-80">
+      <div className="text-lg italic font-light mx-[10%] top-[110%] text-max absolute max-w-80">
         “I am a website developer specializing in JavaScript.
         <div className="w-1/2 bg-max opacity-50 h-[1px] mt-6"></div>
       </div>

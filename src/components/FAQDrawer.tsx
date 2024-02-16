@@ -44,13 +44,13 @@ export const FAQDrawer: React.FC<FAQDrawerProps> = (props) => {
   const animatedTitle = determineDirection(splitTitle)
 
   const wrapperClasses = cn(
-    'py-8 relative group border-b border-black',
+    'py-8 relative group border-b border-black border-max',
     className,
     !showUnderline && 'border-none',
   )
   const handleClasses = 'flex items-center justify-between cursor-pointer'
   const hoverBorder = cn(
-    'absolute bottom-0 left-0 w-0 group-hover:w-full h-0.5 bg-black duration-500 ease-in-out',
+    'absolute bottom-0 left-0 w-0 group-hover:w-full h-0.5 bg-max duration-500 ease-in-out bg-max',
     !showUnderline && 'hidden',
   )
   return (
@@ -69,7 +69,7 @@ export const FAQDrawer: React.FC<FAQDrawerProps> = (props) => {
           />
         </div>
         {showPlus && (
-          <div className="text-3xl font-light xs:text-4xl sm:text-6xl md:text-6xl">
+          <div className="text-3xl font-light text-max xs:text-4xl sm:text-6xl md:text-6xl">
             {show ? '-' : '+'}
           </div>
         )}
@@ -121,7 +121,7 @@ const AnimatedWords: React.FC<AnimatedWordsProps> = (props) => {
         )
 
         return (
-          <div className="relative flex flex-col" key={index}>
+          <div className="relative flex flex-col text-max" key={index}>
             <span className="opacity-0">{item}</span>
             <span className={initialWordClasses}>{item}</span>
             <span className={replacementWordClasses}>{item}</span>
