@@ -47,6 +47,7 @@ export const Archive = () => {
           alt="Project Preview"
         />
       )}
+      {/* <div className="fixed w-full h-screen bg-black -z-30"></div> */}
       <div className="fixed w-full h-screen bg-black opacity-10 -z-10"></div>
       <div
         className={cn(
@@ -82,7 +83,7 @@ export const Archive = () => {
                 {projectArchiveArray.map(
                   (item: ProjectProps, index: number) => (
                     <tr
-                      className="border-b border-max border-opacity-30"
+                      className="duration-300 border-b  border-max border-opacity-30 group hover:bg-max hover:bg-opacity-[10%]"
                       key={index}
                       onMouseEnter={() => handleMouseEnter(item.image)}
                       onMouseLeave={() => setCurrentImage('')}
