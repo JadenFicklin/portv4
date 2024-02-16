@@ -9,8 +9,9 @@ export const Contact = () => {
       {/* Section for the catchy headline */}
       <div className="flex items-center py-20 pl-5 border-b md:pl-16 lg:pl-10 lg:border-r lg:border-b-0 border-min">
         <h2 className="text-3xl xs:text-4xl sm:text-5xl md:text-8xl">
-          Let's make a <br />
-          winning team
+          Lets work
+          <br />
+          together
         </h2>
       </div>
 
@@ -35,21 +36,39 @@ export const Contact = () => {
       <div className="right-0 w-max px-5 mx-auto lg:px-0 py-14 lg:py-0 lg:absolute bottom-5 lg:left-[53%] lg:mx-0">
         <div className="flex flex-col items-center justify-center lg:flex-row lg:justify-start lg:items-end">
           <div className="flex justify-center cursor-pointer lg:justify-start">
-            <a className="mx-2 duration-150 text-min hover:text-accentLight">
+            <a
+              href="https://github.com/JadenFicklin"
+              target="_blank"
+              rel="noreferrer"
+              className="mx-2 duration-150 text-min hover:text-accentLight"
+            >
               Github
             </a>{' '}
             /
-            <a className="mx-2 duration-150 text-min hover:text-accentLight">
+            <a
+              href="https://www.linkedin.com/in/jaden-ficklin-b1686a21a/"
+              target="_blank"
+              rel="noreferrer"
+              className="mx-2 duration-150 text-min hover:text-accentLight"
+            >
               Linkedin
             </a>{' '}
             /
-            <a className="mx-2 duration-150 text-min hover:text-accentLight">
+            <a
+              href="https://docs.google.com/document/d/1QVo9-KNAfNvJGrWKi83bLLg9VnD8pmwkMbX9GV65tzc/edit?usp=sharing"
+              target="_blank"
+              rel="noreferrer"
+              className="mx-2 duration-150 text-min hover:text-accentLight"
+            >
               Resume
             </a>
           </div>
-          <p className="mt-4 duration-150 cursor-pointer lg:mt-0 lg:ml-10 text-min hover:text-accentLight">
+          <a
+            href="mailto:fullstackjaden@gmail.com"
+            className="mt-4 duration-150 cursor-pointer lg:mt-0 lg:ml-10 text-min hover:text-accentLight"
+          >
             FullstackJaden@gmail.com
-          </p>
+          </a>
         </div>
       </div>
     </div>

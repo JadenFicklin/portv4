@@ -109,14 +109,40 @@ export const Nav = () => {
         </div>
 
         <div className="text-min pl-[8%] bottom-16 md:left-[45%] md:pl-0 md:pt-0 md:top-[90%] absolute">
-          <a className="mx-2 font-semibold cursor-pointer">Github</a> /{' '}
-          <a className="mx-2 font-semibold cursor-pointer">Linkedin</a> /{' '}
-          <a className="mx-2 font-semibold cursor-pointer">Resume</a>
+          <a
+            href="https://github.com/JadenFicklin"
+            target="_blank"
+            rel="noreferrer"
+            className="mx-2 font-semibold duration-150 cursor-pointer hover:text-accentLight"
+          >
+            Github
+          </a>{' '}
+          /{' '}
+          <a
+            href="https://www.linkedin.com/in/jaden-ficklin-b1686a21a/"
+            target="_blank"
+            rel="noreferrer"
+            className="mx-2 font-semibold duration-150 cursor-pointer hover:text-accentLight"
+          >
+            Linkedin
+          </a>{' '}
+          /{' '}
+          <a
+            href="https://docs.google.com/document/d/1QVo9-KNAfNvJGrWKi83bLLg9VnD8pmwkMbX9GV65tzc/edit?usp=sharing"
+            target="_blank"
+            rel="noreferrer"
+            className="mx-2 font-semibold duration-150 cursor-pointer hover:text-accentLight"
+          >
+            Resume
+          </a>
         </div>
 
-        <p className="mx-2 font-semibold cursor-pointer text-min pl-[8%] md:right-[5%] md:hidden lg:block md:pl-0 md:pt-0 md:top-[90%] bottom-10 absolute">
+        <a
+          href="mailto:fullstackjaden@gmail.com"
+          className="hover:text-accentLight duration-150 mx-2 font-semibold cursor-pointer text-min pl-[8%] md:right-[5%] md:hidden lg:block md:pl-0 md:pt-0 md:top-[90%] bottom-10 absolute"
+        >
           FullstackJaden@gmail.com
-        </p>
+        </a>
       </div>
     </>
   )
