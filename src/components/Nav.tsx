@@ -17,7 +17,7 @@ export const Nav = () => {
     { name: 'Work', to: '/' },
     { name: 'Contact', to: '/' },
   ]
-  const { theme, toggleTheme } = useThemeStore()
+  const { toggleTheme } = useThemeStore()
 
   useEffect(() => {
     setTimeout(
@@ -60,7 +60,7 @@ export const Nav = () => {
           onClick={toggleTheme}
           className="absolute h-10 px-3 cursor-pointer w-max bg-min right-52 top-3 text-max"
         >
-          Switch theme {theme}
+          Switch theme
         </button>
         <div
           className={cn(

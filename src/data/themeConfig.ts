@@ -4,11 +4,13 @@ export const lightTheme = {
   // nav and contact background color
   '--color-accent': '#000000',
   // text hover accent color
-  '--color-hoverAccent': '#DBFF00',
+  '--color-hoverAccent': 'yellow',
   // colorful accent color
   '--color-accent-light': '#DBFF00',
   // skills bubbles
   '--color-bubble': '#242424',
+  //archive hover
+  '--color-archive': '#0000006c',
 
   // text
   '--color-max': '#000000',
@@ -29,6 +31,8 @@ export const darkTheme = {
   '--color-accent-light': '#10B981',
   // skills bubbles
   '--color-bubble': '#0E0E0E',
+  //archive hover
+  '--color-archive': '#ffffff6c',
 
   // text
   '--color-max': '#ffffff',
@@ -49,6 +53,8 @@ export const binary = {
   '--color-accent-light': '#2DD4BF1a',
   // skills bubbles
   '--color-bubble': '#2DD4BF1a',
+  //archive hover
+  '--color-archive': '#131f38',
 
   // text
   '--color-max': '#5EEAD4',
@@ -60,42 +66,46 @@ export const binary = {
   '--color-custom': '#5EEAD4',
 }
 
-export const theme4 = {
+export const chrerryBlossom = {
   // nav and contact background color
-  '--color-accent': '#E11D48',
+  '--color-accent': '#d26868',
   // text hover accent color
-  '--color-hoverAccent': '#ffffff',
+  '--color-hoverAccent': '#ffe3e3',
   // colorful accent color
-  '--color-accent-light': '#F472B6',
+  '--color-accent-light': '#fff',
   // skills bubbles
-  '--color-bubble': '#2DD4BF1a',
+  '--color-bubble': '#700700c0',
+  //archive hover
+  '--color-archive': '#70070052',
 
   // text
-  '--color-max': '#5EEAD4',
+  '--color-max': '#700700',
   // background color
-  '--color-min': '#0F172A',
+  '--color-min': '#ffe5e3',
   // background color but with slightly darker color for accent
-  '--color-lightest': '#ffffff0e',
+  '--color-lightest': '#ff756b2c',
   // text color on nav and contact
   '--color-custom': '#ffffff',
 }
 
-export const theme5 = {
+export const blueTheme = {
   // nav and contact background color
-  '--color-accent': '#E11D48',
+  '--color-accent': '#13315c',
   // text hover accent color
-  '--color-hoverAccent': '#ffffff',
+  '--color-hoverAccent': '#b0d1ff',
   // colorful accent color
-  '--color-accent-light': '#F472B6',
+  '--color-accent-light': '#fff',
   // skills bubbles
-  '--color-bubble': '#2DD4BF1a',
+  '--color-bubble': '#003175',
+  //archive hover
+  '--color-archive': '#8a7454',
 
   // text
-  '--color-max': '#5EEAD4',
+  '--color-max': '#00275e',
   // background color
-  '--color-min': '#0F172A',
+  '--color-min': '#FFF6E9',
   // background color but with slightly darker color for accent
-  '--color-lightest': '#ffffff0e',
+  '--color-lightest': '#0000001f',
   // text color on nav and contact
-  '--color-custom': '#ffffff',
+  '--color-custom': '#fff',
 }

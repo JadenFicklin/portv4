@@ -23,6 +23,7 @@ export default {
         custom: 'var(--color-custom)',
         bubble: 'var(--color-bubble)',
         hoverAccent: 'var(--color-hoverAccent)',
+        archive: 'var(--color-archive)',
       },
       keyframes: tailwindKeyframes,
       animation: {

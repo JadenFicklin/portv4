@@ -2,7 +2,7 @@
 
 import create from 'zustand'
 
-type ThemeName = 'light' | 'dark' | 'binary' | 'theme4' | 'theme5'
+type ThemeName = 'light' | 'dark' | 'binary' | 'chrerryBlossom' | 'blueTheme'
 
 interface ThemeState {
   theme: ThemeName
@@ -17,8 +17,8 @@ export const useThemeStore = create<ThemeState>((set) => ({
         'light',
         'dark',
         'binary',
-        'theme4',
-        'theme5',
+        'chrerryBlossom',
+        'blueTheme',
       ]
       const nextIndex = (themes.indexOf(state.theme) + 1) % themes.length
       return { theme: themes[nextIndex] }

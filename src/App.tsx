@@ -7,8 +7,8 @@ import {
   lightTheme,
   darkTheme,
   binary,
-  theme4,
-  theme5,
+  chrerryBlossom,
+  blueTheme,
 } from '~/data/themeConfig'
 
 export const App = () => {
@@ -19,8 +19,8 @@ export const App = () => {
       light: lightTheme,
       dark: darkTheme,
       binary,
-      theme4,
-      theme5,
+      chrerryBlossom,
+      blueTheme,
     }
     const themeColors = themes[theme]
     Object.entries(themeColors).forEach(([key, value]) => {

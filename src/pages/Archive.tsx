@@ -83,16 +83,18 @@ export const Archive = () => {
                 {projectArchiveArray.map(
                   (item: ProjectProps, index: number) => (
                     <tr
-                      className="duration-300 border-b  border-max border-opacity-30 group hover:bg-bubble hover:bg-opacity-[10%]"
+                      className="duration-300 border-b border-max border-opacity-30 group hover:bg-archive"
                       key={index}
                       onMouseEnter={() => handleMouseEnter(item.image)}
                       onMouseLeave={() => setCurrentImage('')}
                     >
                       <td className="py-4 pr-4 text-sm align-top md:translate-y-1">
-                        <div className="translate-y-px">{item.year}</div>
+                        <div className="translate-y-px group-hover:text-custom">
+                          {item.year}
+                        </div>
                       </td>
                       <td className="py-4 pr-4 font-semibold leading-snug align-top">
-                        <p className="hidden text-base font-medium leading-tight translate-y-1 sm:block">
+                        <p className="hidden text-base font-medium leading-tight translate-y-1 sm:block group-hover:text-custom">
                           {item.project}
                         </p>
                         <a
@@ -112,7 +114,7 @@ export const Archive = () => {
                           </span>
                         </a>
                       </td>
-                      <td className="hidden py-4 text-sm align-top translate-y-1 lg:table-cell">
+                      <td className="hidden py-4 text-sm align-top translate-y-1 group-hover:text-custom lg:table-cell">
                         {item.madeAt}
                       </td>
                       <td className="hidden py-3 pr-4 align-top lg:table-cell">
