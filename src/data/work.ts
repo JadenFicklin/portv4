@@ -2,7 +2,7 @@ import OakandStone from '~/assets/images/OakandStone.png'
 import PinaSoulmate from '~/assets/images/PinaSoulmate.png'
 import SVGLibrary from '~/assets/images/SVGLibrary.png'
 
-type Project = {
+export type ProjectProps = {
   name: string
   description: string
   technologies: string[]
@@ -18,9 +18,9 @@ type Project = {
   lessonsLearnedAndTakeaways: string
 }
 
-export const WorkArray: Project[] = [
+export const WorkArray: ProjectProps[] = [
   {
-    name: 'PinaSoulmate',
+    name: 'Pinay Soulmate',
     description:
       'A dating website built to connect foreigners and people in the Philippines. Users can create accounts, filter, like, favorite, message other users, and purchase monthly memberships.',
     technologies: [

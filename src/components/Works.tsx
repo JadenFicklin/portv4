@@ -1,22 +1,7 @@
+import type { ProjectProps } from '~/data/work'
 import { useEffect, useRef } from 'react'
 import { WorkArray } from '~/data/work'
 import { Project } from '~/utils/Project'
-
-type WorkProp = {
-  name: string
-  description: string
-  technologies: string[]
-  image: string
-  link: string
-  goalsAndObjectives: string
-  myRole: string
-  challengesAndSolutions: string
-  developmentProcess: string
-  keyFeaturesAndFunctionalities: string
-  resultsAndImpact: string
-  visuals: string[]
-  lessonsLearnedAndTakeaways: string
-}
 
 export const Works = () => {
   const scrollTextRef = useRef<HTMLSpanElement>(null)
@@ -51,7 +36,7 @@ export const Works = () => {
         </span>
       </h2>
       <div className="flex flex-wrap w-9/12 gap-10 mx-auto h-max">
-        {WorkArray.map((work: WorkProp, index: number) => (
+        {WorkArray.map((work: ProjectProps, index: number) => (
           <Project
             key={index}
             data={work}

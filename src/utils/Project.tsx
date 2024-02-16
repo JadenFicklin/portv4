@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { FAQDrawer } from '~/components/FAQDrawer'
 import { cn } from '~/utils/cn'
 
 type ProjectType = {
@@ -100,7 +101,7 @@ export const Project: React.FC<ProjectProps> = ({
           </a>
         </div>
         {/* text and flag section */}
-        <div className="flex flex-wrap">
+        <div className="flex flex-wrap group">
           <div className={cn('w-3/12 hidden lg:block ')}></div>
           <div className="flex flex-wrap content-center w-10/12 pl-10 mx-auto mt-10 scale-90 lg:w-9/12 lg:px-0 lg:mx-0">
             <div className="relative w-full h-max">
@@ -133,7 +134,17 @@ export const Project: React.FC<ProjectProps> = ({
                 ></div>
               </div>
               {/* text */}
-              <div className="text-3xl sm:text-4xl">{name}</div>
+              <FAQDrawer
+                key={name}
+                number={0}
+                showNumbers={false}
+                showPlus={false}
+                showUnderline={false}
+                title={name}
+              >
+                <p></p>
+              </FAQDrawer>
+              {/* <div className="text-3xl sm:text-4xl">{name}</div> */}
               <div className="py-8 max-w-96">{description}</div>
               <div className="flex flex-wrap gap-2 max-w-96">
                 {technologies.map((tech, index) => (

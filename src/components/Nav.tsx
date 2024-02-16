@@ -83,7 +83,7 @@ export const Nav = () => {
       {/* black screen cover for nav */}
       <div
         className={cn(
-          'w-full h-screen top-[-100vh] bg-max fixed duration-700 ease-in-out',
+          'w-full h-screen top-[-100vh] bg-max fixed duration-700 ease-in-out z-40',
           menuClicked && 'top-0',
         )}
       >

@@ -36,7 +36,7 @@ export const About = () => {
       content: (
         <div className="flex flex-wrap py-10">
           {skillsArray.map((skill) => (
-            <div className="p-2 m-1 rounded bg-max">
+            <div key={skill.name} className="p-2 m-1 rounded bg-max">
               <div className="w-6 h-6 mx-auto ">{skill.icon}</div>
               <div className="w-full text-sm text-center text-min">
                 {skill.name}
@@ -78,13 +78,16 @@ export const About = () => {
             {FAQs.map((faqProps, index: number) => {
               const { title, duration, content } = faqProps
               const number = index + 1
+
               return (
                 <FAQDrawer
-                  key={index}
+                  key={title}
                   showNumbers
                   title={title}
                   duration={duration}
                   number={number}
+                  showPlus
+                  showUnderline
                 >
                   {content}
                 </FAQDrawer>

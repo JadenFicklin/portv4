@@ -23,7 +23,7 @@ export const projectArchiveArray: Project[] = [
   },
   {
     year: 2023,
-    project: 'PinaSoulmate',
+    project: 'Pinay Soulmate',
     madeAt: 'Freelance',
     builtWith: ['React', 'Javascript', 'Tailwind', 'Firebase'],
     link: 'https://pinasoulmate.com/',

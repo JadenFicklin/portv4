@@ -9,6 +9,8 @@ type FAQDrawerProps = {
   showNumbers?: boolean
   children: React.ReactNode
   className?: string
+  showPlus?: boolean
+  showUnderline?: boolean
 }
 
 export const FAQDrawer: React.FC<FAQDrawerProps> = (props) => {
@@ -19,6 +21,8 @@ export const FAQDrawer: React.FC<FAQDrawerProps> = (props) => {
     showNumbers,
     children,
     className,
+    showPlus,
+    showUnderline,
   } = props
   const [show, setShow] = useState(false)
 
@@ -42,11 +46,13 @@ export const FAQDrawer: React.FC<FAQDrawerProps> = (props) => {
   const wrapperClasses = cn(
     'py-8 relative group border-b border-black',
     className,
+    !showUnderline && 'border-none',
   )
   const handleClasses = 'flex items-center justify-between cursor-pointer'
-  const hoverBorder =
-    'absolute bottom-0 left-0 w-0 group-hover:w-full h-0.5 bg-black duration-500 ease-in-out'
-
+  const hoverBorder = cn(
+    'absolute bottom-0 left-0 w-0 group-hover:w-full h-0.5 bg-black duration-500 ease-in-out',
+    !showUnderline && 'hidden',
+  )
   return (
     <div className={wrapperClasses}>
       <div onClick={toggle} className={handleClasses}>
@@ -62,9 +68,11 @@ export const FAQDrawer: React.FC<FAQDrawerProps> = (props) => {
             className="gap-2 text-xl xs:text-2xl sm:text-3xl md:text-4xl"
           />
         </div>
-        <div className="text-3xl font-light xs:text-4xl sm:text-6xl md:text-6xl">
-          {show ? '-' : '+'}
-        </div>
+        {showPlus && (
+          <div className="text-3xl font-light xs:text-4xl sm:text-6xl md:text-6xl">
+            {show ? '-' : '+'}
+          </div>
+        )}
       </div>
       <Drawer show={show} duration={duration}>
         {children}
