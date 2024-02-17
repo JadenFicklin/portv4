@@ -150,7 +150,7 @@ export const Project: React.FC<ProjectProps> = ({
                 {technologies.map((tech, index) => (
                   <div
                     key={index}
-                    className="px-3 py-1 text-sm rounded-full text-custom bg-bubble"
+                    className="px-3 py-1 text-sm rounded-full text-custom bg-max/40"
                   >
                     {tech}
                   </div>

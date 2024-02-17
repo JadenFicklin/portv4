@@ -48,11 +48,11 @@ export const Archive = () => {
         />
       )}
       {/* <div className="fixed w-full h-screen bg-black -z-30"></div> */}
-      <div className="fixed w-full h-screen bg-max/50 -z-10"></div>
+      <div className="fixed w-full h-screen bg-max/10 -z-10"></div>
       <div
         className={cn(
           'w-full min-h-screen text-max duration-500',
-          currentImage && 'bg-max/50 duration-500',
+          currentImage && 'bg-max/10 duration-500',
         )}
       >
         <div className="min-h-screen px-6 py-12 mx-auto font-sans shadow-lg bg-min/50 max-w-screen-xxl md:px-12 md:py-20 lg:px-24 lg:py-0 backdrop-blur-lg">
@@ -83,18 +83,16 @@ export const Archive = () => {
                 {projectArchiveArray.map(
                   (item: ProjectProps, index: number) => (
                     <tr
-                      className="duration-300 border-b border-max border-opacity-30 group hover:bg-archive"
+                      className="duration-300 border-b border-max border-opacity-30 group hover:bg-max/40"
                       key={index}
                       onMouseEnter={() => handleMouseEnter(item.image)}
                       onMouseLeave={() => setCurrentImage('')}
                     >
                       <td className="py-4 pr-4 text-sm align-top md:translate-y-1">
-                        <div className="translate-y-px group-hover:text-custom">
-                          {item.year}
-                        </div>
+                        <div className="translate-y-px">{item.year}</div>
                       </td>
                       <td className="py-4 pr-4 font-semibold leading-snug align-top">
-                        <p className="hidden text-base font-medium leading-tight translate-y-1 sm:block group-hover:text-custom">
+                        <p className="hidden text-base font-medium leading-tight translate-y-1 sm:block">
                           {item.project}
                         </p>
                         <a
@@ -114,13 +112,13 @@ export const Archive = () => {
                           </span>
                         </a>
                       </td>
-                      <td className="hidden py-4 text-sm align-top translate-y-1 group-hover:text-custom lg:table-cell">
+                      <td className="hidden py-4 text-sm align-top translate-y-1 lg:table-cell">
                         {item.madeAt}
                       </td>
                       <td className="hidden py-3 pr-4 align-top lg:table-cell">
                         <ul className="flex flex-wrap gap-1 ">
                           {item.builtWith.map((item) => (
-                            <div className="px-3 py-1 text-xs translate-y-1.5 bg-bubble rounded-full text-custom">
+                            <div className="px-3 py-1 text-xs translate-y-1.5 bg-max/40 rounded-full text-custom">
                               {item}
                             </div>
                           ))}

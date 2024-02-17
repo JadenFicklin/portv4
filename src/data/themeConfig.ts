@@ -50,7 +50,7 @@ export const binary = {
   // text hover accent color
   '--color-hover-accent': '0deg 0% 100%',
   // colorful accent color
-  '--color-accent-light': '172deg 66% 50%',
+  '--color-accent-light': '172deg 66% 20%',
   // skills bubbles
   '--color-bubble': '172deg 66% 50%',
   //archive hover

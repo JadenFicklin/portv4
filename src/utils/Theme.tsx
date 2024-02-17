@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import { useThemeStore } from '~/globalState/themeStore'
 import { FaLightbulb, FaSun, FaMoon, FaCode } from 'react-icons/fa'
-import { IoFlower } from 'react-icons/io5'
 import { IoMdWater } from 'react-icons/io'
 import { cn } from '~/utils/cn'
+import { GiFlowerEmblem } from 'react-icons/gi'
 
 type ThemeName = 'light' | 'dark' | 'binary' | 'cherryBlossom' | 'blueTheme'
 
@@ -26,7 +26,7 @@ const themes: ThemeProps[] = [
     theme: 'binary',
   },
   {
-    name: <IoFlower className="size-5 fill-max" />,
+    name: <GiFlowerEmblem className="size-5 fill-max" />,
     theme: 'cherryBlossom',
   },
   {
@@ -61,7 +61,7 @@ export const Theme = () => {
                 key={index}
                 className={cn(
                   'size-7 rounded-full ml-2 grid place-content-center duration-300 cursor-pointer',
-                  themeSelected === item.theme ? 'bg-archive' : '',
+                  themeSelected === item.theme ? 'bg-max/40' : '',
                   themeOpen ? 'opacity-100' : 'opacity-0',
                 )}
                 onClick={() => handleThemeClicked(item)}

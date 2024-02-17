@@ -1,7 +1,7 @@
 import { SlideIn } from '~/utils/SlideIn'
 
 export const HeroDesktop = () => {
-  const normalDisplaySpeed = true
+  const normalDisplaySpeed = false
   return (
     <>
       <div className="flex-col flex-wrap w-max ml-[5%] mt-64 xxl:reveal conceal">

@@ -3,10 +3,9 @@ import { HoverText } from '~/utils/HoverText'
 import { cn } from '~/utils/cn'
 import Video from '~/assets/videos/GroupAtWork.mp4'
 import { Theme } from '~/utils/Theme'
-// import Video from '~/assets/videos/code.mp4'
 
 export const Nav = () => {
-  const normalDisplaySpeed = true
+  const normalDisplaySpeed = false
 
   const [menuClicked, setMenuClicked] = useState(false)
   const [displayNav, setDisplayNav] = useState(false)

@@ -7,7 +7,7 @@ import { cn } from '~/utils/cn'
 type TextPositionKey = 'name' | 'profession' | 'attributes'
 
 export const PageLoadDesktop = () => {
-  const normalDisplaySpeed = true
+  const normalDisplaySpeed = false
 
   const [videoLoaded, setVideoLoaded] = useState(false)
   const [textPositions, setTextPositions] = useState<{
