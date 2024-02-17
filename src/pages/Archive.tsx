@@ -26,15 +26,15 @@ export const Archive = () => {
     if (currentImage) {
       const img = new Image()
       img.onload = () => {
-        setImageLoading(false) // Image is preloaded and ready to be displayed
+        setImageLoading(false)
       }
       img.src = currentImage
     }
   }, [currentImage])
 
   const handleMouseEnter = (image: string) => {
-    setImageLoading(true) // Indicate that a new image is loading
-    setCurrentImage(image) // Start loading the new image
+    setImageLoading(true)
+    setCurrentImage(image)
   }
 
   return (
@@ -55,7 +55,7 @@ export const Archive = () => {
           currentImage && 'bg-lightest duration-500',
         )}
       >
-        <div className="min-h-screen px-6 py-12 mx-auto font-sans shadow-lg bg-min max-w-screen-xxl md:px-12 md:py-20 lg:px-24 lg:py-0 backdrop-blur-lg">
+        <div className="min-h-screen px-6 py-12 mx-auto font-sans bg-blue-500 shadow-lg max-w-screen-xxl md:px-12 md:py-20 lg:px-24 lg:py-0 backdrop-blur-lg">
           <div className="lg:py-24">
             <Link to="/" className="flex py-2 group">
               <GoArrowLeft className="relative left-0 mt-1 duration-200 fill-green group-hover:-left-3" />

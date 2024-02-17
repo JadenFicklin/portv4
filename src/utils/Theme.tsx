@@ -60,7 +60,7 @@ export const Theme = () => {
               <div
                 key={index}
                 className={cn(
-                  'size-7 rounded-full ml-2 grid place-content-center duration-300',
+                  'size-7 rounded-full ml-2 grid place-content-center duration-300 cursor-pointer',
                   themeSelected === item.theme ? 'bg-archive' : '',
                   themeOpen ? 'opacity-100' : 'opacity-0',
                 )}
