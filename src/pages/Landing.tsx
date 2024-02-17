@@ -4,10 +4,11 @@ import { Nav } from '~/components/Nav'
 import { PageLoadDesktop } from '~/components/PageLoadDesktop'
 import { PageLoadMobile } from '~/components/PageLoadMobile'
 import { About } from '~/components/About'
-import { Grid } from '~/utils/Grid'
 import { Works } from '~/components/Works'
 import { ProjectsSlider } from '~/components/ProjectsSlider'
 import { Contact } from '~/components/Contact'
+import GetScrollPosition from '~/utils/GetScrollPosition'
+import WithVisibility from '~/utils/WithVisibility'
 
 export const Landing = () => {
   return (
@@ -21,10 +22,14 @@ export const Landing = () => {
       <PageLoadMobile />
 
       {/* about */}
-      <About />
+      <WithVisibility position="-200px" name="About">
+        <About />
+      </WithVisibility>
 
       {/* works */}
-      <Works />
+      <GetScrollPosition position="-200px" name="Works">
+        <Works />
+      </GetScrollPosition>
 
       {/* projects slider */}
       <ProjectsSlider />

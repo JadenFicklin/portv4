@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useThemeStore } from '~/globalState/themeStore'
 import { FaLightbulb, FaSun, FaMoon, FaCode } from 'react-icons/fa'
 import { IoMdWater } from 'react-icons/io'
@@ -36,10 +36,20 @@ const themes: ThemeProps[] = [
 ]
 
 export const Theme = () => {
-  const [themeOpen, setThemeOpen] = useState(false)
-  const [themeSelected, setThemeSelected] = useState('')
+  const [themeOpen, setThemeOpen] = useState(() => {
+    const stored = localStorage.getItem('themeOpen')
+    return stored ? stored === 'true' : false
+  })
+  const [themeSelected, setThemeSelected] = useState(
+    () => localStorage.getItem('themeSelected') || '',
+  )
 
   const { setTheme } = useThemeStore()
+
+  useEffect(() => {
+    localStorage.setItem('themeSelected', themeSelected)
+    localStorage.setItem('themeOpen', String(themeOpen))
+  }, [themeSelected, themeOpen])
 
   const handleThemeClicked = (item: ThemeProps) => {
     setThemeSelected(item.theme)
