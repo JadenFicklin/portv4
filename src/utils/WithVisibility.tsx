@@ -3,7 +3,7 @@ import React, { useRef, useEffect, ReactNode } from 'react'
 interface WithVisibilityProps {
   children: ReactNode
   position?: string
-  name?: string // Optional prop to specify the name of the child component
+  name?: string
 }
 
 const WithVisibility: React.FC<WithVisibilityProps> = ({

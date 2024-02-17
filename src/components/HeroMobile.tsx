@@ -37,7 +37,7 @@ export const HeroMobile = () => {
               horizontalLines={100}
               verticalLines={100}
               initialDelay={1000}
-              className=""
+              className="-ml-[5%]"
             />
           </div>
         </>

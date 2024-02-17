@@ -8,8 +8,8 @@ import React, {
 
 interface GetScrollPositionProps {
   children: ReactNode
-  position?: string // Optional prop to adjust the position
-  name?: string // Optional prop to specify the name of the child component
+  position?: string
+  name?: string
 }
 
 const GetScrollPosition: React.FC<GetScrollPositionProps> = ({

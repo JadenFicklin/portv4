@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react'
 import { useThemeStore } from '~/globalState/themeStore'
-import { FaLightbulb, FaSun, FaMoon, FaCode } from 'react-icons/fa'
+import { FaSun, FaMoon, FaCode } from 'react-icons/fa'
 import { IoMdWater } from 'react-icons/io'
 import { cn } from '~/utils/cn'
 import { GiFlowerEmblem } from 'react-icons/gi'
+import { IoColorPalette } from 'react-icons/io5'
 
 type ThemeName = 'light' | 'dark' | 'binary' | 'cherryBlossom' | 'blueTheme'
 
@@ -81,10 +82,10 @@ export const Theme = () => {
             ))}
           </div>
           <div
-            className="absolute top-0 right-0 grid rounded-full cursor-pointer place-content-center size-8 bg-min"
+            className="absolute top-0 right-0 grid duration-300 rounded-full cursor-pointer place-content-center size-8 bg-min"
             onClick={() => setThemeOpen(!themeOpen)}
           >
-            <FaLightbulb className="rounded-full size-5 fill-max" />
+            <IoColorPalette className="rounded-full size-5 fill-max" />
           </div>
         </div>
       </div>
