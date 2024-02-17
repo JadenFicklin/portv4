@@ -92,7 +92,7 @@ export const Project: React.FC<ProjectProps> = ({
             rel="noreferrer"
             style={divStyle}
           >
-            <div className="absolute inset-0 bg-black bg-opacity-30 backdrop-filter backdrop-blur-sm"></div>
+            <div className="absolute inset-0 bg-max/10 backdrop-filter backdrop-blur-sm"></div>
             <img
               src={image}
               alt={name}
