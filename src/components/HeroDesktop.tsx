@@ -35,9 +35,10 @@ export const HeroDesktop = () => {
               initialDelay={normalDisplaySpeed ? 6400 : 0}
             />
             <Grid
-              horizontalLines={100} // Example values, adjust as needed
-              verticalLines={100} // Example values, adjust as needed
-              initialDelay={6600} // 6600ms delay
+              horizontalLines={50}
+              verticalLines={50}
+              initialDelay={6600}
+              className="-ml-[5%]"
             />
           </div>
         </>

@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from 'react'
+import { cn } from '~/utils/cn'
 
 interface GridProps {
   horizontalLines: number
   verticalLines: number
   initialDelay: number
+  className: string
 }
 
 export const Grid: React.FC<GridProps> = ({
   horizontalLines,
   verticalLines,
   initialDelay,
+  className,
 }) => {
   const [displayGrid, setDisplayGrid] = useState(false)
 
@@ -77,7 +80,10 @@ export const Grid: React.FC<GridProps> = ({
   return (
     <>
       <div
-        className="fixed top-0 -ml-[5%] flex flex-wrap items-center justify-center w-full h-screen overflow-hidden -z-20"
+        className={cn(
+          'fixed top-0 flex flex-wrap items-center justify-center w-full h-screen overflow-hidden -z-20',
+          className,
+        )}
         onClick={() => setDisplayGrid(!displayGrid)}
       >
         {horizontalArray.map((index) => (

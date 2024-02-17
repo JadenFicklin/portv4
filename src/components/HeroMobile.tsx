@@ -1,3 +1,4 @@
+import { Grid } from '~/utils/Grid'
 import { SlideIn } from '~/utils/SlideIn'
 
 export const HeroMobile = () => {
@@ -31,6 +32,12 @@ export const HeroMobile = () => {
               className=""
               speed={20}
               initialDelay={800}
+            />
+            <Grid
+              horizontalLines={100}
+              verticalLines={100}
+              initialDelay={1000}
+              className=""
             />
           </div>
         </>
