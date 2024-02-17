@@ -13,19 +13,19 @@
 }
 
 :root {
-  --color-accent: #3b82f6;
-  --color-accent-light: #dbff00;
-  --color-max: #000000;
-  --color-min: #ffffff;
-  --color-lightest: #0000001f;
-  --color-custom: #ffffff;
-  --color-bubble: #242424;
-  --color-hover-accent: #ffffff;
-  --color-hover-accent: #0000006c;
+  --color-accent: 217deg 91% 60%;
+  --color-accent-light: 68deg 100% 50%;
+  --color-max: 0deg 0% 0%;
+  --color-min: 0deg 0% 100%;
+  --color-lightest: 0deg 0% 0%;
+  --color-custom: 0deg 0% 100%;
+  --color-bubble: 0deg 0% 14%;
+  --color-hover-accent: 0deg 0% 100%;
+  --color-hover-accent: 0deg 0% 0%;
 }
 
 body {
-  background-color: var(--color-min);
+  background-color: hsl(var(--color-min));
 }
 
 ::selection {

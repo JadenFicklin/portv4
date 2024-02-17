@@ -48,14 +48,14 @@ export const Archive = () => {
         />
       )}
       {/* <div className="fixed w-full h-screen bg-black -z-30"></div> */}
-      <div className="fixed w-full h-screen bg-lightest -z-10"></div>
+      <div className="fixed w-full h-screen bg-max/50 -z-10"></div>
       <div
         className={cn(
           'w-full min-h-screen text-max duration-500',
-          currentImage && 'bg-lightest duration-500',
+          currentImage && 'bg-max/50 duration-500',
         )}
       >
-        <div className="min-h-screen px-6 py-12 mx-auto font-sans bg-blue-500 shadow-lg max-w-screen-xxl md:px-12 md:py-20 lg:px-24 lg:py-0 backdrop-blur-lg">
+        <div className="min-h-screen px-6 py-12 mx-auto font-sans shadow-lg bg-min/50 max-w-screen-xxl md:px-12 md:py-20 lg:px-24 lg:py-0 backdrop-blur-lg">
           <div className="lg:py-24">
             <Link to="/" className="flex py-2 group">
               <GoArrowLeft className="relative left-0 mt-1 duration-200 fill-green group-hover:-left-3" />
@@ -131,12 +131,12 @@ export const Archive = () => {
                           href={item.link}
                           target="_blank"
                           rel="noreferrer"
-                          className="relative flex mb-1 text-base font-medium text-light group-hover:text-hoverAccent"
+                          className="relative flex mb-1 text-base font-medium text-light group-hover:text-hover-accent"
                         >
                           {item.link}{' '}
                           <IoMdArrowForward
                             className={cn(
-                              'rotate-[-45deg] relative -bottom-[6px] left-1 group-hover:bottom-[-3px] group-hover:left-[8px] duration-300 group-hover:fill-hoverAccent',
+                              'rotate-[-45deg] relative -bottom-[6px] left-1 group-hover:bottom-[-3px] group-hover:left-[8px] duration-300 group-hover:fill-hover-accent',
                             )}
                           />
                         </a>

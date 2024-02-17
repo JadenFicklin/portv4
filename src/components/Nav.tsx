@@ -116,7 +116,7 @@ export const Nav = () => {
             href="https://github.com/JadenFicklin"
             target="_blank"
             rel="noreferrer"
-            className="mx-2 font-semibold duration-150 cursor-pointer hover:text-hoverAccent"
+            className="mx-2 font-semibold duration-150 cursor-pointer hover:text-hover-accent"
           >
             Github
           </a>{' '}
@@ -125,7 +125,7 @@ export const Nav = () => {
             href="https://www.linkedin.com/in/jaden-ficklin-b1686a21a/"
             target="_blank"
             rel="noreferrer"
-            className="mx-2 font-semibold duration-150 cursor-pointer hover:text-hoverAccent"
+            className="mx-2 font-semibold duration-150 cursor-pointer hover:text-hover-accent"
           >
             Linkedin
           </a>{' '}
@@ -134,7 +134,7 @@ export const Nav = () => {
             href="https://docs.google.com/document/d/1QVo9-KNAfNvJGrWKi83bLLg9VnD8pmwkMbX9GV65tzc/edit?usp=sharing"
             target="_blank"
             rel="noreferrer"
-            className="mx-2 font-semibold duration-150 cursor-pointer hover:text-hoverAccent"
+            className="mx-2 font-semibold duration-150 cursor-pointer hover:text-hover-accent"
           >
             Resume
           </a>
@@ -142,7 +142,7 @@ export const Nav = () => {
 
         <a
           href="mailto:fullstackjaden@gmail.com"
-          className="hover:text-hoverAccent duration-150 mx-2 font-semibold cursor-pointer text-custom pl-[8%] md:right-[5%] md:hidden lg:block md:pl-0 md:pt-0 md:top-[90%] bottom-10 absolute"
+          className="hover:text-hover-accent duration-150 mx-2 font-semibold cursor-pointer text-custom pl-[8%] md:right-[5%] md:hidden lg:block md:pl-0 md:pt-0 md:top-[90%] bottom-10 absolute"
         >
           FullstackJaden@gmail.com
         </a>
