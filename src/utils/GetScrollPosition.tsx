@@ -1,13 +1,7 @@
-import React, {
-  useRef,
-  useEffect,
-  ReactNode,
-  useCallback,
-  useState,
-} from 'react'
+import React, { useRef, useEffect, useCallback, useState } from 'react'
 
-interface GetScrollPositionProps {
-  children: ReactNode
+export interface GetScrollPositionProps {
+  children: React.ReactNode
   position?: string
   name?: string
 }
@@ -32,7 +26,7 @@ const GetScrollPosition: React.FC<GetScrollPositionProps> = ({
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop
       const elementTopRelativeToPage = rect.top + scrollTop
       const adjustedPosition =
-        elementTopRelativeToPage + parsePositionAdjustment(position)
+        elementTopRelativeToPage + parsePositionAdjustment(position || '')
 
       // Log the position only if it has changed or on initial load, including the name
       if (

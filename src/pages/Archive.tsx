@@ -80,68 +80,66 @@ export const Archive = () => {
                 </th>
               </thead>
               <tbody>
-                {projectArchiveArray.map(
-                  (item: ProjectProps, index: number) => (
-                    <tr
-                      className="duration-300 border-b border-max border-opacity-30 group hover:bg-max/40"
-                      key={index}
-                      onMouseEnter={() => handleMouseEnter(item.image)}
-                      onMouseLeave={() => setCurrentImage('')}
-                    >
-                      <td className="py-4 pr-4 text-sm align-top md:translate-y-1">
-                        <div className="translate-y-px">{item.year}</div>
-                      </td>
-                      <td className="py-4 pr-4 font-semibold leading-snug align-top">
-                        <p className="hidden text-base font-medium leading-tight translate-y-1 sm:block">
+                {projectArchiveArray.map((item: ProjectProps) => (
+                  <tr
+                    className="duration-300 border-b border-max border-opacity-30 group hover:bg-max/40"
+                    key={item.link}
+                    onMouseEnter={() => handleMouseEnter(item.image)}
+                    onMouseLeave={() => setCurrentImage('')}
+                  >
+                    <td className="py-4 pr-4 text-sm align-top md:translate-y-1">
+                      <div className="translate-y-px">{item.year}</div>
+                    </td>
+                    <td className="py-4 pr-4 font-semibold leading-snug align-top">
+                      <p className="hidden text-base font-medium leading-tight translate-y-1 sm:block">
+                        {item.project}
+                      </p>
+                      <a
+                        className="inline-flex items-baseline sm:hidden group"
+                        href={item.link}
+                        target="_blank"
+                        rel="noreferrer noopener"
+                        aria-label="Emerson Collective (opens in a new tab)"
+                      >
+                        <span className="flex text-base font-medium leading-tight">
                           {item.project}
-                        </p>
-                        <a
-                          className="inline-flex items-baseline sm:hidden group"
-                          href={item.link}
-                          target="_blank"
-                          rel="noreferrer noopener"
-                          aria-label="Emerson Collective (opens in a new tab)"
-                        >
-                          <span className="flex text-base font-medium leading-tight">
-                            {item.project}
-                            <IoMdArrowForward
-                              className={cn(
-                                '-translate-y-[2px] rotate-[-45deg] relative -bottom-[6px] left-1 group-hover:bottom-[-3px] group-hover:left-[8px] duration-300 ',
-                              )}
-                            />
-                          </span>
-                        </a>
-                      </td>
-                      <td className="hidden py-4 text-sm align-top translate-y-1 lg:table-cell">
-                        {item.madeAt}
-                      </td>
-                      <td className="hidden py-3 pr-4 align-top lg:table-cell">
-                        <ul className="flex flex-wrap gap-1 ">
-                          {item.builtWith.map((item) => (
-                            <div className="px-3 py-1 text-xs translate-y-1.5 bg-max/40 rounded-full text-custom">
-                              {item}
-                            </div>
-                          ))}
-                        </ul>
-                      </td>
-                      <td className="hidden py-4 align-top cursor-pointer sm:table-cell group">
-                        <a
-                          href={item.link}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="relative flex mb-1 text-base font-medium text-light group-hover:text-hover-accent"
-                        >
-                          {item.link}{' '}
                           <IoMdArrowForward
                             className={cn(
-                              'rotate-[-45deg] relative -bottom-[6px] left-1 group-hover:bottom-[-3px] group-hover:left-[8px] duration-300 group-hover:fill-hover-accent',
+                              '-translate-y-[2px] rotate-[-45deg] relative -bottom-[6px] left-1 group-hover:bottom-[-3px] group-hover:left-[8px] duration-300 ',
                             )}
                           />
-                        </a>
-                      </td>
-                    </tr>
-                  ),
-                )}
+                        </span>
+                      </a>
+                    </td>
+                    <td className="hidden py-4 text-sm align-top translate-y-1 lg:table-cell">
+                      {item.madeAt}
+                    </td>
+                    <td className="hidden py-3 pr-4 align-top lg:table-cell">
+                      <ul className="flex flex-wrap gap-1 ">
+                        {item.builtWith.map((item) => (
+                          <div className="px-3 py-1 text-xs translate-y-1.5 bg-max/40 rounded-full text-custom">
+                            {item}
+                          </div>
+                        ))}
+                      </ul>
+                    </td>
+                    <td className="hidden py-4 align-top cursor-pointer sm:table-cell group">
+                      <a
+                        href={item.link}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="relative flex mb-1 text-base font-medium text-light group-hover:text-hover-accent"
+                      >
+                        {item.link}{' '}
+                        <IoMdArrowForward
+                          className={cn(
+                            'rotate-[-45deg] relative -bottom-[6px] left-1 group-hover:bottom-[-3px] group-hover:left-[8px] duration-300 group-hover:fill-hover-accent',
+                          )}
+                        />
+                      </a>
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>

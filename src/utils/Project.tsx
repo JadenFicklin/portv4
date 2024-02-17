@@ -34,7 +34,7 @@ export const Project: React.FC<ProjectProps> = ({
   const [isNarrowScreen, setIsNarrowScreen] = useState(window.innerWidth < 1000)
 
   const divStyle = {
-    backgroundImage: `url(${image})`,
+    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(${image})`,
     backgroundPosition: 'center',
     backgroundSize: 'cover',
   }
@@ -92,11 +92,11 @@ export const Project: React.FC<ProjectProps> = ({
             rel="noreferrer"
             style={divStyle}
           >
-            <div className="absolute inset-0 bg-max/10 backdrop-filter backdrop-blur-sm"></div>
+            <div className="absolute inset-0 bg-black bg-opacity-10 border-[1px] border-black border-opacity-20 backdrop-filter backdrop-blur-sm"></div>
             <img
               src={image}
               alt={name}
-              className="relative z-10 w-10/12 mx-auto"
+              className="relative z-10 w-10/12 mx-auto border-[1px] border-black border-opacity-20"
             />
           </a>
         </div>

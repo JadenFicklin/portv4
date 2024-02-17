@@ -10,7 +10,7 @@ export const HowItStartedText: React.FC<HowItStartedProps> = (props) => {
 
   return (
     <>
-      <div>
+      <div className="max-w-[600px] md:ml-12">
         Back in 2021, I searched heavily for a career I would feel passionate
         about. I really enjoy creative thinking and solving complex problems so
         when I tried my hand at website development it was a perfect fit.{' '}

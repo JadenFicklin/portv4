@@ -1,5 +1,5 @@
 import { cn } from '~/utils/cn'
-import Video from '~/assets/videos/GroupAtWork.mp4'
+import Video from '~/assets/videos/GroupAtWork.gif'
 import { useState } from 'react'
 
 export const PageLoadMobile = () => {
@@ -11,19 +11,17 @@ export const PageLoadMobile = () => {
 
   return (
     <div className="block xxl:hidden">
-      <video
+      <img
         className={cn(
           '-mt-20 md:-mt-10 w-[90vw] h-[60vh] object-cover opacity-0 mx-auto duration-1000',
           videoDisplayed && 'opacity-100',
         )}
         src={Video}
-        autoPlay
-        muted
-        loop
       />
 
       <div className="text-sm sm:text-lg italic font-light text-max max-w-80 w-[80%] mx-auto md:mx-[10%] my-16">
-        “I’m a full-stack website developer specializing in JavaScript.
+        I am a Fullstack React Engineer currently seeking to fill an open
+        position as a Website Developer
         <div className="w-1/2 bg-max opacity-50 h-[1px] mt-6"></div>
       </div>
     </div>

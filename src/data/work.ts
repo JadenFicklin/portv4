@@ -78,7 +78,14 @@ export const WorkArray: ProjectProps[] = [
     name: 'Oak and Stone',
     description:
       'A brochure website with emphasis on interactive UI to bring an enjoyable viewing experience for the user.',
-    technologies: ['React', 'Javascript', 'EmailJs', 'Maps API', 'Netlify'],
+    technologies: [
+      'React',
+      'Javascript',
+      'EmailJs',
+      'Maps API',
+      'Netlify',
+      'Vanilla CSS',
+    ],
     image: OakandStone,
     link: 'https://oakandstone.netlify.app/',
     goalsAndObjectives: '...',
