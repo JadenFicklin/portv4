@@ -13,15 +13,15 @@ export const tailwindKeyframes = {
     '0%': {
       opacity: '1',
       transform: 'skewX(0)',
-      color: '#ffffff',
+      color: 'var(--color-min)',
       textShadow: 'none',
     },
     '100%': {
       opacity: '1',
       transform: 'skewX(-18deg)',
-      color: '#000000',
+      color: 'var(--color-accent)',
       textShadow:
-        '-1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff',
+        '-1px -1px 0 var(--color-custom), 1px -1px 0 var(--color-custom), -1px 1px 0 var(--color-custom), 1px 1px 0 var(--color-custom)',
     },
   },
 }

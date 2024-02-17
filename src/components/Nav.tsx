@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { HoverText } from '~/utils/HoverText'
 import { cn } from '~/utils/cn'
 import Video from '~/assets/videos/GroupAtWork.mp4'
-import { useThemeStore } from '~/globalState/themeStore'
+import { Theme } from '~/utils/Theme'
 // import Video from '~/assets/videos/code.mp4'
 
 export const Nav = () => {
@@ -17,7 +17,6 @@ export const Nav = () => {
     { name: 'Work', to: '/' },
     { name: 'Contact', to: '/' },
   ]
-  const { toggleTheme } = useThemeStore()
 
   useEffect(() => {
     setTimeout(
@@ -56,12 +55,7 @@ export const Nav = () => {
           />
         </div>
         {/* theme changer */}
-        <button
-          onClick={toggleTheme}
-          className="absolute h-10 px-3 cursor-pointer w-max bg-min right-52 top-3 text-max"
-        >
-          Switch theme
-        </button>
+        <Theme />
         <div
           className={cn(
             'fixed right-[5%] rounded-full size-12 mt-2 font-black grid place-content-center cursor-pointer duration-200',

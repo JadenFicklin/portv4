@@ -66,7 +66,7 @@ export const binary = {
   '--color-custom': '#5EEAD4',
 }
 
-export const chrerryBlossom = {
+export const cherryBlossom = {
   // nav and contact background color
   '--color-accent': '#d26868',
   // text hover accent color
@@ -98,7 +98,7 @@ export const blueTheme = {
   // skills bubbles
   '--color-bubble': '#003175',
   //archive hover
-  '--color-archive': '#8a7454',
+  '--color-archive': '#6081db',
 
   // text
   '--color-max': '#00275e',

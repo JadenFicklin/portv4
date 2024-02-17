@@ -7,7 +7,7 @@ import {
   lightTheme,
   darkTheme,
   binary,
-  chrerryBlossom,
+  cherryBlossom,
   blueTheme,
 } from '~/data/themeConfig'
 
@@ -19,7 +19,7 @@ export const App = () => {
       light: lightTheme,
       dark: darkTheme,
       binary,
-      chrerryBlossom,
+      cherryBlossom,
       blueTheme,
     }
     const themeColors = themes[theme]
