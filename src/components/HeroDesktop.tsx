@@ -1,7 +1,8 @@
+import { Grid } from '~/utils/Grid'
 import { SlideIn } from '~/utils/SlideIn'
 
 export const HeroDesktop = () => {
-  const normalDisplaySpeed = false
+  const normalDisplaySpeed = true
   return (
     <>
       <div className="flex-col flex-wrap w-max ml-[5%] mt-64 xxl:reveal conceal">
@@ -32,6 +33,11 @@ export const HeroDesktop = () => {
               className=""
               speed={20}
               initialDelay={normalDisplaySpeed ? 6400 : 0}
+            />
+            <Grid
+              horizontalLines={100} // Example values, adjust as needed
+              verticalLines={100} // Example values, adjust as needed
+              initialDelay={6600} // 6600ms delay
             />
           </div>
         </>

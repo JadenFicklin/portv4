@@ -34,9 +34,6 @@ export const Landing = () => {
 
       {/* nav */}
       <Nav />
-
-      {/* grid */}
-      <Grid horizontalLines={100} verticalLines={100} />
     </>
   )
 }

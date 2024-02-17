@@ -1,15 +1,25 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 interface GridProps {
-  horizontalLines: number // Number of horizontal lines
-  verticalLines: number // Number of vertical lines
+  horizontalLines: number
+  verticalLines: number
+  initialDelay: number
 }
 
 export const Grid: React.FC<GridProps> = ({
   horizontalLines,
   verticalLines,
+  initialDelay,
 }) => {
   const [displayGrid, setDisplayGrid] = useState(false)
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDisplayGrid(true)
+    }, initialDelay)
+
+    return () => clearTimeout(timer) // Clean up the timer
+  }, [initialDelay])
 
   const generateHorizontalStyle = (index: number) => {
     // Adjusted for scaling and translation
@@ -67,7 +77,7 @@ export const Grid: React.FC<GridProps> = ({
   return (
     <>
       <div
-        className="fixed top-0 flex flex-wrap items-center justify-center w-full h-screen overflow-hidden -z-20"
+        className="fixed top-0 -ml-[5%] flex flex-wrap items-center justify-center w-full h-screen overflow-hidden -z-20"
         onClick={() => setDisplayGrid(!displayGrid)}
       >
         {horizontalArray.map((index) => (

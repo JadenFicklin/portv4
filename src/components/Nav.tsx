@@ -5,7 +5,7 @@ import Video from '~/assets/videos/GroupAtWork.mp4'
 import { Theme } from '~/utils/Theme'
 
 export const Nav = () => {
-  const normalDisplaySpeed = false
+  const normalDisplaySpeed = true
 
   const [menuClicked, setMenuClicked] = useState(false)
   const [displayNav, setDisplayNav] = useState(false)
