@@ -130,12 +130,12 @@ export const Nav = () => {
           ))}
         </div>
 
-        <div className="text-custom pl-[8%] bottom-16 md:left-[45%] md:pl-0 md:pt-0 md:top-[90%] absolute">
+        <div className="text-custom pl-[8%] bottom-32 md:left-[45%] md:pl-0 md:pt-0 md:top-[90%] absolute">
           <a
             href="https://github.com/JadenFicklin"
             target="_blank"
             rel="noreferrer"
-            className="mx-2 font-semibold duration-150 cursor-pointer hover:text-hover-accent"
+            className="relative top-0 mx-2 font-semibold duration-150 cursor-pointer hover:text-hover-accent hover:-top-1 hover:pb-1"
           >
             Github
           </a>{' '}
@@ -144,7 +144,7 @@ export const Nav = () => {
             href="https://www.linkedin.com/in/jaden-ficklin-b1686a21a/"
             target="_blank"
             rel="noreferrer"
-            className="mx-2 font-semibold duration-150 cursor-pointer hover:text-hover-accent"
+            className="relative top-0 mx-2 font-semibold duration-150 cursor-pointer hover:-top-1 hover:pb-1 hover:text-hover-accent"
           >
             Linkedin
           </a>{' '}
@@ -153,7 +153,7 @@ export const Nav = () => {
             href="https://docs.google.com/document/d/1QVo9-KNAfNvJGrWKi83bLLg9VnD8pmwkMbX9GV65tzc/edit?usp=sharing"
             target="_blank"
             rel="noreferrer"
-            className="mx-2 font-semibold duration-150 cursor-pointer hover:text-hover-accent"
+            className="relative top-0 mx-2 font-semibold duration-150 cursor-pointer hover:-top-1 hover:pb-1 hover:text-hover-accent"
           >
             Resume
           </a>
@@ -161,7 +161,7 @@ export const Nav = () => {
 
         <a
           href="mailto:fullstackjaden@gmail.com"
-          className="hover:text-hover-accent duration-150 mx-2 font-semibold cursor-pointer text-custom pl-[8%] md:right-[5%] md:hidden lg:block md:pl-0 md:pt-0 md:top-[90%] bottom-10 absolute"
+          className=" hover:pb-1 hover:text-hover-accent duration-150 mx-2 font-semibold cursor-pointer text-custom pl-[8%] md:right-[5%] md:hidden lg:block md:pl-0 md:pt-0 md:top-[90%] hover:md:top-[89.5%] bottom-24 hover:bottom-[98px] absolute"
         >
           FullstackJaden@gmail.com
         </a>
