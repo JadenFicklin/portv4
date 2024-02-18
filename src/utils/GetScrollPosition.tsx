@@ -2,13 +2,13 @@ import React, { useRef, useEffect, useState } from 'react'
 
 export interface GetScrollPositionProps {
   children: React.ReactNode
-  position?: string
+  position?: number
   name?: string
 }
 
 const GetScrollPosition: React.FC<GetScrollPositionProps> = ({
   children,
-  position = '0px',
+  position = 0,
   name = 'Component',
 }) => {
   const componentRef = useRef<HTMLDivElement>(null)
@@ -22,19 +22,19 @@ const GetScrollPosition: React.FC<GetScrollPositionProps> = ({
         const rect = componentRef.current.getBoundingClientRect()
         const scrollTop = window.scrollY || document.documentElement.scrollTop
         const elementTopRelativeToPage = rect.top + scrollTop
-        const adjustedPosition =
-          elementTopRelativeToPage + Number(position.replace('px', ''))
+        const adjustedPosition = elementTopRelativeToPage + position
+
         if (
           lastLoggedPosition === null ||
           lastLoggedPosition !== adjustedPosition
         ) {
-          console.log(`${name} scroll position: ${adjustedPosition}px`) //console logs the position and the name
+          console.log(`${name} scroll position: ${adjustedPosition}px`)
           setLastLoggedPosition(adjustedPosition)
         }
       }
     }
 
-    logScrollPosition() //gets initial position value
+    logScrollPosition()
 
     const handleScroll = () => {
       requestAnimationFrame(logScrollPosition)

@@ -2,20 +2,20 @@ import React, { useRef, useEffect, ReactNode } from 'react'
 
 interface WithVisibilityProps {
   children: ReactNode
-  position?: string
+  position?: number
   name?: string
 }
 
 const WithVisibility: React.FC<WithVisibilityProps> = ({
   children,
-  position = '0px',
-  name = 'Component', // Default name if not provided
+  position = 0,
+  name = 'Component',
 }) => {
   const componentRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    // Capture the current value of the ref to use in the cleanup function
     const currentRef = componentRef.current
+    const rootMarginValue = `${position}px`
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -25,9 +25,9 @@ const WithVisibility: React.FC<WithVisibilityProps> = ({
         )
       },
       {
-        root: null, // using the viewport as the root
-        rootMargin: position, // Use the position prop to adjust the root margin for the observer
-        threshold: 0.1, // 10% of the element is visible
+        root: null,
+        rootMargin: rootMarginValue,
+        threshold: 0.1,
       },
     )
 
@@ -36,12 +36,11 @@ const WithVisibility: React.FC<WithVisibilityProps> = ({
     }
 
     return () => {
-      // Use the captured value for cleanup
       if (currentRef) {
         observer.unobserve(currentRef)
       }
     }
-  }, [position, name]) // Include 'name' in the dependency array
+  }, [position, name]) // Depend on position (number) and name
 
   return <div ref={componentRef}>{children}</div>
 }

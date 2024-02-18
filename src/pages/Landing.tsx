@@ -22,12 +22,12 @@ export const Landing = () => {
       <PageLoadMobile />
 
       {/* about */}
-      <WithVisibility position="-200px" name="About">
+      <WithVisibility position={-200} name="About">
         <About />
       </WithVisibility>
 
       {/* works */}
-      <GetScrollPosition position="-200px" name="Works">
+      <GetScrollPosition position={-200} name="Works">
         <Works />
       </GetScrollPosition>
 
