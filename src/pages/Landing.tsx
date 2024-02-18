@@ -8,6 +8,7 @@ import { Works } from '~/components/Works'
 import { ProjectsSlider } from '~/components/ProjectsSlider'
 import { Contact } from '~/components/Contact'
 import GetScrollPosition from '~/utils/GetScrollPosition'
+import WithVisibility from '~/utils/WithVisibility'
 
 export const Landing = () => {
   return (
@@ -21,24 +22,32 @@ export const Landing = () => {
       <PageLoadMobile />
 
       {/* about */}
-      <GetScrollPosition position={-150} name="About">
-        <About />
-      </GetScrollPosition>
+      <WithVisibility position={-20} name="About">
+        <GetScrollPosition position={-150} name="About">
+          <About />
+        </GetScrollPosition>
+      </WithVisibility>
 
       {/* works */}
-      <GetScrollPosition position={-100} name="Works">
-        <Works />
-      </GetScrollPosition>
+      <WithVisibility position={200} name="Works">
+        <GetScrollPosition position={-100} name="Works">
+          <Works />
+        </GetScrollPosition>
+      </WithVisibility>
 
       {/* projects slider */}
-      <GetScrollPosition position={0} name="Archive">
-        <ProjectsSlider />
-      </GetScrollPosition>
+      <WithVisibility position={100} name="Archive">
+        <GetScrollPosition position={0} name="Archive">
+          <ProjectsSlider />
+        </GetScrollPosition>
+      </WithVisibility>
 
       {/* contact */}
-      <GetScrollPosition position={0} name="Contact">
-        <Contact />
-      </GetScrollPosition>
+      <WithVisibility position={100} name="Contact">
+        <GetScrollPosition position={0} name="Contact">
+          <Contact />
+        </GetScrollPosition>
+      </WithVisibility>
 
       {/* nav */}
       <Nav />

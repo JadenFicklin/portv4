@@ -1,46 +1,47 @@
 import React, { useRef, useEffect, ReactNode } from 'react'
+import { useElementVisibleStore } from '~/globalState/elementVisibleStore'
 
 interface WithVisibilityProps {
   children: ReactNode
   position?: number
-  name?: string
+  name?: string // name can potentially be undefined
 }
 
 const WithVisibility: React.FC<WithVisibilityProps> = ({
   children,
   position = 0,
-  name = 'Component',
+  name = 'UnnamedComponent', // Provide a default name here if you prefer
 }) => {
   const componentRef = useRef<HTMLDivElement>(null)
+  const { setVisibleElement } = useElementVisibleStore()
 
   useEffect(() => {
-    const currentRef = componentRef.current
-    const rootMarginValue = `${position}px`
+    const currentElement = componentRef.current
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        const isVisible = entry.isIntersecting
-        console.log(
-          `${name} is now ${isVisible ? 'visible' : 'hidden'} in the viewport.`,
-        )
+        if (entry.isIntersecting && name) {
+          // Check that name is not undefined
+          setVisibleElement(name)
+        }
       },
       {
         root: null,
-        rootMargin: rootMarginValue,
+        rootMargin: `${position}px`,
         threshold: 0.1,
       },
     )
 
-    if (currentRef) {
-      observer.observe(currentRef)
+    if (currentElement) {
+      observer.observe(currentElement)
     }
 
     return () => {
-      if (currentRef) {
-        observer.unobserve(currentRef)
+      if (currentElement) {
+        observer.unobserve(currentElement)
       }
     }
-  }, [position, name]) // Depend on position (number) and name
+  }, [position, name, setVisibleElement])
 
   return <div ref={componentRef}>{children}</div>
 }
