@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useCallback, useState } from 'react'
+import React, { useRef, useEffect, useState } from 'react'
 
 export interface GetScrollPositionProps {
   children: React.ReactNode
@@ -9,52 +9,41 @@ export interface GetScrollPositionProps {
 const GetScrollPosition: React.FC<GetScrollPositionProps> = ({
   children,
   position = '0px',
-  name = 'Component', // Default name if not provided
+  name = 'Component',
 }) => {
   const componentRef = useRef<HTMLDivElement>(null)
   const [lastLoggedPosition, setLastLoggedPosition] = useState<number | null>(
     null,
   )
 
-  const parsePositionAdjustment = useCallback((position: string): number => {
-    return Number(position.replace('px', ''))
-  }, [])
-
-  const logScrollPosition = useCallback(() => {
-    if (componentRef.current) {
-      const rect = componentRef.current.getBoundingClientRect()
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop
-      const elementTopRelativeToPage = rect.top + scrollTop
-      const adjustedPosition =
-        elementTopRelativeToPage + parsePositionAdjustment(position || '')
-
-      // Log the position only if it has changed or on initial load, including the name
-      if (
-        lastLoggedPosition === null ||
-        lastLoggedPosition !== adjustedPosition
-      ) {
-        console.log(adjustedPosition)
-        console.log(name)
-        setLastLoggedPosition(adjustedPosition)
+  useEffect(() => {
+    const logScrollPosition = () => {
+      if (componentRef.current) {
+        const rect = componentRef.current.getBoundingClientRect()
+        const scrollTop = window.scrollY || document.documentElement.scrollTop
+        const elementTopRelativeToPage = rect.top + scrollTop
+        const adjustedPosition =
+          elementTopRelativeToPage + Number(position.replace('px', ''))
+        if (
+          lastLoggedPosition === null ||
+          lastLoggedPosition !== adjustedPosition
+        ) {
+          console.log(`${name} scroll position: ${adjustedPosition}px`) //console logs the position and the name
+          setLastLoggedPosition(adjustedPosition)
+        }
       }
     }
-  }, [name, position, parsePositionAdjustment, lastLoggedPosition])
 
-  // Effect to log initial position
-  useEffect(() => {
-    logScrollPosition()
-  }, [logScrollPosition])
+    logScrollPosition() //gets initial position value
 
-  useEffect(() => {
     const handleScroll = () => {
       requestAnimationFrame(logScrollPosition)
     }
-
     window.addEventListener('scroll', handleScroll)
     return () => {
       window.removeEventListener('scroll', handleScroll)
     }
-  }, [logScrollPosition])
+  }, [name, position, lastLoggedPosition])
 
   return <div ref={componentRef}>{children}</div>
 }
