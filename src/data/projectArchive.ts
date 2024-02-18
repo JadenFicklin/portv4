@@ -29,7 +29,7 @@ export const projectArchiveArray: Project[] = [
     project: 'Portfolio V4',
     madeAt: 'Freelance',
     builtWith: ['React', 'Javascript', 'Tailwind', 'Vercel', 'Vite'],
-    link: 'https://jadenficklin.com/',
+    link: 'https://jadenficklin2.com/',
     image: v4,
   },
   {

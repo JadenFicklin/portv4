@@ -1,4 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react'
+import { useElementsLocationStore } from '~/globalState/elementsLocationStore'
 
 export interface GetScrollPositionProps {
   children: React.ReactNode
@@ -15,6 +16,8 @@ const GetScrollPosition: React.FC<GetScrollPositionProps> = ({
   const [lastLoggedPosition, setLastLoggedPosition] = useState<number | null>(
     null,
   )
+  const { setAbout, setWork, setContact, setArchive } =
+    useElementsLocationStore()
 
   useEffect(() => {
     const logScrollPosition = () => {
@@ -28,8 +31,24 @@ const GetScrollPosition: React.FC<GetScrollPositionProps> = ({
           lastLoggedPosition === null ||
           lastLoggedPosition !== adjustedPosition
         ) {
-          console.log(`${name} scroll position: ${adjustedPosition}px`)
           setLastLoggedPosition(adjustedPosition)
+
+          switch (name.toLowerCase()) {
+            case 'about':
+              setAbout(adjustedPosition)
+              break
+            case 'works':
+              setWork(adjustedPosition)
+              break
+            case 'contact':
+              setContact(adjustedPosition)
+              break
+            case 'archive':
+              setArchive(adjustedPosition)
+              break
+            default:
+              console.log(`aa`)
+          }
         }
       }
     }
@@ -43,7 +62,15 @@ const GetScrollPosition: React.FC<GetScrollPositionProps> = ({
     return () => {
       window.removeEventListener('scroll', handleScroll)
     }
-  }, [name, position, lastLoggedPosition])
+  }, [
+    name,
+    position,
+    lastLoggedPosition,
+    setAbout,
+    setWork,
+    setContact,
+    setArchive,
+  ])
 
   return <div ref={componentRef}>{children}</div>
 }

@@ -1,22 +1,25 @@
-import { create } from 'zustand'
-import { persist } from 'zustand/middleware'
+import create from 'zustand'
 
-type ThemeName = 'light' | 'dark' | 'binary' | 'cherryBlossom' | 'blueTheme'
-
-interface ThemeState {
-  theme: ThemeName
-  setTheme: (themeName: ThemeName) => void
+interface ElementsLocationState {
+  about: number
+  work: number
+  contact: number
+  archive: number
+  setAbout: (position: number) => void
+  setWork: (position: number) => void
+  setContact: (position: number) => void
+  setArchive: (position: number) => void
 }
 
-export const useThemeStore = create<ThemeState>()(
-  persist(
-    (set) => ({
-      theme: 'light',
-      setTheme: (themeName) => set({ theme: themeName }),
-    }),
-    {
-      name: 'theme-storage',
-      getStorage: () => localStorage,
-    },
-  ),
+export const useElementsLocationStore = create<ElementsLocationState>(
+  (set) => ({
+    about: 0,
+    work: 0,
+    archive: 0,
+    contact: 0,
+    setAbout: (position) => set({ about: position }),
+    setWork: (position) => set({ work: position }),
+    setArchive: (position) => set({ archive: position }),
+    setContact: (position) => set({ contact: position }),
+  }),
 )

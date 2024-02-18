@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useElementsLocationStore } from '~/globalState/elementsLocationStore' // Adjust the path as necessary
 import { HoverText } from '~/utils/HoverText'
 import { cn } from '~/utils/cn'
 import Video from '~/assets/videos/GroupAtWork.mp4'
@@ -10,11 +11,17 @@ export const Nav = () => {
   const [menuClicked, setMenuClicked] = useState(false)
   const [displayNav, setDisplayNav] = useState(false)
 
+  const { about, work, contact } = useElementsLocationStore((state) => ({
+    about: state.about,
+    work: state.work,
+    contact: state.contact,
+  }))
+
   const navOptions = [
-    { name: 'Home', to: '/' },
-    { name: 'About', to: '/' },
-    { name: 'Work', to: '/' },
-    { name: 'Contact', to: '/' },
+    { name: 'Home', to: 0 },
+    { name: 'About', to: about },
+    { name: 'Work', to: work },
+    { name: 'Contact', to: contact },
   ]
 
   useEffect(() => {
@@ -25,6 +32,14 @@ export const Nav = () => {
       window.innerWidth > 1400 && normalDisplaySpeed ? 7000 : 500,
     )
   }, [normalDisplaySpeed])
+
+  const handleNavClick = (to: number) => {
+    window.scrollTo({
+      top: to,
+      behavior: 'smooth',
+    })
+    setMenuClicked(false)
+  }
 
   return (
     <>
@@ -38,10 +53,10 @@ export const Nav = () => {
           className={cn(
             'w-[160%] left-[-40%] h-16 fixed bg-accent duration-700 ease-in-out justify-center',
             displayNav ? 'top-0' : '-top-full',
-            // menuClicked && 'left-[5%] w-[60px] duration-700',
           )}
         ></div>
         <div
+          onClick={() => handleNavClick(navOptions[0].to)}
           className={cn(
             'fixed left-[5%] size-16 grid place-content-center cursor-pointer duration-200 bg-transparent',
           )}
@@ -99,14 +114,19 @@ export const Nav = () => {
           loop
         />
         <div className="pl-[8%] pt-24 md:left-[45%] md:pl-0 md:pt-0 md:top-1/4 md:absolute">
-          {navOptions.map((option, index: number) => (
-            <HoverText
+          {navOptions.map((option, index) => (
+            <div
               key={index}
-              wrapperClassName="hover:pl-10"
-              className="text-3xl font-semibold tracking-wider cursor-pointer xs:text-5xl sm:text-6xl md:text-8xl "
-              text={option.name}
-              speed={50}
-            />
+              onClick={() => handleNavClick(option.to)}
+              className="cursor-pointer"
+            >
+              <HoverText
+                wrapperClassName="hover:pl-10"
+                className="text-3xl font-semibold tracking-wider cursor-pointer xs:text-5xl sm:text-6xl md:text-8xl "
+                text={option.name}
+                speed={50}
+              />
+            </div>
           ))}
         </div>
 

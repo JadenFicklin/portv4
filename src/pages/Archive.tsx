@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { GoArrowLeft } from 'react-icons/go'
 import { projectArchiveArray } from '~/data/projectArchive'
 import { IoMdArrowForward } from 'react-icons/io'
 import { cn } from '~/utils/cn'
+import { useElementsLocationStore } from '~/globalState/elementsLocationStore'
 
 type ProjectProps = {
   year: number
@@ -17,6 +18,11 @@ type ProjectProps = {
 export const Archive = () => {
   const [currentImage, setCurrentImage] = useState('')
   const [imageLoading, setImageLoading] = useState(true)
+  const navigate = useNavigate()
+
+  const { archive } = useElementsLocationStore((state) => ({
+    archive: state.archive,
+  }))
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -35,6 +41,16 @@ export const Archive = () => {
   const handleMouseEnter = (image: string) => {
     setImageLoading(true)
     setCurrentImage(image)
+  }
+
+  const handleLinkClick = () => {
+    navigate('/')
+    setTimeout(() => {
+      window.scrollTo({
+        top: archive,
+        behavior: 'smooth',
+      })
+    }, 0)
   }
 
   return (
@@ -57,10 +73,13 @@ export const Archive = () => {
       >
         <div className="min-h-screen px-6 py-12 mx-auto font-sans shadow-lg bg-min/50 max-w-screen-xxl md:px-12 md:py-20 lg:px-24 lg:py-0 backdrop-blur-lg">
           <div className="lg:py-24">
-            <Link to="/" className="flex py-2 group">
+            <div
+              onClick={handleLinkClick}
+              className="flex py-2 cursor-pointer group"
+            >
               <GoArrowLeft className="relative left-0 mt-1 duration-200 fill-green group-hover:-left-3" />
-              <p className="ml-1 font-medium ">Jaden Ficklin</p>
-            </Link>
+              <p className="ml-1 font-medium">Jaden Ficklin</p>
+            </div>
             <h2 className="text-4xl font-bold sm:text-5xl text-medium">
               All Projects
             </h2>
@@ -116,8 +135,11 @@ export const Archive = () => {
                     </td>
                     <td className="hidden py-3 pr-4 align-top lg:table-cell">
                       <ul className="flex flex-wrap gap-1 ">
-                        {item.builtWith.map((item) => (
-                          <div className="px-3 py-1 text-xs translate-y-1.5 bg-max/40 rounded-full text-custom">
+                        {item.builtWith.map((item: string, index: number) => (
+                          <div
+                            key={index}
+                            className="px-3 py-1 text-xs translate-y-1.5 bg-max/40 rounded-full text-custom"
+                          >
                             {item}
                           </div>
                         ))}
