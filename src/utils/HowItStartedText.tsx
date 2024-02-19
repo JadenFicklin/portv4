@@ -1,5 +1,5 @@
-import devmountain from '~/assets/images/about/devmountain.png'
-import graduate from '~/assets/images/about/certificate.png'
+import devmountain from '~/assets/images/about/devmountain.jpg'
+import graduate from '~/assets/images/about/certificate.jpg'
 
 type HowItStartedProps = {
   setImage: (image: string) => void

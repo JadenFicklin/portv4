@@ -1,14 +1,14 @@
 import React from 'react'
 
 // Importing images
-import awwwards from '~/assets/images/about/awwwards.png'
-import botw from '~/assets/images/about/botw.png'
-import palworld from '~/assets/images/about/palworld.png'
-import minecraft from '~/assets/images/about/minecraft.png'
-import firefly from '~/assets/images/about/firefly.png'
-import queensGambit from '~/assets/images/about/queensGambit.png'
-import family from '~/assets/images/about/family2.png'
-import dogs from '~/assets/images/about/dogs.png'
+import awwwards from '~/assets/images/about/awwwards.jpg'
+import botw from '~/assets/images/about/botw.jpg'
+import palworld from '~/assets/images/about/palworld.jpg'
+import minecraft from '~/assets/images/about/minecraft.jpg'
+import firefly from '~/assets/images/about/firefly.jpg'
+import queensGambit from '~/assets/images/about/queensGambit.jpg'
+import family from '~/assets/images/about/family2.jpg'
+import dogs from '~/assets/images/about/dogs.jpg'
 
 type MyInterestsTextProps = {
   setImage: (image: string) => void

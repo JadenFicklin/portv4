@@ -1,11 +1,11 @@
 import { useState, useEffect, useRef } from 'react'
-import Euka from '~/assets/images/projectsSlider/eukaFull.png'
-import Euka2 from '~/assets/images/projectsSlider/euka2Full.png'
-import Euka3 from '~/assets/images/projectsSlider/euka3Full.png'
-import OakandStone from '~/assets/images/projectsSlider/OakandStoneFull.png'
-import Portv1Full from '~/assets/images/projectsSlider/portv1Full.png'
-import Portv2Full from '~/assets/images/projectsSlider/portv2Full.png'
-import svgFull from '~/assets/images/projectsSlider/svgFull.png'
+import Euka from '~/assets/images/projectsSlider/eukaFull.jpg'
+import Euka2 from '~/assets/images/projectsSlider/euka2Full.jpg'
+import Euka3 from '~/assets/images/projectsSlider/euka3Full.jpg'
+import OakandStone from '~/assets/images/projectsSlider/OakandStoneFull.jpg'
+import Portv1Full from '~/assets/images/projectsSlider/portv1Full.jpg'
+import Portv2Full from '~/assets/images/projectsSlider/portv2Full.jpg'
+import svgFull from '~/assets/images/projectsSlider/svgFull.jpg'
 import { Link } from 'react-router-dom'
 
 export const ProjectsSlider = () => {

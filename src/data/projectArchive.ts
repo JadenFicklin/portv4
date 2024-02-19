@@ -1,18 +1,17 @@
-import blck from '~/assets/images/archive/archive-blck.png'
-import calculator from '~/assets/images/archive/archive-calculator.png'
-import euka from '~/assets/images/archive/archive-euka.png'
-import kerrie from '~/assets/images/archive/archive-kerrie.png'
-import lux from '~/assets/images/archive/archive-lux.png'
-import oakandstone from '~/assets/images/archive/archive-oakandstone.png'
-import pina from '~/assets/images/archive/archive-pina.png'
-import sopi from '~/assets/images/archive/archive-sopi.png'
-import svg from '~/assets/images/archive/archive-svg.png'
-import thuja from '~/assets/images/archive/archive-thuja.png'
-import timo from '~/assets/images/archive/archive-timo.png'
-import v1 from '~/assets/images/archive/archive-v1.png'
-import v2 from '~/assets/images/archive/archive-v2.png'
-import v3 from '~/assets/images/archive/archive-v3.png'
-import v4 from '~/assets/images/archive/archive-v4.png'
+import blck from '~/assets/images/archive/archive-blck.jpg'
+import euka from '~/assets/images/archive/archive-euka.jpg'
+import lux from '~/assets/images/archive/archive-lux.jpg'
+import oakandstone from '~/assets/images/archive/archive-oakandstone.jpg'
+import pina from '~/assets/images/archive/archive-pina.jpg'
+import sopi from '~/assets/images/archive/archive-sopi.jpg'
+import svg from '~/assets/images/archive/archive-svg.jpg'
+import thuja from '~/assets/images/archive/archive-thuja.jpg'
+import cargo from '~/assets/images/archive/archive-cargo.jpg'
+import ltr from '~/assets/images/archive/archive-ltr.jpg'
+import v1 from '~/assets/images/archive/archive-v1.jpg'
+import v2 from '~/assets/images/archive/archive-v2.jpg'
+import v3 from '~/assets/images/archive/archive-v3.jpg'
+import v4 from '~/assets/images/archive/archive-v4.jpg'
 
 type Project = {
   year: number
@@ -28,7 +27,7 @@ export const projectArchiveArray: Project[] = [
     year: 2024,
     project: 'Portfolio V4',
     madeAt: 'Freelance',
-    builtWith: ['React', 'Javascript', 'Tailwind', 'Vercel', 'Vite'],
+    builtWith: ['React', 'Javascript', 'Tailwind', 'Vercel'],
     link: 'https://jadenficklin2.com/',
     image: v4,
   },
@@ -66,6 +65,22 @@ export const projectArchiveArray: Project[] = [
   },
   {
     year: 2023,
+    project: 'Load To Ride',
+    madeAt: 'Perspective Developers',
+    builtWith: ['React', 'Javascript', 'Tailwind', 'Firebase'],
+    link: 'https://dashboard-ltr-app.firebaseapp.com/',
+    image: ltr,
+  },
+  {
+    year: 2023,
+    project: 'CargoRx',
+    madeAt: 'Perspective Developers',
+    builtWith: ['React', 'Javascript', 'Tailwind', 'Firebase'],
+    link: 'https://dashboard-ltr-app.firebaseapp.com/',
+    image: cargo,
+  },
+  {
+    year: 2023,
     project: 'Thuja',
     madeAt: 'Perspective Developers',
     builtWith: ['React', 'Javascript', 'Tailwind', 'Firebase'],
@@ -90,14 +105,6 @@ export const projectArchiveArray: Project[] = [
   },
   {
     year: 2022,
-    project: 'OreSMP',
-    madeAt: 'Freelance',
-    builtWith: ['React', 'Javascript', 'Tailwind', 'Netlify'],
-    link: 'https://tiptow.netlify.app/',
-    image: timo,
-  },
-  {
-    year: 2022,
     project: 'Oak and Stone',
     madeAt: 'Freelance',
     builtWith: ['React', 'Javascript', 'CSS', 'Netlify'],
@@ -112,23 +119,6 @@ export const projectArchiveArray: Project[] = [
     link: 'https://jadenficklin.netlify.app',
     image: v1,
   },
-  {
-    year: 2022,
-    project: 'Beauty by kerrie',
-    madeAt: 'Freelance',
-    builtWith: ['React', 'Javascript', 'CSS', 'Netlify'],
-    link: 'https://beauty-by-kerrie.netlify.app',
-    image: kerrie,
-  },
-  {
-    year: 2022,
-    project: 'Calculator',
-    madeAt: 'Freelance',
-    builtWith: ['React', 'Javascript', 'CSS', 'Netlify'],
-    link: 'https://projects-calculator.netlify.app',
-    image: calculator,
-  },
-
   {
     year: 2021,
     project: 'Sopi',

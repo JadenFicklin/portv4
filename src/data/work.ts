@@ -1,6 +1,6 @@
-import OakandStone from '~/assets/images/OakandStone.png'
-import PinaSoulmate from '~/assets/images/PinaSoulmate.png'
-import SVGLibrary from '~/assets/images/SVGLibrary.png'
+import OakandStone from '~/assets/images/OakandStone.jpg'
+import PinaSoulmate from '~/assets/images/PinaSoulmate.jpg'
+import SVGLibrary from '~/assets/images/SVGLibrary.jpg'
 
 export type ProjectProps = {
   name: string

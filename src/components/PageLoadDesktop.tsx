@@ -136,8 +136,8 @@ export const PageLoadDesktop = () => {
       />
 
       <div className="text-lg italic font-light mx-[10%] top-[110%] text-max absolute max-w-80">
-        I am a Fullstack React Engineer actively seeking opportunities in
-        Website Development.
+        I am a Fullstack React Engineer actively seeking full time opportunities
+        in Website Development.
         <div className="w-1/2 bg-max opacity-50 h-[1px] mt-6"></div>
       </div>
     </div>

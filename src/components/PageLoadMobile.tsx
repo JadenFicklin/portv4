@@ -20,8 +20,8 @@ export const PageLoadMobile = () => {
       />
 
       <div className="text-sm sm:text-lg italic font-light text-max max-w-80 w-[80%] mx-auto md:mx-[10%] my-16">
-        I am a Fullstack React Engineer actively seeking opportunities in
-        Website Development.
+        I am a Fullstack React Engineer actively seeking full time opportunities
+        in Website Development.
         <div className="w-1/2 bg-max opacity-50 h-[1px] mt-6"></div>
       </div>
     </div>
