@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import Video from '~/assets/videos/GroupAtWork.mp4'
 import { useThemeStore } from '~/globalState/themeStore'
-import VideoDark from '~/assets/videos/code.mp4'
 import { cn } from '~/utils/cn'
 
 type TextPositionKey = 'name' | 'profession' | 'attributes'
@@ -127,8 +126,10 @@ export const PageLoadDesktop = () => {
           (videoState === 'shrinking' || videoState === 'finished') &&
             'w-[53vw] h-screen translate-x-[-10%] translate-y-[-5%] duration-[1500ms]',
           videoState === 'finished' && 'duration-0',
+          theme === 'dark' && 'filter brightness-[85%]',
+          theme === 'binary' && 'filter brightness-[85%]',
         )}
-        src={theme === 'dark' || theme === 'binary' ? VideoDark : Video}
+        src={Video}
         autoPlay
         muted
         loop

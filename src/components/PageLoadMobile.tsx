@@ -1,5 +1,5 @@
 import { cn } from '~/utils/cn'
-import Video from '~/assets/videos/GroupAtWork.gif'
+import Group from '~/assets/images/group.jpg'
 import { useState } from 'react'
 
 export const PageLoadMobile = () => {
@@ -16,7 +16,8 @@ export const PageLoadMobile = () => {
           '-mt-20 md:-mt-10 w-[90vw] h-[60vh] object-cover opacity-0 mx-auto duration-1000',
           videoDisplayed && 'opacity-100',
         )}
-        src={Video}
+        src={Group}
+        alt="group at work"
       />
 
       <div className="text-sm sm:text-lg italic font-light text-max max-w-80 w-[80%] mx-auto md:mx-[10%] my-16">
