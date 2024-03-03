@@ -44,18 +44,18 @@ export const FAQDrawer: React.FC<FAQDrawerProps> = (props) => {
   const animatedTitle = determineDirection(splitTitle)
 
   const wrapperClasses = cn(
-    'py-8 relative group border-b border-black border-max',
+    'py-8 relative group border-b border-max cursor-pointer',
     className,
     !showUnderline && 'border-none',
   )
-  const handleClasses = 'flex items-center justify-between cursor-pointer'
+  const handleClasses = 'flex items-center justify-between'
   const hoverBorder = cn(
     'absolute bottom-0 left-0 w-0 group-hover:w-full h-0.5 bg-max duration-500 ease-in-out bg-max',
     !showUnderline && 'hidden',
   )
   return (
-    <div className={wrapperClasses}>
-      <div onClick={toggle} className={handleClasses}>
+    <div className={wrapperClasses} onClick={toggle}>
+      <div className={handleClasses}>
         <div className="flex gap-6">
           {showNumbers && (
             <AnimatedWords
@@ -69,8 +69,19 @@ export const FAQDrawer: React.FC<FAQDrawerProps> = (props) => {
           />
         </div>
         {showPlus && (
-          <div className="text-3xl font-light text-max xs:text-4xl sm:text-6xl md:text-6xl">
-            {show ? '-' : '+'}
+          <div className="relative size-7">
+            <div
+              className={cn(
+                'absolute w-full h-[3px] -translate-y-1/2 bg-max top-1/2 duration-200 rounded-full',
+                show ? 'rotate-180 ' : ' rotate-0',
+              )}
+            ></div>
+            <div
+              className={cn(
+                'absolute duration-200 w-[3px] h-full -translate-x-1/2 bg-max left-1/2 rounded-full',
+                show ? 'rotate-90 ' : ' rotate-0',
+              )}
+            ></div>
           </div>
         )}
       </div>
