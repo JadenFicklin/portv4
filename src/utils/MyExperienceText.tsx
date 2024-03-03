@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react'
 import { ExperienceArray } from '~/data/experience'
+import { cn } from '~/utils/cn'
 
 export const MyExperienceText = () => {
   const [percentages, setPercentages] = useState<number[]>([])
+  const [hoveredItem, setHoveredItem] = useState('Devmountain')
 
   const getJobPercentages = () => {
     const totalMonths = ExperienceArray.reduce(
@@ -30,22 +32,38 @@ export const MyExperienceText = () => {
   return (
     <>
       <div className="max-w-[600px]">
-        {ExperienceArray.map((item, index) => (
-          <div key={item.name}>
-            {item.name} - {item.months} months ({percentages[index]}%)
-          </div>
-        ))}
-        <div className="flex flex-wrap w-full h-5 bg-blue-500">
+        <div className="flex flex-wrap w-full h-2">
           {percentages.map((percentage, index) => (
             <div
               key={index}
               style={{ width: `${percentage}%` }}
-              className={`h-5 ${colors[index % colors.length]}`}
-            >
-              {percentage}%
-            </div>
+              className={cn(
+                `h-full ${colors[index % colors.length]} duration-200`,
+                hoveredItem === ExperienceArray[index].name &&
+                  'bg-orange-500 cursor-pointer',
+              )}
+              onMouseEnter={() => setHoveredItem(ExperienceArray[index].name)}
+            ></div>
           ))}
         </div>
+
+        {ExperienceArray.map(
+          (item) =>
+            hoveredItem === item.name && (
+              <div key={item.name}>
+                <div>Company Name: {item.name}</div>
+                <div>Timeframe: {item.timeframe}</div>
+                <div>Position: {item.position}</div>
+                <div>Responsibilities: {item.description}</div>
+                <div>
+                  technologies:{' '}
+                  {item.technologies.map((item) => (
+                    <div key={item}>{item}</div>
+                  ))}
+                </div>
+              </div>
+            ),
+        )}
       </div>
     </>
   )
