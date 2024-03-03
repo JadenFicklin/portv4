@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { persist } from 'zustand/middleware'
+import { persist, createJSONStorage } from 'zustand/middleware'
 
 type ThemeName = 'light' | 'dark' | 'binary' | 'cherryBlossom' | 'blueTheme'
 
@@ -7,6 +7,8 @@ interface ThemeState {
   theme: ThemeName
   setTheme: (themeName: ThemeName) => void
 }
+
+const storage = createJSONStorage(() => localStorage)
 
 export const useThemeStore = create<ThemeState>()(
   persist(
@@ -16,7 +18,7 @@ export const useThemeStore = create<ThemeState>()(
     }),
     {
       name: 'theme-storage',
-      getStorage: () => localStorage,
+      storage: storage,
     },
   ),
 )
