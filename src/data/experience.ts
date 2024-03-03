@@ -1,5 +1,6 @@
 type Project = {
   timeframe: string
+  months: number
   name: string
   position: string
   description: string
@@ -9,23 +10,25 @@ type Project = {
 
 export const ExperienceArray: Project[] = [
   {
-    timeframe: 'JAN 2023 - PRESENT',
-    name: 'Perspective Developer',
-    position: 'Website Developer (Fullstack)',
-    description:
-      'I work with a team of Developers to deliver high-quality, robust production code for a diverse array of projects and clients including Blck, k-12 Samudra, and Luxvesting',
+    timeframe: 'DEC 2021 - APR 2022',
+    months: 5,
+    name: 'Devmountain',
+    position: 'Website Developer (Student)',
+    description: 'Learned how to create fullstack websites',
     technologies: [
       'React',
-      'TypeScript',
-      'Gitlab',
-      'Tailwind',
       'JavaScript',
-      'Firebase',
+      'Github',
+      'CSS',
+      'HTML6',
+      'SQL',
+      'Heroku',
     ],
-    link: 'https://perspectdev.com/',
+    link: 'https://devmountain.com/',
   },
   {
     timeframe: 'MAY 2022 - DEC 2022',
+    months: 7,
     name: 'Freelance Developer',
     position: 'Website Developer (Fullstack)',
     description:
@@ -41,19 +44,20 @@ export const ExperienceArray: Project[] = [
     link: 'https://www.linkedin.com/in/jaden-ficklin-b1686a21a/',
   },
   {
-    timeframe: 'DEC 2021 - APR 2022',
-    name: 'Devmountain',
-    position: 'Website Developer (Student)',
-    description: 'Learned how to create fullstack websites',
+    timeframe: 'JAN 2023 - PRESENT',
+    months: 14,
+    name: 'Perspective Developer',
+    position: 'Website Developer (Fullstack)',
+    description:
+      'I work with a team of Developers to deliver high-quality, robust production code for a diverse array of projects and clients including Blck, k-12 Samudra, and Luxvesting',
     technologies: [
       'React',
+      'TypeScript',
+      'Gitlab',
+      'Tailwind',
       'JavaScript',
-      'Github',
-      'CSS',
-      'HTML6',
-      'SQL',
-      'Heroku',
+      'Firebase',
     ],
-    link: 'https://devmountain.com/',
+    link: 'https://perspectdev.com/',
   },
 ]
