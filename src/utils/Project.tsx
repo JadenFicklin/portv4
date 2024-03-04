@@ -152,17 +152,7 @@ export const Project: React.FC<ProjectProps> = ({
                 ></div>
               </div>
               {/* text */}
-              <FAQDrawer
-                key={name}
-                number={0}
-                showNumbers={false}
-                showPlus={false}
-                showUnderline={false}
-                title={name}
-              >
-                <p></p>
-              </FAQDrawer>
-              {/* <div className="text-3xl sm:text-4xl">{name}</div> */}
+              <div className="text-3xl sm:text-5xl text-max">{name}</div>
               <div className="py-8 max-w-96 text-max">{description}</div>
               <div className="flex flex-wrap gap-2 max-w-96">
                 {technologies.map((tech, index) => (

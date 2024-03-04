@@ -23,8 +23,8 @@ const CursorFollow: React.FC<CursorFollowProps> = ({
     if (hoverContainer.current) {
       const rect = hoverContainer.current.getBoundingClientRect()
       setCursorPosition({
-        x: e.clientX - rect.left + offsetX, // Apply offsetX here
-        y: e.clientY - rect.top + offsetY, // Apply offsetY here
+        x: e.clientX - rect.left + offsetX,
+        y: e.clientY - rect.top + offsetY,
       })
     }
   }
