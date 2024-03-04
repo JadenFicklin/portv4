@@ -3,7 +3,7 @@ import { FAQDrawer } from '~/components/FAQDrawer'
 import { skillsArray } from '~/data/Skills'
 import { cn } from '~/utils/cn'
 import { HowItStartedText } from '~/utils/HowItStartedText'
-import { MyExperienceText } from '~/utils/MyExperienceText'
+// import { MyExperienceText } from '~/utils/MyExperienceText'
 import { MyInterestsText } from '~/utils/MyInterestsText'
 
 export const About = () => {
@@ -47,14 +47,14 @@ export const About = () => {
         </div>
       ),
     },
-    {
-      title: 'My Experience',
-      content: (
-        <div className="py-10" onMouseLeave={() => setImage('')}>
-          <MyExperienceText />
-        </div>
-      ),
-    },
+    // {
+    //   title: 'My Experience',
+    //   content: (
+    //     <div className="py-10" onMouseLeave={() => setImage('')}>
+    //       <MyExperienceText />
+    //     </div>
+    //   ),
+    // },
   ]
 
   return (

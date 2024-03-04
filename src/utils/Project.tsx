@@ -1,5 +1,7 @@
-import { useEffect, useState } from 'react'
+import React, { useState, useEffect } from 'react'
+
 import { FAQDrawer } from '~/components/FAQDrawer'
+import CursorFollow from '~/utils/CursorFollow'
 import { cn } from '~/utils/cn'
 
 type ProjectType = {
@@ -49,18 +51,31 @@ export const Project: React.FC<ProjectProps> = ({
     }, 2000)
   }
 
+  const handleMouseEnter = () => {
+    const cursorFollower = document.querySelector(
+      '.cursor-follower',
+    ) as HTMLElement
+    if (cursorFollower) {
+      cursorFollower.style.transform = 'translate(-50%, -50%) scale(1)'
+    }
+  }
+
+  const handleMouseLeave = () => {
+    const cursorFollower = document.querySelector(
+      '.cursor-follower',
+    ) as HTMLElement
+    if (cursorFollower) {
+      cursorFollower.style.transform = 'translate(-50%, -50%) scale(0)'
+    }
+  }
+
   useEffect(() => {
     const handleResize = () => {
       setIsNarrowScreen(window.innerWidth < 1000)
     }
-
-    // Set up the event listener
     window.addEventListener('resize', handleResize)
-
-    // Call the handler right away so state gets updated with initial window size
     handleResize()
 
-    // Remove event listener on cleanup
     return () => window.removeEventListener('resize', handleResize)
   }, [])
 
@@ -85,12 +100,15 @@ export const Project: React.FC<ProjectProps> = ({
             isNarrowScreen && 'order-2',
           )}
         >
+          {!isNarrowScreen && <CursorFollow text="View Site" />}
           <a
-            className="relative flex items-center w-full duration-200 lg:w-10/12 h-[35vh] md:h-[45vh] lg:h-[55vh] xxl:h-[75vh] mt-10 lg:mt-0 hover:p-1 md:hover:p-2 lg:hover:p-3"
+            className="relative lg:cursor-none flex items-center w-full duration-150 lg:w-10/12 h-[35vh] md:h-[45vh] lg:h-[55vh] xxl:h-[75vh] mt-10 lg:mt-0 hover:p-1 md:hover:p-2 lg:hover:p-3"
             href={link}
             target="_blank"
             rel="noreferrer"
             style={divStyle}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
           >
             <div className="absolute inset-0 bg-black bg-opacity-10 border-[1px] border-black border-opacity-20 backdrop-filter backdrop-blur-sm"></div>
             <img
