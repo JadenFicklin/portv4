@@ -16,18 +16,24 @@ export const HowItStartedText: React.FC<HowItStartedProps> = (props) => {
         when I tried my hand at website development it was a perfect fit.{' '}
         <br></br>
         <br></br>As a dedicated{' '}
-        <span
+        <a
           onMouseEnter={() => setImage(devmountain)}
           className="font-semibold cursor-pointer"
+          href="https://devmountain.com/"
+          target="_blank"
+          rel="noreferrer"
         >
           Devmountain
-        </span>{' '}
-        <span
+        </a>{' '}
+        <a
+          href="https://www.linkedin.com/feed/update/urn:li:activity:6918308644237312000/"
+          target="_blank"
+          rel="noreferrer"
           onMouseEnter={() => setImage(graduate)}
           className="font-semibold cursor-pointer"
         >
           Graduate
-        </span>{' '}
+        </a>{' '}
         I have a passion for seeing data translated into beautiful UI. I thrive
         when I can see myself and team members achieve our shared professional
         goals.

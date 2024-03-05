@@ -155,7 +155,7 @@ export const Contact = () => {
                 href="https://github.com/JadenFicklin"
                 target="_blank"
                 rel="noreferrer"
-                className="mx-2 duration-150 text-custom hover:text-hover-accent"
+                className="relative top-0 mx-2 duration-150 hover:-top-1 text-custom hover:text-hover-accent"
               >
                 Github
               </a>{' '}
@@ -164,7 +164,7 @@ export const Contact = () => {
                 href="https://www.linkedin.com/in/jaden-ficklin-b1686a21a/"
                 target="_blank"
                 rel="noreferrer"
-                className="mx-2 duration-150 text-custom hover:text-hover-accent"
+                className="relative top-0 mx-2 duration-150 hover:-top-1 text-custom hover:text-hover-accent"
               >
                 Linkedin
               </a>{' '}
@@ -173,14 +173,14 @@ export const Contact = () => {
                 href="https://docs.google.com/document/d/1QVo9-KNAfNvJGrWKi83bLLg9VnD8pmwkMbX9GV65tzc/edit?usp=sharing"
                 target="_blank"
                 rel="noreferrer"
-                className="mx-2 duration-150 text-custom hover:text-hover-accent"
+                className="relative top-0 mx-2 duration-150 hover:-top-1 text-custom hover:text-hover-accent"
               >
                 Resume
               </a>
             </div>
             <a
               href="mailto:fullstackjaden@gmail.com"
-              className="mt-4 duration-150 cursor-pointer lg:mt-0 lg:ml-10 text-custom hover:text-hover-accent"
+              className="relative top-0 mt-4 duration-150 cursor-pointer hover:-top-1 lg:mt-0 lg:ml-10 text-custom hover:text-hover-accent"
             >
               FullstackJaden@gmail.com
             </a>
