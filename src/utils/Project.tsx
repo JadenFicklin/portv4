@@ -3,6 +3,7 @@ import CursorFollow from '~/utils/CursorFollow'
 import WithVisibility from '~/utils/WithVisibility'
 import { cn } from '~/utils/cn'
 import { LiaHandPointer } from 'react-icons/lia'
+import { useThemeStore } from '~/globalState/themeStore'
 
 type ProjectType = {
   name: string
@@ -35,6 +36,7 @@ export const Project: React.FC<ProjectProps> = ({
   const [flagAnimationState, setFlagAnimationState] = useState('')
   const [isNarrowScreen, setIsNarrowScreen] = useState(window.innerWidth < 1000)
   const [hasAnimatedOnce, setHasAnimatedOnce] = useState(false)
+  const { theme } = useThemeStore()
 
   const divStyle = {
     backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(${image})`,
@@ -182,7 +184,11 @@ export const Project: React.FC<ProjectProps> = ({
                 {technologies.map((tech, index) => (
                   <div
                     key={index}
-                    className="px-3 py-1 text-sm rounded-full text-custom bg-max/40"
+                    className={cn(
+                      'px-3 py-1 text-sm rounded-full text-custom bg-max/60',
+                      theme === 'binary' && 'bg-max/20',
+                      theme === 'dark' && 'bg-max/20',
+                    )}
                   >
                     {tech}
                   </div>
