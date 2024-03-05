@@ -1,29 +1,26 @@
 import React, { useRef, useEffect, ReactNode } from 'react'
-import { useElementVisibleStore } from '~/globalState/elementVisibleStore'
 
 interface WithVisibilityProps {
   children: ReactNode
   position?: number
-  name?: string // name can potentially be undefined
+  name?: string
+  onVisibilityChange?: (isVisible: boolean, name: string) => void
 }
 
 const WithVisibility: React.FC<WithVisibilityProps> = ({
   children,
   position = 0,
-  name = 'UnnamedComponent', // Provide a default name here if you prefer
+  name = 'UnnamedComponent',
+  onVisibilityChange,
 }) => {
   const componentRef = useRef<HTMLDivElement>(null)
-  const { setVisibleElement } = useElementVisibleStore()
 
   useEffect(() => {
     const currentElement = componentRef.current
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting && name) {
-          // Check that name is not undefined
-          setVisibleElement(name)
-        }
+        onVisibilityChange?.(entry.isIntersecting, name)
       },
       {
         root: null,
@@ -41,7 +38,7 @@ const WithVisibility: React.FC<WithVisibilityProps> = ({
         observer.unobserve(currentElement)
       }
     }
-  }, [position, name, setVisibleElement])
+  }, [position, name, onVisibilityChange])
 
   return <div ref={componentRef}>{children}</div>
 }
