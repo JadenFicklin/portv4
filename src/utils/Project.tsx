@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react'
-
-import { FAQDrawer } from '~/components/FAQDrawer'
 import CursorFollow from '~/utils/CursorFollow'
 import { cn } from '~/utils/cn'
 
