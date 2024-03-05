@@ -1,4 +1,4 @@
-import React, { useRef, useState, FormEvent } from 'react'
+import { useRef, useState, FormEvent } from 'react'
 import { cn } from '~/utils/cn'
 import emailjs from '@emailjs/browser'
 import { BsFillCheckCircleFill } from 'react-icons/bs'
@@ -6,14 +6,18 @@ import { BsFillCheckCircleFill } from 'react-icons/bs'
 export const Contact = () => {
   const form = useRef<HTMLFormElement>(null)
   const [success, setSuccess] = useState(false)
+  const [failed, setFailed] = useState(false)
   const inputStyling =
-    'w-full pt-2 pb-3 mt-5 text-custom duration-200 bg-opacity-0 border-b border-opacity-50 outline-none bg-accent border-custom hover:border-opacity-100 focus:border-opacity-100'
+    'w-full pt-2 pb-3 mt-5 text-custom duration-200 bg-opacity-0 border-b border-opacity-50 outline-none bg-accent border-custom hover:border-opacity-100 focus:border-opacity-100 placeholder-custom'
 
   const messageSent = () => {
     setSuccess(true)
     setTimeout(() => {
       setSuccess(false)
     }, 2000)
+  }
+  const messageFailed = () => {
+    setFailed(true)
   }
 
   const sendEmail = (e: FormEvent<HTMLFormElement>) => {
@@ -34,13 +38,14 @@ export const Contact = () => {
         .then(
           (result) => {
             messageSent()
-            console.log(result.text)
-            console.log('message sent successfully!')
-            e.currentTarget.reset() // Use currentTarget for type safety
+            console.log('message sent successfully! ' + result.text)
+            form.current?.reset()
           },
           (error) => {
-            console.log('message did not send')
-            console.log(error.text)
+            messageFailed()
+            console.log(
+              'message faild to send with error code of ' + error.text,
+            )
           },
         )
     }
@@ -51,13 +56,41 @@ export const Contact = () => {
       <div
         className={cn(
           success
-            ? 'bg-background border-green border-[1px]  w-96 h-20 shadow-xl rounded-lg fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-wrap content-center justify-center duration-300 z-50'
+            ? 'bg-min border-max border-[1px] w-96 h-20 shadow-xl rounded-lg fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-wrap content-center justify-center duration-300 z-50'
             : 'hidden',
         )}
       >
-        <p className="text-[22px] text-green h-min">Successfully sent! </p>
+        <p className="text-[22px] text-max h-min">Successfully sent! </p>
         <div className="w-8 h-8 ml-6">
-          <BsFillCheckCircleFill className="inline w-full h-full fill-green" />
+          <BsFillCheckCircleFill className="inline w-full h-full fill-max" />
+        </div>
+      </div>
+      {/* PI5SHpV0KCPvYoK41 */}
+      <div
+        className={cn(
+          failed
+            ? 'bg-min border-max border-[1px] w-96 text-center py-10 shadow-xl rounded-lg fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-wrap content-center justify-center duration-300 z-50 '
+            : 'hidden',
+        )}
+      >
+        <div className="text-[22px] text-max h-min">
+          Failed to send<br></br>
+          <br></br>
+          <span className="text-lg">
+            contact me at <br></br>
+            <a
+              href="mailto:fullstackjaden@gmail.com"
+              className="text-xl font-semibold"
+            >
+              FullstackJaden@gmail.com
+            </a>{' '}
+          </span>
+        </div>
+        <div
+          className="absolute grid duration-150 border rounded-full cursor-pointer -top-3 -right-3 size-8 bg-min border-max text-max place-content-center hover:bg-max hover:border-min hover:text-min"
+          onClick={() => setFailed(false)}
+        >
+          X
         </div>
       </div>
       <div className="relative grid w-full border-t lg:grid-cols-2 bg-accent text-min border-custom min-h-[calc(100vh-64px)]">
