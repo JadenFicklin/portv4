@@ -27,7 +27,7 @@ export const MyInterestsText: React.FC<MyInterestsTextProps> = ({
   )
 
   return (
-    <div className="max-w-[600px] md:ml-12">
+    <div className="max-w-[900px] md:ml-12">
       Besides admiring websites on{' '}
       <InterestSpan name="Awwwards.com" image={awwwards} /> I enjoy playing open
       world games like <InterestSpan name="Breath of the Wild" image={botw} />,{' '}

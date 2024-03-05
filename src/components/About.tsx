@@ -37,7 +37,7 @@ export const About = () => {
     {
       title: 'Tech stack',
       content: (
-        <div className="flex flex-wrap py-10 max-w-[600px] md:ml-12">
+        <div className="flex flex-wrap py-10 max-w-[900px] md:ml-12">
           {skillsArray.map((skill) => (
             <div
               key={skill.name}
@@ -68,7 +68,7 @@ export const About = () => {
 
   return (
     <>
-      <div className="w-[90%] h-min mx-[5%] mt-32 xxl:mt-[650px] flex flex-wrap ">
+      <div className="w-[90%] h-min mx-[5%] mt-32 xxl:mt-[750px] flex flex-wrap ">
         <h2 className="w-full pb-3 text-3xl border-b-2 border-opacity-50 xs:text-4xl sm:text-6xl md:text-7xl text-max border-max">
           About
         </h2>
