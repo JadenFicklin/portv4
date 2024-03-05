@@ -1,8 +1,7 @@
 import { HeroDesktop } from '~/components/HeroDesktop'
 import { HeroMobile } from '~/components/HeroMobile'
 import { Nav } from '~/components/Nav'
-import { PageLoadDesktop } from '~/components/PageLoadDesktop'
-import { PageLoadMobile } from '~/components/PageLoadMobile'
+import { PageLoad } from '~/components/PageLoad'
 import { About } from '~/components/About'
 import { Works } from '~/components/Works'
 import { ProjectsSlider } from '~/components/ProjectsSlider'
@@ -17,8 +16,7 @@ export const Landing = () => {
       <HeroMobile />
 
       {/* page load */}
-      <PageLoadDesktop />
-      <PageLoadMobile />
+      <PageLoad />
 
       {/* about */}
       <GetScrollPosition position={-150} name="About">

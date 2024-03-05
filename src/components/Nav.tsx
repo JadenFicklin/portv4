@@ -25,12 +25,9 @@ export const Nav = () => {
   ]
 
   useEffect(() => {
-    setTimeout(
-      () => {
-        setDisplayNav(true)
-      },
-      window.innerWidth > 1400 && normalDisplaySpeed ? 7000 : 500,
-    )
+    setTimeout(() => {
+      setDisplayNav(true)
+    }, 500)
   }, [normalDisplaySpeed])
 
   const handleNavClick = (to: number) => {
