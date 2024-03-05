@@ -8,6 +8,7 @@ import Portv2Full from '~/assets/images/projectsSlider/portv2Full.jpg'
 import svgFull from '~/assets/images/projectsSlider/svgFull.jpg'
 import { Link } from 'react-router-dom'
 import HoverArchive from '~/utils/HoverArchive'
+import { LiaHandPointer } from 'react-icons/lia'
 
 export const ProjectsSlider = () => {
   const [scrollY, setScrollY] = useState({ down: 0, up: 0 })
@@ -44,10 +45,15 @@ export const ProjectsSlider = () => {
   return (
     <>
       <div className="relative opacity-0 -top-[80vh]" ref={parentRef}></div>
-      <HoverArchive offsetX={0} offsetY={0} text="View Archive">
+      <HoverArchive
+        offsetX={0}
+        offsetY={0}
+        text="View Archive"
+        icon={<LiaHandPointer className="w-full h-full" />}
+      >
         <Link
           to="/archive"
-          className="w-full h-[60vh] cursor-pointer md:h-[80vh] xl:h-[150vh] bg-black bg-opacity-90 overflow-hidden grid grid-cols-4 gap-4 px-4 relative"
+          className="w-full h-[60vh] cursor-none md:h-[80vh] xl:h-[150vh] bg-black bg-opacity-90 overflow-hidden grid grid-cols-4 gap-4 px-4 relative"
         >
           <div
             className="flex flex-wrap gap-4 h-max"

@@ -87,10 +87,10 @@ export const Contact = () => {
           </span>
         </div>
         <div
-          className="absolute grid duration-150 border rounded-full cursor-pointer -top-3 -right-3 size-8 bg-min border-max text-max place-content-center hover:bg-max hover:border-min hover:text-min"
+          className="absolute grid text-3xl duration-150 rotate-45 border rounded-full cursor-pointer -top-3 -right-3 size-8 bg-min border-max text-max place-content-center hover:bg-max hover:border-min hover:text-min"
           onClick={() => setFailed(false)}
         >
-          X
+          <p className="translate-x-[-.5px] -translate-y-[2.5px]">+</p>
         </div>
       </div>
       <div className="relative grid w-full border-t lg:grid-cols-2 bg-accent text-min border-custom min-h-[calc(100vh-64px)]">

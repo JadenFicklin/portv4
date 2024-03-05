@@ -6,6 +6,7 @@ interface CursorFollowProps {
   offsetX: number
   offsetY: number
   children: ReactNode
+  icon: React.ReactNode
 }
 
 const CursorFollow: React.FC<CursorFollowProps> = ({
@@ -13,6 +14,7 @@ const CursorFollow: React.FC<CursorFollowProps> = ({
   offsetX,
   offsetY,
   text,
+  icon,
 }) => {
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 })
   const [isNarrowScreen, setIsNarrowScreen] = useState(window.innerWidth < 1000)
@@ -51,16 +53,20 @@ const CursorFollow: React.FC<CursorFollowProps> = ({
       {isHovered && (
         <div
           className={cn(
-            'absolute z-50 grid bg-[#000000be] rounded-full pointer-events-none size-28 place-content-center duration-150 text-white',
+            'absolute z-50 grid bg-[#000000be] rounded-full pointer-events-none size-28 place-content-center duration-[100ms] text-white',
             isNarrowScreen && 'hidden',
           )}
           style={{
             left: `${cursorPosition.x}px`,
             top: `${cursorPosition.y}px`,
             transform: 'translate(-50%, -50%)',
+            backdropFilter: 'blur(5px)',
           }}
         >
           {text}
+          <div className="absolute -translate-x-1/2 -translate-y-1/2 top-[76px] left-1/2 size-6 opacity-50">
+            {icon}
+          </div>
         </div>
       )}
     </div>

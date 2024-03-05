@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import CursorFollow from '~/utils/CursorFollow'
 import WithVisibility from '~/utils/WithVisibility'
 import { cn } from '~/utils/cn'
+import { LiaHandPointer } from 'react-icons/lia'
 
 type ProjectType = {
   name: string
@@ -100,7 +101,12 @@ export const Project: React.FC<ProjectProps> = ({
             isNarrowScreen && 'order-2',
           )}
         >
-          {!isNarrowScreen && <CursorFollow text="View site" />}
+          {!isNarrowScreen && (
+            <CursorFollow
+              text="View site"
+              icon={<LiaHandPointer className="w-full h-full" />}
+            />
+          )}
           <a
             className="relative lg:cursor-none flex items-center w-full duration-150 lg:w-10/12 h-[35vh] md:h-[45vh] lg:h-[55vh] xxl:h-[75vh] mt-10 lg:mt-0 hover:p-1 md:hover:p-2 lg:hover:p-3"
             href={link}
