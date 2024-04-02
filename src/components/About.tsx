@@ -4,7 +4,7 @@ import { skillsArray } from '~/data/Skills'
 import { useThemeStore } from '~/globalState/themeStore'
 import { cn } from '~/utils/cn'
 import { HowItStartedText } from '~/utils/HowItStartedText'
-// import { MyExperienceText } from '~/utils/MyExperienceText'
+import { Links } from '~/utils/Links'
 import { MyInterestsText } from '~/utils/MyInterestsText'
 
 export const About = () => {
@@ -56,14 +56,10 @@ export const About = () => {
         </div>
       ),
     },
-    // {
-    //   title: 'My Experience',
-    //   content: (
-    //     <div className="py-10" onMouseLeave={() => setImage('')}>
-    //       <MyExperienceText />
-    //     </div>
-    //   ),
-    // },
+    {
+      title: 'Links',
+      content: <Links />,
+    },
   ]
 
   return (

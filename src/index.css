@@ -52,7 +52,6 @@ input:-webkit-autofill:active {
   color: white !important;
 }
 
-/* styles.css */
 .hover-effect {
   transition: transform 0.3s ease;
 }
