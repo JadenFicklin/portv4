@@ -7,6 +7,8 @@ import { useThemeStore } from '~/globalState/themeStore'
 type ProjectType = {
   name: string
   description: string
+  email?: string
+  password?: string
   technologies: string[]
   image: string
   link: string
@@ -31,7 +33,7 @@ export const Project: React.FC<ProjectProps> = ({
   orientation,
   className,
 }) => {
-  const { name, description, technologies, image, link } = data
+  const { name, description, email, password, technologies, image, link } = data
   const [flagAnimationState, setFlagAnimationState] = useState('')
   const [isNarrowScreen, setIsNarrowScreen] = useState(window.innerWidth < 1000)
   const [hasAnimatedOnce, setHasAnimatedOnce] = useState(false)
@@ -173,7 +175,22 @@ export const Project: React.FC<ProjectProps> = ({
               </WithVisibility>
               {/* text */}
               <div className="text-3xl sm:text-5xl text-max">{name}</div>
-              <div className="py-8 max-w-96 text-max">{description}</div>
+              <div className="py-8">
+                <div className=" max-w-96 text-max">{description}</div>
+                {email && (
+                  <div className="py-3">
+                    <div className="text-max">
+                      View website with credentials listed below
+                    </div>
+                    <div className=" text-max">
+                      Email:<span className="font-bold">{email}</span>
+                    </div>
+                    <div className=" text-max">
+                      Password:<span className="font-bold"> {password}</span>
+                    </div>
+                  </div>
+                )}
+              </div>
               <div className="flex flex-wrap gap-2 max-w-96">
                 {technologies.map((tech, index) => (
                   <div

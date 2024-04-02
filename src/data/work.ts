@@ -5,6 +5,8 @@ import SVGLibrary from '~/assets/images/SVGLibrary.jpg'
 export type ProjectProps = {
   name: string
   description: string
+  email?: string
+  password?: string
   technologies: string[]
   image: string
   link: string
@@ -23,6 +25,8 @@ export const WorkArray: ProjectProps[] = [
     name: 'Pinay Soulmate',
     description:
       'A dating website built to connect foreigners and people in the Philippines. Users can create accounts, filter, like, favorite, message other users, and purchase monthly memberships.',
+    email: ' abc@gmail.com',
+    password: 'PortfolioKey#24',
     technologies: [
       'React',
       'Javascript',
