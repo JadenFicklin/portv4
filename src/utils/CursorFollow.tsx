@@ -5,11 +5,10 @@ import React from 'react'
 
 interface CursorFollowProps {
   text: string
-  icon: React.ReactNode
 }
 
 // Use React.FC for a functional component with defined props
-const CursorFollow: React.FC<CursorFollowProps> = ({ text, icon }) => {
+const CursorFollow: React.FC<CursorFollowProps> = ({ text }) => {
   const [position, setPosition] = useState({ x: 0, y: 0 })
 
   useEffect(() => {
@@ -41,9 +40,6 @@ const CursorFollow: React.FC<CursorFollowProps> = ({ text, icon }) => {
       className="grid font-medium text-white cursor-follower place-content-center"
     >
       {text}
-      <div className="absolute -translate-x-1/2 -translate-y-1/2 top-[70px] left-1/2 size-6 opacity-50">
-        {icon}
-      </div>
     </div>
   )
 }

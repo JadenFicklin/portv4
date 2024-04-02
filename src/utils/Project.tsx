@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import CursorFollow from '~/utils/CursorFollow'
 import WithVisibility from '~/utils/WithVisibility'
 import { cn } from '~/utils/cn'
-import { LiaHandPointer } from 'react-icons/lia'
 import { useThemeStore } from '~/globalState/themeStore'
 
 type ProjectType = {
@@ -103,14 +102,9 @@ export const Project: React.FC<ProjectProps> = ({
             isNarrowScreen && 'order-2',
           )}
         >
-          {!isNarrowScreen && (
-            <CursorFollow
-              text="View site"
-              icon={<LiaHandPointer className="w-full h-full" />}
-            />
-          )}
+          {!isNarrowScreen && <CursorFollow text="View site" />}
           <a
-            className="relative lg:cursor-none flex items-center w-full duration-150 lg:w-10/12 h-[35vh] md:h-[45vh] lg:h-[55vh] xxl:h-[75vh] mt-10 lg:mt-0 hover:p-1 md:hover:p-2 lg:hover:p-3"
+            className="relative lg:cursor-none flex items-center w-full duration-150 lg:w-10/12 h-[35vh] md:h-[45vh] lg:h-[55vh] xxl:h-[75vh] mt-10 lg:mt-0 hover-effect group"
             href={link}
             target="_blank"
             rel="noreferrer"
@@ -122,7 +116,7 @@ export const Project: React.FC<ProjectProps> = ({
             <img
               src={image}
               alt={name}
-              className="relative z-10 w-10/12 mx-auto border-[1px] border-black border-opacity-20"
+              className="relative z-10 w-10/12 mx-auto border-[1px] border-black border-opacity-20 group-hover:scale-95 duration-300"
             />
           </a>
         </div>

@@ -51,3 +51,12 @@ input:-webkit-autofill:active {
   transition: background-color 5000s ease-in-out 0s, color 5000s ease-in-out 0s;
   color: white !important;
 }
+
+/* styles.css */
+.hover-effect {
+  transition: transform 0.3s ease;
+}
+
+.hover-effect:hover {
+  transform: scale(1.02);
+}
