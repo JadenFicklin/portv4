@@ -193,7 +193,7 @@ export const Project: React.FC<ProjectProps> = ({
                 {email && (
                   <div className="py-3">
                     <div className="text-max">
-                      View website with credentials listed below
+                      Enter website with credentials listed below
                     </div>
                     <div className=" text-max">
                       Email:<span className="font-bold">{email}</span>
