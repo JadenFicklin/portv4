@@ -28,7 +28,7 @@ export const projectArchiveArray: Project[] = [
     project: 'Portfolio V4',
     madeAt: 'Freelance',
     builtWith: ['React', 'Javascript', 'Tailwind', 'Vercel'],
-    link: 'https://jadenficklin2.com/',
+    link: 'https://jadenficklin.com/',
     image: v4,
   },
   {
@@ -36,7 +36,7 @@ export const projectArchiveArray: Project[] = [
     project: 'Portfolio V3',
     madeAt: 'Freelance',
     builtWith: ['React', 'Javascript', 'Tailwind', 'Netlify'],
-    link: 'https://jadenficklin.com/',
+    link: 'https://jadenv3.netlify.app/',
     image: v3,
   },
   {
@@ -92,7 +92,7 @@ export const projectArchiveArray: Project[] = [
     project: 'Portfolio V2',
     madeAt: 'Freelance',
     builtWith: ['React', 'Javascript', 'Tailwind', 'Firebase'],
-    link: 'https://jaden-ficklin.web.app/',
+    link: 'https://jadenv2.netlify.app/',
     image: v2,
   },
   {
@@ -116,7 +116,7 @@ export const projectArchiveArray: Project[] = [
     project: 'Portfolio V1',
     madeAt: 'Freelance',
     builtWith: ['React', 'Javascript', 'CSS', 'Netlify'],
-    link: 'https://jadenficklin.netlify.app',
+    link: 'https://jadenv1.netlify.app/',
     image: v1,
   },
   {
