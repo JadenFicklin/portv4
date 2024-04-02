@@ -2,6 +2,7 @@ import { useRef, useState, FormEvent } from 'react'
 import { cn } from '~/utils/cn'
 import emailjs from '@emailjs/browser'
 import { BsFillCheckCircleFill } from 'react-icons/bs'
+import { Button } from '~/utils/Button'
 
 export const Contact = () => {
   const form = useRef<HTMLFormElement>(null)
@@ -137,12 +138,7 @@ export const Contact = () => {
               name="message"
               className={cn(inputStyling, 'min-h-32 max-h-52 pb-20 ')}
             />
-            <button
-              type="submit"
-              className="px-6 py-1 mt-10 rounded-full bg-accentLight text-max"
-            >
-              Submit Message
-            </button>
+            <Button text="Submit Message" />
           </form>
         </div>
 
