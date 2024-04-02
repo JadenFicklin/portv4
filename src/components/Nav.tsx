@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react'
-import { useElementsLocationStore } from '~/globalState/elementsLocationStore' // Adjust the path as necessary
+import { useElementsLocationStore } from '~/globalState/elementsLocationStore'
 import { HoverText } from '~/utils/HoverText'
 import { cn } from '~/utils/cn'
 import Video from '~/assets/videos/GroupAtWork.mp4'
 import { Theme } from '~/utils/Theme'
+import { Link } from 'react-router-dom'
 
 export const Nav = () => {
   const normalDisplaySpeed = true
@@ -17,10 +18,18 @@ export const Nav = () => {
     contact: state.contact,
   }))
 
-  const navOptions = [
+  interface NavOption {
+    name: string
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    to: any
+    isRoute?: boolean
+  }
+
+  const navOptions: NavOption[] = [
     { name: 'Home', to: 0 },
     { name: 'About', to: about },
     { name: 'Work', to: work },
+    { name: 'Archive', to: '/archive', isRoute: true },
     { name: 'Contact', to: contact },
   ]
 
@@ -30,12 +39,14 @@ export const Nav = () => {
     }, 500)
   }, [normalDisplaySpeed])
 
-  const handleNavClick = (to: number) => {
-    window.scrollTo({
-      top: to,
-      behavior: 'smooth',
-    })
-    setMenuClicked(false)
+  const handleNavClick = (to: string | number, isRoute: boolean = false) => {
+    if (!isRoute) {
+      window.scrollTo({
+        top: typeof to === 'number' ? to : 0,
+        behavior: 'smooth',
+      })
+      setMenuClicked(false)
+    }
   }
 
   return (
@@ -110,21 +121,36 @@ export const Nav = () => {
           muted
           loop
         />
-        <div className="pl-[8%] pt-24 md:left-[45%] md:pl-0 md:pt-0 md:top-1/4 md:absolute">
-          {navOptions.map((option, index) => (
-            <div
-              key={index}
-              onClick={() => handleNavClick(option.to)}
-              className="cursor-pointer"
-            >
-              <HoverText
-                wrapperClassName="hover:pl-10"
-                className="text-3xl font-semibold tracking-wider cursor-pointer xs:text-5xl sm:text-6xl md:text-8xl "
-                text={option.name}
-                speed={50}
-              />
-            </div>
-          ))}
+        <div className="pl-[8%] pt-24 md:left-[45%] md:pl-0 md:pt-0 md:top-[19%] md:absolute">
+          {navOptions.map((option, index) => {
+            if (option.isRoute) {
+              return (
+                <Link key={index} to={option.to} className="cursor-pointer">
+                  <HoverText
+                    wrapperClassName="hover:pl-10"
+                    className="text-3xl font-semibold tracking-wider cursor-pointer xs:text-5xl sm:text-6xl md:text-8xl"
+                    text={option.name}
+                    speed={50}
+                  />
+                </Link>
+              )
+            } else {
+              return (
+                <div
+                  key={index}
+                  onClick={() => handleNavClick(option.to)}
+                  className="cursor-pointer"
+                >
+                  <HoverText
+                    wrapperClassName="hover:pl-10"
+                    className="text-3xl font-semibold tracking-wider cursor-pointer xs:text-5xl sm:text-6xl md:text-8xl"
+                    text={option.name}
+                    speed={50}
+                  />
+                </div>
+              )
+            }
+          })}
         </div>
 
         <div className="text-custom pl-[8%] bottom-32 md:left-[45%] md:pl-0 md:pt-0 md:top-[90%] absolute">
