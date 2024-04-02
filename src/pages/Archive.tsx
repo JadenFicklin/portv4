@@ -5,7 +5,7 @@ import { projectArchiveArray } from '~/data/projectArchive'
 import { IoMdArrowForward } from 'react-icons/io'
 import { cn } from '~/utils/cn'
 import { useElementsLocationStore } from '~/globalState/elementsLocationStore'
-import { Nav } from '~/components/Nav'
+import { useThemeStore } from '~/globalState/themeStore'
 
 type ProjectProps = {
   year: number
@@ -20,6 +20,7 @@ export const Archive = () => {
   const [currentImage, setCurrentImage] = useState('')
   const [imageLoading, setImageLoading] = useState(true)
   const navigate = useNavigate()
+  const { theme } = useThemeStore()
 
   const { archive } = useElementsLocationStore((state) => ({
     archive: state.archive,
@@ -56,7 +57,6 @@ export const Archive = () => {
 
   return (
     <>
-      <Nav />
       {currentImage && !imageLoading && (
         <img
           src={currentImage}
@@ -87,7 +87,7 @@ export const Archive = () => {
 
             <table className="w-full mt-12 text-left border-collapse">
               <thead className="px-6 py-5 border-b text-max border-max">
-                <th className="py-4 pr-8 text-sm font-semibold">Year</th>
+                <th className="py-4 pl-3 pr-8 text-sm font-semibold">Year</th>
                 <th className="py-4 pr-8 text-sm font-semibold">Project</th>
                 <th className="hidden py-4 pr-8 text-sm font-semibold lg:table-cell">
                   Made at
@@ -107,7 +107,7 @@ export const Archive = () => {
                     onMouseEnter={() => handleMouseEnter(item.image)}
                     onMouseLeave={() => setCurrentImage('')}
                   >
-                    <td className="py-4 pr-4 text-sm align-top md:translate-y-1">
+                    <td className="py-4 pl-3 pr-4 text-sm align-top md:translate-y-1">
                       <div className="translate-y-px">{item.year}</div>
                     </td>
                     <td className="py-4 pr-4 font-semibold leading-snug align-top">
@@ -151,12 +151,23 @@ export const Archive = () => {
                         href={item.link}
                         target="_blank"
                         rel="noreferrer"
-                        className="relative flex mb-1 text-base font-medium text-light group-hover:text-hover-accent"
+                        className={cn(
+                          'relative flex mb-1 text-base font-medium text-light group-hover:text-hover-accent',
+                          theme === 'dark' &&
+                            'group-hover:text-black group-hover:font-semibold',
+                          theme === 'blueTheme' &&
+                            'group-hover:text-white group-hover:font-semibold',
+                          theme === 'cherryBlossom' && 'group-hover:text-white',
+                        )}
                       >
                         {item.link}{' '}
                         <IoMdArrowForward
                           className={cn(
                             'rotate-[-45deg] relative -bottom-[6px] left-1 group-hover:bottom-[-3px] group-hover:left-[8px] duration-300 group-hover:fill-hover-accent',
+                            theme === 'dark' && 'group-hover:fill-black',
+                            theme === 'blueTheme' && 'group-hover:fill-white',
+                            theme === 'cherryBlossom' &&
+                              'group-hover:fill-white',
                           )}
                         />
                       </a>

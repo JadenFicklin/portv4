@@ -31,13 +31,6 @@ export const Links = () => {
           Resume{' '}
           <FaArrowRight className="relative duration-150 top-1 left-2 group-hover/link:-rotate-45" />
         </a>
-        <a
-          href="mailto:fullstackjaden@gmail.com"
-          className="flex py-1 font-semibold group/link text-max"
-        >
-          FullstackJaden@gmail.com{' '}
-          <FaArrowRight className="relative duration-150 top-1 left-2 group-hover/link:-rotate-45" />
-        </a>
       </div>
     </>
   )
