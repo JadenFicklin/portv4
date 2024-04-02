@@ -5,6 +5,7 @@ import { projectArchiveArray } from '~/data/projectArchive'
 import { IoMdArrowForward } from 'react-icons/io'
 import { cn } from '~/utils/cn'
 import { useElementsLocationStore } from '~/globalState/elementsLocationStore'
+import { Nav } from '~/components/Nav'
 
 type ProjectProps = {
   year: number
@@ -55,6 +56,7 @@ export const Archive = () => {
 
   return (
     <>
+      <Nav />
       {currentImage && !imageLoading && (
         <img
           src={currentImage}
@@ -63,7 +65,6 @@ export const Archive = () => {
           alt="Project Preview"
         />
       )}
-      {/* <div className="fixed w-full h-screen bg-black -z-30"></div> */}
       <div className="fixed w-full h-screen bg-max/10 -z-10"></div>
       <div
         className={cn(

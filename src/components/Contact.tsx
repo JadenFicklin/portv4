@@ -65,7 +65,6 @@ export const Contact = () => {
           <BsFillCheckCircleFill className="inline w-full h-full fill-max" />
         </div>
       </div>
-      {/* PI5SHpV0KCPvYoK41 */}
       <div
         className={cn(
           failed
@@ -93,7 +92,7 @@ export const Contact = () => {
           <p className="translate-x-[-.5px] -translate-y-[2.5px]">+</p>
         </div>
       </div>
-      <div className="relative grid w-full border-t lg:grid-cols-2 bg-accent text-min border-custom min-h-[calc(100vh-64px)]">
+      <div className="relative grid w-full border-t lg:grid-cols-2 bg-accent z-20 text-min border-custom min-h-[calc(100vh-64px)]">
         {/* Section for the catchy headline */}
         <div className="flex items-center py-20 pl-5 border-b md:pl-16 lg:pl-10 lg:border-r lg:border-b-0 border-custom">
           <h2 className="text-3xl text-custom xs:text-4xl sm:text-5xl md:text-8xl">
