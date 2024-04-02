@@ -84,7 +84,6 @@ export const Grid: React.FC<GridProps> = ({
           'fixed top-0 flex flex-wrap items-center justify-center w-full h-screen overflow-hidden -z-20',
           className,
         )}
-        onClick={() => setDisplayGrid(!displayGrid)}
       >
         {horizontalArray.map((index) => (
           <div
