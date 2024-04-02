@@ -9,6 +9,7 @@ type ProjectType = {
   description: string
   email?: string
   password?: string
+  type?: string
   technologies: string[]
   image: string
   link: string
@@ -33,7 +34,16 @@ export const Project: React.FC<ProjectProps> = ({
   orientation,
   className,
 }) => {
-  const { name, description, email, password, technologies, image, link } = data
+  const {
+    name,
+    description,
+    type,
+    email,
+    password,
+    technologies,
+    image,
+    link,
+  } = data
   const [flagAnimationState, setFlagAnimationState] = useState('')
   const [isNarrowScreen, setIsNarrowScreen] = useState(window.innerWidth < 1000)
   const [hasAnimatedOnce, setHasAnimatedOnce] = useState(false)
@@ -175,6 +185,9 @@ export const Project: React.FC<ProjectProps> = ({
               </WithVisibility>
               {/* text */}
               <div className="text-3xl sm:text-5xl text-max">{name}</div>
+              <div className="pt-1 pl-5 text-lg text-opacity-70 text-max">
+                - {type}
+              </div>
               <div className="py-8">
                 <div className=" max-w-96 text-max">{description}</div>
                 {email && (
