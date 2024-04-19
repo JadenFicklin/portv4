@@ -11,6 +11,7 @@ export default {
       lg: '1024px',
       xl: '1200px',
       xxl: '1400px',
+      'max-h-710': { raw: '(max-height: 710px)' },
     },
     extend: {
       colors: {

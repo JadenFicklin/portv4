@@ -128,7 +128,7 @@ export const Nav = () => {
                 <Link key={index} to={option.to} className="cursor-pointer">
                   <HoverText
                     wrapperClassName="hover:pl-10"
-                    className="text-3xl font-semibold tracking-wider cursor-pointer xs:text-5xl sm:text-6xl md:text-8xl"
+                    className="text-3xl font-semibold tracking-wider cursor-pointer xs:text-5xl sm:text-6xl md:text-8xl max-h-710:text-6xl"
                     text={option.name}
                     speed={50}
                   />
@@ -143,7 +143,7 @@ export const Nav = () => {
                 >
                   <HoverText
                     wrapperClassName="hover:pl-10"
-                    className="text-3xl font-semibold tracking-wider cursor-pointer xs:text-5xl sm:text-6xl md:text-8xl"
+                    className="text-3xl font-semibold tracking-wider cursor-pointer xs:text-5xl sm:text-6xl md:text-8xl max-h-710:text-6xl"
                     text={option.name}
                     speed={50}
                   />

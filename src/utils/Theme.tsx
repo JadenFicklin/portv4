@@ -61,7 +61,7 @@ export const Theme = () => {
     <>
       <div
         className={cn(
-          'hidden md:flex rounded-full size-8 bg-min absolute right-[25%] xs:right-[20%] sm:right-[15%] md:right-[10%] top-4 duration-300 overflow-hidden items-center',
+          'hidden md:flex rounded-full size-8 bg-min absolute right-[25%] xs:right-[20%] sm:right-[15%] md:right-[12%] lg:right-[10%] top-4 duration-300 overflow-hidden items-center',
           themeOpen ? 'w-[195px]' : 'w-8',
         )}
       >
