@@ -1,100 +1,44 @@
-import { useRef, useState, FormEvent } from 'react'
 import { cn } from '~/utils/cn'
-import emailjs from '@emailjs/browser'
-import { BsFillCheckCircleFill } from 'react-icons/bs'
 import { Button } from '~/utils/Button'
+import Swal from 'sweetalert2'
 
 export const Contact = () => {
-  const form = useRef<HTMLFormElement>(null)
-  const [success, setSuccess] = useState(false)
-  const [failed, setFailed] = useState(false)
   const inputStyling =
     'w-full pt-2 pb-3 mt-5 text-custom duration-200 bg-opacity-0 border-b border-opacity-50 outline-none bg-accent border-custom hover:border-opacity-100 focus:border-opacity-100 placeholder-custom'
 
-  const messageSent = () => {
-    setSuccess(true)
-    setTimeout(() => {
-      setSuccess(false)
-    }, 2000)
-  }
-  const messageFailed = () => {
-    setFailed(true)
-  }
+  const { VITE_EMAIL_ACCESS_KEY } = import.meta.env
 
-  const sendEmail = (e: FormEvent<HTMLFormElement>) => {
-    // Use FormEvent<HTMLFormElement> here
-    e.preventDefault()
+  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    const formData = new FormData(event.currentTarget)
 
-    const { VITE_SERVICE_ID, VITE_TEMPLATE_ID, VITE_PUBLIC_KEY } = import.meta
-      .env
+    formData.append('access_key', VITE_EMAIL_ACCESS_KEY)
 
-    if (form.current) {
-      emailjs
-        .sendForm(
-          VITE_SERVICE_ID!,
-          VITE_TEMPLATE_ID!,
-          form.current,
-          VITE_PUBLIC_KEY!,
-        )
-        .then(
-          (result) => {
-            messageSent()
-            console.log('message sent successfully! ' + result.text)
-            form.current?.reset()
-          },
-          (error) => {
-            messageFailed()
-            console.log(
-              'message faild to send with error code of ' + error.text,
-            )
-          },
-        )
+    const object = Object.fromEntries(formData)
+    const json = JSON.stringify(object)
+
+    const res = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      body: json,
+    }).then((res) => res.json())
+
+    if (res.success) {
+      Swal.fire({
+        title: 'Success!',
+        text: 'Message sent successfully!',
+        icon: 'success',
+      })
     }
   }
 
   return (
     <>
-      <div
-        className={cn(
-          success
-            ? 'bg-min border-max border-[1px] w-96 h-20 shadow-xl rounded-lg fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-wrap content-center justify-center duration-300 z-50'
-            : 'hidden',
-        )}
-      >
-        <p className="text-[22px] text-max h-min">Successfully sent! </p>
-        <div className="w-8 h-8 ml-6">
-          <BsFillCheckCircleFill className="inline w-full h-full fill-max" />
-        </div>
-      </div>
-      <div
-        className={cn(
-          failed
-            ? 'bg-min border-max border-[1px] w-96 text-center py-10 shadow-xl rounded-lg fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-wrap content-center justify-center duration-300 z-50 '
-            : 'hidden',
-        )}
-      >
-        <div className="text-[22px] text-max h-min">
-          Failed to send<br></br>
-          <br></br>
-          <span className="text-lg">
-            contact me at <br></br>
-            <a
-              href="mailto:fullstackjaden@gmail.com"
-              className="text-xl font-semibold"
-            >
-              FullstackJaden@gmail.com
-            </a>{' '}
-          </span>
-        </div>
-        <div
-          className="absolute grid text-3xl duration-150 rotate-45 border rounded-full cursor-pointer -top-3 -right-3 size-8 bg-min border-max text-max place-content-center hover:bg-max hover:border-min hover:text-min"
-          onClick={() => setFailed(false)}
-        >
-          <p className="translate-x-[-.5px] -translate-y-[2.5px]">+</p>
-        </div>
-      </div>
       <div className="relative grid w-full border-t lg:grid-cols-2 bg-accent z-20 text-min border-custom min-h-[calc(100vh-64px)]">
-        {/* Section for the catchy headline */}
+        {/* Section for the headline */}
         <div className="flex items-center py-20 pl-5 border-b md:pl-16 lg:pl-10 lg:border-r lg:border-b-0 border-custom">
           <h2 className="text-3xl text-custom xs:text-4xl sm:text-5xl md:text-8xl">
             Lets work
@@ -106,9 +50,8 @@ export const Contact = () => {
         {/* Form section for user inputs */}
         <div className="w-full py-20 border-b border-custom h-max">
           <form
+            onSubmit={onSubmit}
             className="flex flex-wrap w-10/12 mx-auto h-max"
-            ref={form}
-            onSubmit={sendEmail}
           >
             {/* Input fields for user details */}
             <input
