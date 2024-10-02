@@ -185,24 +185,11 @@ export const Project: React.FC<ProjectProps> = ({
               </WithVisibility>
               {/* text */}
               <div className="text-3xl sm:text-5xl text-max">{name}</div>
-              <div className="pt-1 pl-5 text-lg text-opacity-70 text-max">
+              {/* <div className="pt-1 pl-5 text-lg text-opacity-70 text-max">
                 - {type}
-              </div>
+              </div> */}
               <div className="py-8">
                 <div className=" max-w-96 text-max">{description}</div>
-                {email && (
-                  <div className="py-3">
-                    <div className="text-max">
-                      Enter website with credentials listed below
-                    </div>
-                    <div className=" text-max">
-                      Email:<span className="font-bold">{email}</span>
-                    </div>
-                    <div className=" text-max">
-                      Password:<span className="font-bold"> {password}</span>
-                    </div>
-                  </div>
-                )}
               </div>
               <div className="flex flex-wrap gap-2 max-w-96">
                 {technologies.map((tech, index) => (
