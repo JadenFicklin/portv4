@@ -18,7 +18,8 @@ import {
 } from 'react-icons/fa'
 import { FaGitlab } from 'react-icons/fa6'
 import { SiNetlify } from 'react-icons/si'
-import { SiTailwindcss } from 'react-icons/si'
+import { SiTailwindcss, SiPostgresql } from 'react-icons/si'
+import { SiNextdotjs } from 'react-icons/si'
 
 const svgClass = 'w-full h-full fill-custom'
 
@@ -95,5 +96,13 @@ export const skillsArray = [
   {
     name: 'Stripe',
     icon: <FaCcStripe className={svgClass} />,
+  },
+  {
+    name: 'SQL',
+    icon: <SiPostgresql className={svgClass} />,
+  },
+  {
+    name: 'Next.js',
+    icon: <SiNextdotjs className={svgClass} />,
   },
 ]

@@ -36,8 +36,7 @@ export const PageLoad = () => {
       />
 
       <div className="text-sm sm:text-lg italic font-light xxl:top-[110%] xxl:absolute text-max max-w-80 w-[80%] mx-auto md:mx-[10%] my-16">
-        Frontend and Fullstack React Engineer<br></br> seeking full time
-        opportunities
+        Frontend React Developer<br></br> seeking full time opportunities
         <div className="w-1/2 bg-max opacity-50 h-[1px] mt-6"></div>
       </div>
     </div>
