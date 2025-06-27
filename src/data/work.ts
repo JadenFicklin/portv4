@@ -1,6 +1,8 @@
-import OakandStone from '~/assets/images/OakandStone.png'
-import PinaSoulmate from '~/assets/images/PinaSoulmate.jpg'
+import OakandStone from '~/assets/images/OakandStone.webp'
+// import PinaSoulmate from '~/assets/images/PinaSoulmate.jpg'
+import PinaSoulmateNew from '~/assets/images/pinasoulmatenew.webp'
 import SVGLibrary from '~/assets/images/SVGLibrary.jpg'
+import RestorationLaserCleaning from '~/assets/images/RestorationLaserCleaning.webp'
 
 export type ProjectProps = {
   name: string
@@ -23,28 +25,29 @@ export type ProjectProps = {
 
 export const WorkArray: ProjectProps[] = [
   {
-    name: 'SVG Library',
+    name: 'Restoration Laser Cleaning',
     description:
-      'Users can customize SVG’s using range sliders to adjust size, stroke, and color of SVG’s which they can then copy the code for and use in their projects.',
-    technologies: ['React', 'Javascript', 'Tailwind', 'Zustand', 'Firebase'],
+      'A website for a laser cleaning company that specializes in cleaning and restoring surfaces using laser technology.',
+    technologies: ['React', 'Javascript', 'Tailwind', 'Netlify', 'Firebase'],
     type: 'Frontend website',
-    image: SVGLibrary,
-    link: 'https://svg-library.web.app/',
+    image: RestorationLaserCleaning,
+    link: 'https://renewlasercleaning.com/',
     goalsAndObjectives:
-      'To simplify the customization of SVGs for developers, enabling easy adjustment of size, stroke, and color, and to facilitate the direct use of these custom SVGs in their projects.',
+      'To create a website for a laser cleaning company that specializes in cleaning and restoring surfaces using laser technology.',
     myRole:
       'Sole developer responsible for conceptualizing, designing, and implementing the entire project.',
     challengesAndSolutions:
-      'One of the main challenges was creating an intuitive UI for adjusting SVG properties. Implemented a user-friendly interface with range sliders for seamless customization. Ensured cross-browser compatibility and responsive design.',
+      'One of the main challenges was creating an intuitive UI for the website. Implemented a user-friendly interface with range sliders for seamless customization. Ensured cross-browser compatibility and responsive design.',
     developmentProcess:
-      'Started with designing the UI/UX in Figma, focusing on simplicity and usability. The design was then translated into a functional website using React, incorporating state management with Zustand for a smooth user experience.',
+      'Started with designing the UI/UX in Figma, focusing on simplicity and usability. The design was then translated into a functional website using React, incorporating state management with Zustand for a smooth user experience. The website is hosted on Netlify and the database is hosted on Firebase.',
     keyFeaturesAndFunctionalities:
-      'Interactive range sliders for customizing SVG properties like size, stroke, and color; feature to copy customized SVG code directly for use in other projects; real-time preview of SVG changes; user-friendly interface designed for ease of use.',
+      'Interactive range sliders for customizing SVG properties like size, stroke, and color; feature to copy customized SVG code directly for use in other projects; real-time preview of SVG changes; user-friendly interface designed for ease of use. The website is hosted on Netlify and the database is hosted on Firebase.',
+
     resultsAndImpact:
-      'Successfully launched a tool that simplifies the SVG customization process for web developers, enhancing their productivity. Received positive feedback for its ease of use and functionality.',
+      'Successfully launched a website for a laser cleaning company that specializes in cleaning and restoring surfaces using laser technology. Received positive feedback for its ease of use and functionality.',
     visuals: ['URL_to_image1', 'URL_to_image2', 'URL_to_image3'],
     lessonsLearnedAndTakeaways:
-      'Gained deeper insights into UI/UX design, particularly in creating tools for developers. Enhanced skills in React and state management with Zustand, and learned the importance of intuitive design in user interface development.',
+      'Gained deeper insights into UI/UX design, particularly in creating tools for developers. Enhanced skills in React and state management with Zustand, and learned the importance of intuitive design in user interface development. Learned the importance of responsive design and cross-browser compatibility.',
   },
 
   {
@@ -74,19 +77,12 @@ export const WorkArray: ProjectProps[] = [
   {
     name: 'Pinay Soulmate',
     description:
-      'A dating website built to connect foreigners and locals of the Philippines. Users can create accounts, filter, like, favorite, message other users, and purchase monthly memberships.',
+      'A dating website built to connect foreigners and locals of the Philippines. Users can create accounts, filter, like and message other users.',
     email: ' abc@gmail.com',
     password: 'PortfolioKey#24',
     type: 'Fullstack website',
-    technologies: [
-      'React',
-      'Javascript',
-      'Tailwind',
-      'Mailgun',
-      'Firebase',
-      'Stripe',
-    ],
-    image: PinaSoulmate,
+    technologies: ['React', 'Javascript', 'Tailwind', 'Firebase'],
+    image: PinaSoulmateNew,
     link: 'https://pinasoulmate.com/',
     goalsAndObjectives:
       'To create a cost-effective and user-friendly dating platform tailored for expats and locals in the Philippines.',
@@ -103,5 +99,29 @@ export const WorkArray: ProjectProps[] = [
     visuals: ['URL_to_image1', 'URL_to_image2', 'URL_to_image3'],
     lessonsLearnedAndTakeaways:
       'Gained significant experience in Stripe and Firebase database interactions, improved understanding of user security in web applications, and enhanced skills in full-stack development, particularly in React and JavaScript.',
+  },
+  {
+    name: 'SVG Library',
+    description:
+      'Users can customize SVG’s using range sliders to adjust size, stroke, and color of SVG’s which they can then copy the code for and use in their projects.',
+    technologies: ['React', 'Javascript', 'Tailwind', 'Zustand', 'Firebase'],
+    type: 'Frontend website',
+    image: SVGLibrary,
+    link: 'https://svg-library.web.app/',
+    goalsAndObjectives:
+      'To simplify the customization of SVGs for developers, enabling easy adjustment of size, stroke, and color, and to facilitate the direct use of these custom SVGs in their projects.',
+    myRole:
+      'Sole developer responsible for conceptualizing, designing, and implementing the entire project.',
+    challengesAndSolutions:
+      'One of the main challenges was creating an intuitive UI for adjusting SVG properties. Implemented a user-friendly interface with range sliders for seamless customization. Ensured cross-browser compatibility and responsive design.',
+    developmentProcess:
+      'Started with designing the UI/UX in Figma, focusing on simplicity and usability. The design was then translated into a functional website using React, incorporating state management with Zustand for a smooth user experience.',
+    keyFeaturesAndFunctionalities:
+      'Interactive range sliders for customizing SVG properties like size, stroke, and color; feature to copy customized SVG code directly for use in other projects; real-time preview of SVG changes; user-friendly interface designed for ease of use.',
+    resultsAndImpact:
+      'Successfully launched a tool that simplifies the SVG customization process for web developers, enhancing their productivity. Received positive feedback for its ease of use and functionality.',
+    visuals: ['URL_to_image1', 'URL_to_image2', 'URL_to_image3'],
+    lessonsLearnedAndTakeaways:
+      'Gained deeper insights into UI/UX design, particularly in creating tools for developers. Enhanced skills in React and state management with Zustand, and learned the importance of intuitive design in user interface development.',
   },
 ]

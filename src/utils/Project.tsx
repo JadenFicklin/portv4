@@ -34,16 +34,7 @@ export const Project: React.FC<ProjectProps> = ({
   orientation,
   className,
 }) => {
-  const {
-    name,
-    description,
-    type,
-    email,
-    password,
-    technologies,
-    image,
-    link,
-  } = data
+  const { name, description, technologies, image, link } = data
   const [flagAnimationState, setFlagAnimationState] = useState('')
   const [isNarrowScreen, setIsNarrowScreen] = useState(window.innerWidth < 1000)
   const [hasAnimatedOnce, setHasAnimatedOnce] = useState(false)
@@ -134,8 +125,8 @@ export const Project: React.FC<ProjectProps> = ({
         </div>
         {/* text and flag section */}
         <div className="flex flex-wrap group">
-          <div className={cn('w-3/12 hidden lg:block ')}></div>
-          <div className="flex flex-wrap content-center w-10/12 pl-10 mx-auto mt-10 scale-90 lg:w-9/12 lg:px-0 lg:mx-0">
+          <div className={cn('hidden w-3/12 lg:block')}></div>
+          <div className="flex flex-wrap content-center pl-10 mx-auto mt-10 w-10/12 scale-90 lg:w-9/12 lg:px-0 lg:mx-0">
             <div className="relative w-full h-max">
               {/* animated flag */}
               <WithVisibility
@@ -189,7 +180,7 @@ export const Project: React.FC<ProjectProps> = ({
                 - {type}
               </div> */}
               <div className="py-8">
-                <div className=" max-w-96 text-max">{description}</div>
+                <div className="max-w-96 text-max">{description}</div>
               </div>
               <div className="flex flex-wrap gap-2 max-w-96">
                 {technologies.map((tech, index) => (
