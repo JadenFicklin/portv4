@@ -329,4 +329,146 @@ export const caseStudies: CaseStudy[] = [
       },
     },
   },
+  {
+    slug: 'oak-and-stone',
+    name: 'Oak & Stone Construction',
+    overview:
+      'A modern, responsive web platform for Oak & Stone Construction, a premier home remodeling company with 35+ years of experience. The site showcases their expertise in kitchen and bathroom remodeling, custom cabinetry, and home renovations while providing a seamless user experience for potential clients.',
+    myRole:
+      'Full Stack Developer (Solo)\nLed the development of the entire platform, including UI/UX design, component architecture, and integration of project management tools.',
+    problemStatement:
+      'Oak & Stone needed a modern digital presence that effectively showcases their craftsmanship, streamlines client communication, and manages project workflows. The challenge was to create a platform that balances visual appeal with functionality while maintaining high performance with a large image gallery.',
+    keyFeatures: [
+      'Dynamic Portfolio Gallery: Built a responsive image gallery system with categorized sections (Kitchen, Bathroom, Custom Woodwork) featuring lazy loading and smooth animations.',
+      'Project Management Integration: Integrated JobTread software for real-time project updates, budget tracking, and document management.',
+      'Lead Generation System: Implemented a comprehensive contact form with Discord webhook integration for instant lead notifications.',
+      "Team & Process Showcase: Created engaging sections to highlight the company's 35+ year legacy, team members, and detailed project process.",
+      'SEO Optimization: Implemented React Helmet for dynamic meta tags and descriptions, optimizing for local search visibility.',
+      'Responsive Design: Mobile-first approach with TailwindCSS, ensuring a seamless experience across all devices.',
+      'Performance Optimization: Implemented image optimization and lazy loading for a large gallery of high-quality project photos.',
+    ],
+    technologies: [
+      {
+        name: 'Frontend Core',
+        items: [
+          { name: 'React 18', icon: 'react' },
+          { name: 'TailwindCSS', icon: 'tailwind' },
+          { name: 'React Router v6', icon: 'router' },
+        ],
+      },
+      {
+        name: 'Backend & Infrastructure',
+        items: [
+          { name: 'Firebase', icon: 'firebase' },
+          { name: 'Google Analytics 4', icon: 'analytics' },
+          { name: 'Netlify', icon: 'netlify' },
+        ],
+      },
+      {
+        name: 'Development Tools',
+        items: [
+          { name: 'ESLint', icon: 'eslint' },
+          { name: 'Framer Motion', icon: 'other' },
+          { name: 'JobTread Integration', icon: 'other' },
+        ],
+      },
+    ],
+    challenges: [
+      'Image Management: Handling a large collection of high-resolution project photos while maintaining fast load times -> Implemented WebP format and lazy loading',
+      "Project Process Visualization: Creating an intuitive way to showcase the company's workflow -> Developed an interactive timeline component with animations",
+      'Lead Capture: Building a reliable system for capturing and managing leads -> Integrated Discord webhooks for real-time notifications',
+      'Mobile Responsiveness: Ensuring complex gallery layouts work seamlessly on all devices -> Implemented adaptive grid systems and touch-friendly controls',
+    ],
+    stats: [
+      { value: '35+ years experience', icon: 'star' },
+      { value: '100+ project photos', icon: 'code' },
+      { value: '4 service regions', icon: 'chart' },
+    ],
+    results: [
+      "Successfully launched a modern, responsive website that effectively showcases Oak & Stone's craftsmanship",
+      'Streamlined lead generation process with instant notifications',
+      'Improved project management workflow with JobTread integration',
+      'Enhanced visual presentation of portfolio with optimized image gallery',
+      'Increased visibility in Weber, Davis, and Box Elder counties',
+    ],
+    screenshots: [
+      {
+        src: '/images/casestudies/oak/oaklanding1.webp',
+        description:
+          'Landing Page: Modern hero section with full-width imagery showcasing premium remodeling work',
+      },
+      {
+        src: '/images/casestudies/oak/oakportfolio2.webp',
+        description:
+          'Portfolio Overview: Elegant grid layout featuring completed kitchen and bathroom projects',
+      },
+      {
+        src: '/images/casestudies/oak/oakabout3.webp',
+        description:
+          'About Section: Company history and values presentation with modern design',
+      },
+      {
+        src: '/images/casestudies/oak/oakselectedworks4.webp',
+        description:
+          'Selected Works: Curated gallery of exceptional remodeling projects',
+      },
+      {
+        src: '/images/casestudies/oak/oaktestimonies5.webp',
+        description:
+          'Client Testimonials: Real feedback from satisfied homeowners',
+      },
+      {
+        src: '/images/casestudies/oak/oakprocess6.webp',
+        description:
+          'Process Overview: Step-by-step guide to our remodeling journey',
+      },
+      {
+        src: '/images/casestudies/oak/oakabout7.webp',
+        description:
+          'Team Showcase: Meet the skilled craftsmen behind Oak & Stone',
+      },
+      {
+        src: '/images/casestudies/oak/oakcareers8.webp',
+        description: 'Careers Page: Join our team of remodeling professionals',
+      },
+      {
+        src: '/images/casestudies/oak/oakservicearea9.webp',
+        description:
+          'Service Areas: Interactive map showing our coverage in Utah',
+      },
+      {
+        src: '/images/casestudies/oak/oakconsultationpage10.webp',
+        description:
+          'Consultation Page: Easy-to-use form for scheduling project consultations',
+      },
+      {
+        src: '/images/casestudies/oak/oakimagemodule11.webp',
+        description:
+          'Image Gallery: Dynamic module for browsing project photos by category',
+      },
+    ],
+    whatILearned: [
+      'Advanced image optimization techniques for large galleries',
+      'Integration of third-party project management tools',
+      'Effective showcase of craftsmanship through web design',
+      'Building trust through design in the home improvement industry',
+      'Balancing visual appeal with performance in image-heavy applications',
+    ],
+    liveDemo: 'https://oakandstoneremodel.com',
+    callToAction: {
+      title: 'Ready to Transform Your Space?',
+      description:
+        'Experience the Oak & Stone difference in home remodeling. Contact us for a consultation today.',
+    },
+    navigation: {
+      previous: {
+        slug: 'restoration-laser-cleaning',
+        name: 'RLC Laser Cleaning',
+      },
+      next: {
+        slug: 'pina-soulmate',
+        name: 'Pina Soulmate',
+      },
+    },
+  },
 ]
