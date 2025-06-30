@@ -75,7 +75,7 @@ export const WorkArray: ProjectProps[] = [
     lessonsLearnedAndTakeaways: '...',
   },
   {
-    name: 'Pinay Soulmate',
+    name: 'Pina Soulmate',
     description:
       'A dating website built to connect foreigners and locals of the Philippines. Users can create accounts, filter, like and message other users.',
     email: ' abc@gmail.com',

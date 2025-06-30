@@ -5,9 +5,9 @@ import oakandstone from '~/assets/images/archive/archive-oakandstone.jpg'
 import pina from '~/assets/images/archive/archive-pina.jpg'
 import sopi from '~/assets/images/archive/archive-sopi.jpg'
 import svg from '~/assets/images/archive/archive-svg.jpg'
-// import thuja from '~/assets/images/archive/archive-thuja.jpg'
-// import cargo from '~/assets/images/archive/archive-cargo.jpg'
-// import ltr from '~/assets/images/archive/archive-ltr.jpg'
+import thuja from '~/assets/images/archive/archive-thuja.jpg'
+import cargo from '~/assets/images/archive/archive-cargo.jpg'
+import ltr from '~/assets/images/archive/archive-ltr.jpg'
 import v1 from '~/assets/images/archive/archive-v1.jpg'
 import v2 from '~/assets/images/archive/archive-v2.jpg'
 import v3 from '~/assets/images/archive/archive-v3.jpg'
@@ -33,6 +33,30 @@ export const projectArchiveArray: Project[] = [
   },
   {
     year: 2024,
+    project: 'Portfolio V4',
+    madeAt: 'Freelance',
+    builtWith: ['React', 'Javascript', 'Tailwind', 'Vercel'],
+    link: 'https://jadenficklin.com/',
+    image: v4,
+  },
+  {
+    year: 2024,
+    project: 'Portfolio V4',
+    madeAt: 'Freelance',
+    builtWith: ['React', 'Javascript', 'Tailwind', 'Vercel'],
+    link: 'https://jadenficklin.com/',
+    image: v4,
+  },
+  {
+    year: 2024,
+    project: 'Portfolio V4',
+    madeAt: 'Freelance',
+    builtWith: ['React', 'Javascript', 'Tailwind', 'Vercel'],
+    link: 'https://jadenficklin.com/',
+    image: v4,
+  },
+  {
+    year: 2024,
     project: 'Portfolio V3',
     madeAt: 'Freelance',
     builtWith: ['React', 'Javascript', 'Tailwind', 'Netlify'],
@@ -41,7 +65,7 @@ export const projectArchiveArray: Project[] = [
   },
   {
     year: 2023,
-    project: 'Pinay Soulmate',
+    project: 'Pina Soulmate',
     madeAt: 'Freelance',
     builtWith: ['React', 'Javascript', 'Tailwind', 'Firebase'],
     link: 'https://pinasoulmate.com/',
@@ -63,30 +87,30 @@ export const projectArchiveArray: Project[] = [
     link: 'https://luxvesting.com/',
     image: lux,
   },
-  // {
-  //   year: 2023,
-  //   project: 'Load To Ride',
-  //   madeAt: 'Perspective Developers',
-  //   builtWith: ['React', 'Javascript', 'Tailwind', 'Firebase'],
-  //   link: 'https://dashboard-ltr-app.firebaseapp.com/',
-  //   image: ltr,
-  // },
-  // {
-  //   year: 2023,
-  //   project: 'CargoRx',
-  //   madeAt: 'Perspective Developers',
-  //   builtWith: ['React', 'Javascript', 'Tailwind', 'Firebase'],
-  //   link: 'https://dashboard-ltr-app.firebaseapp.com/',
-  //   image: cargo,
-  // },
-  // {
-  //   year: 2023,
-  //   project: 'Thuja',
-  //   madeAt: 'Perspective Developers',
-  //   builtWith: ['React', 'Javascript', 'Tailwind', 'Firebase'],
-  //   link: 'https://jointhuja.dev/',
-  //   image: thuja,
-  // },
+  {
+    year: 2023,
+    project: 'Load To Ride',
+    madeAt: 'Perspective Developers',
+    builtWith: ['React', 'Javascript', 'Tailwind', 'Firebase'],
+    link: 'https://dashboard-ltr-app.firebaseapp.com/',
+    image: ltr,
+  },
+  {
+    year: 2023,
+    project: 'CargoRx',
+    madeAt: 'Perspective Developers',
+    builtWith: ['React', 'Javascript', 'Tailwind', 'Firebase'],
+    link: 'https://dashboard-ltr-app.firebaseapp.com/',
+    image: cargo,
+  },
+  {
+    year: 2023,
+    project: 'Thuja',
+    madeAt: 'Perspective Developers',
+    builtWith: ['React', 'Javascript', 'Tailwind', 'Firebase'],
+    link: 'https://jointhuja.dev/',
+    image: thuja,
+  },
   {
     year: 2023,
     project: 'Portfolio V2',

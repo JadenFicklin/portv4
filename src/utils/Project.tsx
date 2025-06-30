@@ -196,10 +196,30 @@ export const Project: React.FC<ProjectProps> = ({
                   </div>
                 ))}
               </div>
+              {/* View Case Study Button */}
+              <div className="mt-6">
+                <a
+                  href={`/casestudy/${slugify(name)}`}
+                  className="inline-block px-6 py-2 text-base font-semibold rounded-full shadow transition-colors duration-200 bg-max/80 text-custom hover:bg-max/60"
+                >
+                  View Case Study
+                </a>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </>
   )
+}
+
+function slugify(text: string) {
+  return text
+    .toString()
+    .toLowerCase()
+    .replace(/\s+/g, '-') // Replace spaces with -
+    .replace(/[^\w\-]+/g, '') // Remove all non-word chars
+    .replace(/\-\-+/g, '-') // Replace multiple - with single -
+    .replace(/^-+/, '') // Trim - from start of text
+    .replace(/-+$/, '') // Trim - from end of text
 }

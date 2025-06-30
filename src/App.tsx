@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { Landing } from '~/pages/Landing'
 import { Archive } from '~/pages/Archive'
+import CaseStudy from '~/pages/CaseStudy'
 import { useEffect } from 'react'
 import { useThemeStore } from '~/globalState/themeStore'
 import {
@@ -33,6 +34,7 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/archive" element={<Archive />} />
+        <Route path="/casestudy/:slug" element={<CaseStudy />} />
       </Routes>
     </Router>
   )
