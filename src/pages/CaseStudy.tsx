@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
-import { caseStudies } from '~/data/caseStudies'
+import { caseStudies, type TechnologyCategory } from '~/data/caseStudies'
 import { useThemeStore } from '~/globalState/themeStore'
 import { cn } from '~/utils/cn'
 import {
@@ -16,21 +16,14 @@ import {
   FaGraduationCap,
   FaMountain,
   FaRocket,
+  FaStar,
+  FaBolt,
 } from 'react-icons/fa6'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { Nav } from '~/components/Nav'
 import { ImageModal } from '~/utils/ImageModal'
 import { morphingDiamonds, circuitBoard } from 'hero-patterns'
-import { FaReact, FaTools } from 'react-icons/fa'
-import {
-  SiTailwindcss,
-  SiFirebase,
-  SiNetlify,
-  SiGoogleanalytics,
-  SiEslint,
-  SiReactrouter,
-  SiSharp,
-} from 'react-icons/si'
+import { getTechIcon } from '~/utils/getTechIcon'
 
 const TechItem: React.FC<{
   icon: React.ReactNode
@@ -93,6 +86,11 @@ const CaseStudy: React.FC = () => {
   const { scrollY } = useScroll()
   const [modalOpen, setModalOpen] = useState(false)
   const [selectedImageIndex, setSelectedImageIndex] = useState(0)
+
+  // Scroll to top when slug changes
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [slug])
 
   // Get the pattern color based on theme
   const getPatternColor = () => {
@@ -314,8 +312,7 @@ const CaseStudy: React.FC = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 }}
               >
-                A modern dating platform connecting Filipino singles worldwide
-                through advanced technology and culturally relevant features.
+                {caseStudy.overview}
               </motion.p>
 
               {/* Project Duration / Role */}
@@ -327,59 +324,57 @@ const CaseStudy: React.FC = () => {
               >
                 <div className="flex items-center space-x-2 text-sm text-max/70 md:text-base">
                   <span className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-max/20" />
-                  <span>Solo Full Stack Developer</span>
+                  <span>{caseStudy.myRole.split('\n')[0]}</span>
                 </div>
-                <div className="flex items-center space-x-2 text-sm text-max/70 md:text-base">
-                  <span className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-max/20" />
-                  <span>2023 - Present</span>
-                </div>
-                <a
-                  href="https://pinasoulmate.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center space-x-2 text-sm transition-colors text-max/70 hover:text-max group md:text-base"
-                >
-                  <span className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-max/20" />
-                  <span>Visit Live Site</span>
-                  <FaArrowUpRightFromSquare className="w-2.5 h-2.5 md:w-3 md:h-3 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-                </a>
+                {caseStudy.liveDemo && (
+                  <a
+                    href={caseStudy.liveDemo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center space-x-2 text-sm transition-colors text-max/70 hover:text-max group md:text-base"
+                  >
+                    <span className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-max/20" />
+                    <span>Visit Live Site</span>
+                    <FaArrowUpRightFromSquare className="w-2.5 h-2.5 md:w-3 md:h-3 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+                  </a>
+                )}
               </motion.div>
 
               {/* Stats */}
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.7 }}
-                className="grid grid-cols-3 gap-4 md:gap-8"
-              >
-                <div className="flex flex-col items-center">
-                  <FaChartLine className="mb-2 text-xl md:mb-3 md:text-2xl text-max/90" />
-                  <div className="mb-1 text-2xl font-bold md:text-3xl text-max">
-                    70+
-                  </div>
-                  <div className="text-xs text-center md:text-sm text-max/70">
-                    Active Users Last Week
-                  </div>
-                </div>
-                <div className="flex flex-col items-center">
-                  <FaUsers className="mb-2 text-xl md:mb-3 md:text-2xl text-max/90" />
-                  <div className="mb-1 text-2xl font-bold md:text-3xl text-max">
-                    12
-                  </div>
-                  <div className="text-xs text-center md:text-sm text-max/70">
-                    Daily Active Users
-                  </div>
-                </div>
-                <div className="flex flex-col items-center">
-                  <FaFacebook className="mb-2 text-xl md:mb-3 md:text-2xl text-max/90" />
-                  <div className="mb-1 text-2xl font-bold md:text-3xl text-max">
-                    119.9K+
-                  </div>
-                  <div className="text-xs text-center md:text-sm text-max/70">
-                    Facebook Community
-                  </div>
-                </div>
-              </motion.div>
+              {caseStudy.stats && caseStudy.stats.length > 0 && (
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.7 }}
+                  className="grid grid-cols-3 gap-4 md:gap-8"
+                >
+                  {caseStudy.stats.map((stat, index) => (
+                    <div key={index} className="flex flex-col items-center">
+                      {stat.icon === 'chart' && (
+                        <FaChartLine className="mb-2 text-xl md:mb-3 md:text-2xl text-max/90" />
+                      )}
+                      {stat.icon === 'users' && (
+                        <FaUsers className="mb-2 text-xl md:mb-3 md:text-2xl text-max/90" />
+                      )}
+                      {stat.icon === 'facebook' && (
+                        <FaFacebook className="mb-2 text-xl md:mb-3 md:text-2xl text-max/90" />
+                      )}
+                      {stat.icon === 'code' && (
+                        <FaCode className="mb-2 text-xl md:mb-3 md:text-2xl text-max/90" />
+                      )}
+                      {stat.icon === 'star' && (
+                        <FaStar className="mb-2 text-xl md:mb-3 md:text-2xl text-max/90" />
+                      )}
+                      {stat.icon === 'speed' && (
+                        <FaBolt className="mb-2 text-xl md:mb-3 md:text-2xl text-max/90" />
+                      )}
+                      <div className="text-2xl font-bold md:text-3xl text-max">
+                        {stat.value}
+                      </div>
+                    </div>
+                  ))}
+                </motion.div>
+              )}
             </div>
 
             {/* Right Column - Image */}
@@ -424,7 +419,7 @@ const CaseStudy: React.FC = () => {
                   {/* Visit Site Button - Mobile */}
                   <div className="absolute inset-x-4 bottom-4">
                     <a
-                      href="https://pinasoulmate.com"
+                      href={caseStudy.liveDemo}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex justify-center items-center px-6 py-3 space-x-2 w-full text-sm font-medium rounded-full backdrop-blur-md transition-transform duration-300 bg-max/90 text-min hover:scale-105"
@@ -475,9 +470,7 @@ const CaseStudy: React.FC = () => {
                 <motion.div
                   className="overflow-hidden relative h-full rounded-2xl cursor-pointer bg-min/20 group z-[1]"
                   style={{ y: heroY }}
-                  onClick={() =>
-                    window.open('https://pinasoulmate.com', '_blank')
-                  }
+                  onClick={() => window.open(caseStudy.liveDemo, '_blank')}
                 >
                   {/* Image Frame */}
                   <div className="overflow-hidden absolute inset-4 rounded-xl border border-max/10">
@@ -510,7 +503,7 @@ const CaseStudy: React.FC = () => {
                           )}
                         >
                           <span className="text-lg font-medium">
-                            Visit Pina Soulmate
+                            Visit {caseStudy.name}
                           </span>
                           <FaArrowUpRightFromSquare className="w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
                         </div>
@@ -545,21 +538,23 @@ const CaseStudy: React.FC = () => {
                     </button>
 
                     {/* Visit Site Button */}
-                    <a
-                      href="https://pinasoulmate.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={(e) => e.stopPropagation()}
-                      className={cn(
-                        'px-4 py-2 rounded-full backdrop-blur-md flex items-center space-x-2 transition-all duration-300 hover:scale-105',
-                        theme === 'dark'
-                          ? 'bg-max/10 hover:bg-max/20'
-                          : 'bg-min/80 hover:bg-min shadow-lg',
-                      )}
-                    >
-                      <span className="text-sm font-medium">Visit Site</span>
-                      <FaArrowUpRightFromSquare className="w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-                    </a>
+                    {caseStudy.liveDemo && (
+                      <a
+                        href={caseStudy.liveDemo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className={cn(
+                          'px-4 py-2 rounded-full backdrop-blur-md flex items-center space-x-2 transition-all duration-300 hover:scale-105',
+                          theme === 'dark'
+                            ? 'bg-max/10 hover:bg-max/20'
+                            : 'bg-min/80 hover:bg-min shadow-lg',
+                        )}
+                      >
+                        <span className="text-sm font-medium">Visit Site</span>
+                        <FaArrowUpRightFromSquare className="w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+                      </a>
+                    )}
                   </motion.div>
                 </motion.div>
               </div>
@@ -744,138 +739,24 @@ const CaseStudy: React.FC = () => {
               </h2>
 
               <div className="grid gap-8 mt-8">
-                {/* Frontend Core */}
-                <div className="space-y-4">
-                  <div className="pb-2 mb-2 text-sm font-medium tracking-wider uppercase border-b text-max/60 border-max/10">
-                    Frontend Core
-                  </div>
-                  <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4">
-                    <TechItem
-                      icon={<FaReact />}
-                      name="React 18"
-                      color="text-[#61DAFB]"
-                    />
-                    <TechItem
-                      icon={<SiTailwindcss />}
-                      name="TailwindCSS"
-                      color="text-[#06B6D4]"
-                    />
-                    <TechItem
-                      icon={<SiReactrouter />}
-                      name="React Router v6"
-                      color="text-[#CA4245]"
-                    />
-                    <TechItem
-                      icon={<FaReact />}
-                      name="React Icons"
-                      color="text-[#61DAFB]"
-                    />
-                  </div>
-                </div>
-
-                {/* State Management & UI */}
-                <div className="space-y-4">
-                  <div className="pb-2 mb-2 text-sm font-medium tracking-wider uppercase border-b text-max/60 border-max/10">
-                    State Management & UI
-                  </div>
-                  <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4">
-                    <TechItem
-                      icon={<span className="text-lg">🔄</span>}
-                      name="Jotai"
-                    />
-                    <TechItem
-                      icon={<span className="text-lg">🎯</span>}
-                      name="@dnd-kit"
-                    />
-                    <TechItem
-                      icon={<span className="text-lg">📝</span>}
-                      name="React Select"
-                    />
-                    <TechItem
-                      icon={<span className="text-lg">😀</span>}
-                      name="Emoji Picker"
-                    />
-                    <TechItem
-                      icon={<span className="text-lg">🖼️</span>}
-                      name="react-lazy-load-image"
-                    />
-                    <TechItem
-                      icon={<span className="text-lg">🛡️</span>}
-                      name="React Helmet Async"
-                    />
-                    <TechItem
-                      icon={<span className="text-lg">🔄</span>}
-                      name="tailwind-merge"
-                    />
-                    <TechItem
-                      icon={<span className="text-lg">🎨</span>}
-                      name="clsx"
-                    />
-                  </div>
-                </div>
-
-                {/* Backend & Services */}
-                <div className="space-y-4">
-                  <div className="pb-2 mb-2 text-sm font-medium tracking-wider uppercase border-b text-max/60 border-max/10">
-                    Backend & Services
-                  </div>
-                  <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4">
-                    <TechItem
-                      icon={<SiFirebase />}
-                      name="Firebase Auth"
-                      color="text-[#FFCA28]"
-                    />
-                    <TechItem
-                      icon={<SiFirebase />}
-                      name="Realtime DB"
-                      color="text-[#FFCA28]"
-                    />
-                    <TechItem
-                      icon={<SiFirebase />}
-                      name="Storage"
-                      color="text-[#FFCA28]"
-                    />
-                    <TechItem
-                      icon={<SiFirebase />}
-                      name="Security Rules"
-                      color="text-[#FFCA28]"
-                    />
-                  </div>
-                </div>
-
-                {/* Development & Deployment */}
-                <div className="space-y-4">
-                  <div className="pb-2 mb-2 text-sm font-medium tracking-wider uppercase border-b text-max/60 border-max/10">
-                    Development & Deployment
-                  </div>
-                  <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4">
-                    <TechItem
-                      icon={<SiNetlify />}
-                      name="Netlify"
-                      color="text-[#00C7B7]"
-                    />
-                    <TechItem
-                      icon={<SiGoogleanalytics />}
-                      name="Google Analytics 4"
-                      color="text-[#E37400]"
-                    />
-                    <TechItem
-                      icon={<SiEslint />}
-                      name="ESLint"
-                      color="text-[#4B32C3]"
-                    />
-                    <TechItem
-                      icon={<SiSharp />}
-                      name="Sharp"
-                      color="text-[#99CC00]"
-                    />
-                    <TechItem
-                      icon={<FaTools />}
-                      name="Custom Build Scripts"
-                      color="text-yellow-400"
-                    />
-                  </div>
-                </div>
+                {caseStudy.technologies.map(
+                  (category: TechnologyCategory, categoryIndex) => (
+                    <div key={categoryIndex} className="space-y-4">
+                      <div className="pb-2 mb-2 text-sm font-medium tracking-wider uppercase border-b text-max/60 border-max/10">
+                        {category.name}
+                      </div>
+                      <div className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4">
+                        {category.items.map((tech, techIndex) => (
+                          <TechItem
+                            key={techIndex}
+                            icon={getTechIcon(tech.icon)}
+                            name={tech.name}
+                          />
+                        ))}
+                      </div>
+                    </div>
+                  ),
+                )}
               </div>
             </motion.section>
 
@@ -905,78 +786,65 @@ const CaseStudy: React.FC = () => {
               </h2>
 
               <div className="mt-8 space-y-8">
-                {[
-                  {
-                    title: 'Image Optimization',
-                    challenge:
-                      'Netlify build failures due to large image sizes and incompatible formats.',
-                    solution:
-                      'Implemented automated pipeline using Sharp to optimize images from Unsplash during build process.',
-                  },
-                  {
-                    title: 'User Moderation',
-                    challenge:
-                      'Need for real-time user management without disrupting active users.',
-                    solution:
-                      'Developed a flexible admin mode enabling safe user management while maintaining service continuity.',
-                  },
-                  {
-                    title: 'Performance',
-                    challenge:
-                      'Slow initial load times impacting user experience.',
-                    solution:
-                      'Achieved significant speed improvements through aggressive image and code optimization techniques.',
-                  },
-                ].map((item, i) => (
-                  <motion.div
-                    key={i}
-                    initial="hidden"
-                    animate={isLoaded ? 'visible' : 'hidden'}
-                    variants={fadeInUp}
-                    transition={{ delay: 0.9 + i * 0.1 }}
-                    className="relative pl-12"
-                  >
-                    {/* Timeline Line */}
-                    <div className="absolute left-[11px] top-14 bottom-0 w-[2px] bg-gradient-to-b from-max/20 to-transparent" />
+                {caseStudy.challenges.map((challenge, i) => {
+                  const parts = challenge.split(':')
+                  const title = parts[0] || challenge
+                  const details = parts[1]?.split('->') || []
+                  const challengeText = details[0]?.trim() || challenge
+                  const solution =
+                    details[1]?.trim() || 'Solution implemented successfully'
 
-                    {/* Timeline Dot */}
-                    <div className="flex absolute left-0 top-2 justify-center items-center">
-                      <div className="w-6 h-6 bg-gradient-to-br rounded-full backdrop-blur-sm from-purple-500/20 to-pink-500/20" />
-                      <div className="absolute w-2 h-2 rounded-full bg-max/80" />
-                    </div>
+                  return (
+                    <motion.div
+                      key={i}
+                      initial="hidden"
+                      animate={isLoaded ? 'visible' : 'hidden'}
+                      variants={fadeInUp}
+                      transition={{ delay: 0.9 + i * 0.1 }}
+                      className="relative pl-12"
+                    >
+                      {/* Timeline Line */}
+                      <div className="absolute left-[11px] top-14 bottom-0 w-[2px] bg-gradient-to-b from-max/20 to-transparent" />
 
-                    {/* Content */}
-                    <div className="relative">
-                      <h3 className="mb-4 text-lg font-medium text-transparent bg-clip-text bg-gradient-to-r from-max to-max/80">
-                        {item.title}
-                      </h3>
+                      {/* Timeline Dot */}
+                      <div className="flex absolute left-0 top-2 justify-center items-center">
+                        <div className="w-6 h-6 bg-gradient-to-br rounded-full backdrop-blur-sm from-purple-500/20 to-pink-500/20" />
+                        <div className="absolute w-2 h-2 rounded-full bg-max/80" />
+                      </div>
 
-                      <div className="space-y-4">
-                        {/* Challenge */}
-                        <div className="relative pl-6">
-                          <div className="absolute left-0 top-[0.6rem] w-1.5 h-1.5 rounded-full bg-red-400/60" />
-                          <div>
-                            <div className="mb-1 text-sm font-medium text-max/60">
-                              Challenge
+                      {/* Content */}
+                      <div className="relative">
+                        <h3 className="mb-4 text-lg font-medium text-transparent bg-clip-text bg-gradient-to-r from-max to-max/80">
+                          {title}
+                        </h3>
+
+                        <div className="space-y-4">
+                          {/* Challenge */}
+                          <div className="relative pl-6">
+                            <div className="absolute left-0 top-[0.6rem] w-1.5 h-1.5 rounded-full bg-red-400/60" />
+                            <div>
+                              <div className="mb-1 text-sm font-medium text-max/60">
+                                Challenge
+                              </div>
+                              <p className="text-max/80">{challengeText}</p>
                             </div>
-                            <p className="text-max/80">{item.challenge}</p>
                           </div>
-                        </div>
 
-                        {/* Solution */}
-                        <div className="relative pl-6">
-                          <div className="absolute left-0 top-[0.6rem] w-1.5 h-1.5 rounded-full bg-green-400/60" />
-                          <div>
-                            <div className="mb-1 text-sm font-medium text-max/60">
-                              Solution
+                          {/* Solution */}
+                          <div className="relative pl-6">
+                            <div className="absolute left-0 top-[0.6rem] w-1.5 h-1.5 rounded-full bg-green-400/60" />
+                            <div>
+                              <div className="mb-1 text-sm font-medium text-max/60">
+                                Solution
+                              </div>
+                              <p className="text-max/80">{solution}</p>
                             </div>
-                            <p className="text-max/80">{item.solution}</p>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  </motion.div>
-                ))}
+                    </motion.div>
+                  )
+                })}
               </div>
             </motion.section>
 
@@ -1143,7 +1011,8 @@ const CaseStudy: React.FC = () => {
                   transition={{ delay: 1.3 }}
                   className="mb-4 text-2xl font-bold md:mb-6 md:text-4xl"
                 >
-                  Ready to Experience Pina Soulmate?
+                  {caseStudy.callToAction?.title ||
+                    `Ready to Experience ${caseStudy.name}?`}
                 </motion.h2>
 
                 <motion.p
@@ -1152,8 +1021,8 @@ const CaseStudy: React.FC = () => {
                   transition={{ delay: 1.4 }}
                   className="mx-auto mb-8 max-w-2xl text-base md:mb-12 md:text-lg text-max/80"
                 >
-                  Join thousands of Filipino singles worldwide and start your
-                  journey to meaningful connections today.
+                  {caseStudy.callToAction?.description ||
+                    `Experience ${caseStudy.name} today and discover what makes it special.`}
                 </motion.p>
 
                 <motion.div
@@ -1162,15 +1031,17 @@ const CaseStudy: React.FC = () => {
                   transition={{ delay: 1.5 }}
                   className="flex flex-col gap-4 justify-center items-stretch sm:flex-row md:gap-6 sm:items-center"
                 >
-                  <a
-                    href="https://pinasoulmate.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex justify-center items-center px-6 py-3 space-x-3 text-base font-semibold rounded-full transition-all duration-300 transform md:px-8 md:py-4 md:text-lg group bg-max/90 text-min hover:bg-max/80 hover:scale-105"
-                  >
-                    <span>Visit Live Site</span>
-                    <FaArrowUpRightFromSquare className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-                  </a>
+                  {caseStudy.liveDemo && (
+                    <a
+                      href={caseStudy.liveDemo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex justify-center items-center px-6 py-3 space-x-3 text-base font-semibold rounded-full transition-all duration-300 transform md:px-8 md:py-4 md:text-lg group bg-max/90 text-min hover:bg-max/80 hover:scale-105"
+                    >
+                      <span>Visit Live Site</span>
+                      <FaArrowUpRightFromSquare className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+                    </a>
+                  )}
 
                   <Link
                     to="/"
@@ -1192,50 +1063,54 @@ const CaseStudy: React.FC = () => {
               className="grid gap-4 mt-8 md:gap-6 sm:grid-cols-2"
             >
               {/* Previous Project */}
-              <Link
-                to="/case-study/oak-and-stone"
-                className={cn(
-                  'group p-8 rounded-2xl relative overflow-hidden transition-all duration-300 hover:scale-[1.02]',
-                  theme === 'dark'
-                    ? 'bg-min/90 backdrop-blur-xl'
-                    : 'bg-min/95 backdrop-blur-xl shadow-xl',
-                  'border border-max/5',
-                )}
-              >
-                <div className="absolute inset-0 bg-gradient-to-r opacity-0 transition-opacity duration-300 from-pink-500/10 to-purple-500/10 group-hover:opacity-100" />
-                <div className="relative z-10">
-                  <div className="mb-2 text-sm font-medium text-max/60">
-                    Previous Project
+              {caseStudy.navigation?.previous && (
+                <Link
+                  to={`/casestudy/${caseStudy.navigation.previous.slug}`}
+                  className={cn(
+                    'group p-8 rounded-2xl relative overflow-hidden transition-all duration-300 hover:scale-[1.02]',
+                    theme === 'dark'
+                      ? 'bg-min/90 backdrop-blur-xl'
+                      : 'bg-min/95 backdrop-blur-xl shadow-xl',
+                    'border border-max/5',
+                  )}
+                >
+                  <div className="absolute inset-0 bg-gradient-to-r opacity-0 transition-opacity duration-300 from-pink-500/10 to-purple-500/10 group-hover:opacity-100" />
+                  <div className="relative z-10">
+                    <div className="mb-2 text-sm font-medium text-max/60">
+                      Previous Project
+                    </div>
+                    <div className="flex items-center space-x-3 text-xl font-semibold">
+                      <FaArrowLeft className="transition-transform group-hover:-translate-x-1" />
+                      <span>{caseStudy.navigation.previous.name}</span>
+                    </div>
                   </div>
-                  <div className="flex items-center space-x-3 text-xl font-semibold">
-                    <FaArrowLeft className="transition-transform group-hover:-translate-x-1" />
-                    <span>Oak & Stone</span>
-                  </div>
-                </div>
-              </Link>
+                </Link>
+              )}
 
               {/* Next Project */}
-              <Link
-                to="/case-study/svg-library"
-                className={cn(
-                  'group p-8 rounded-2xl relative overflow-hidden transition-all duration-300 hover:scale-[1.02]',
-                  theme === 'dark'
-                    ? 'bg-min/90 backdrop-blur-xl'
-                    : 'bg-min/95 backdrop-blur-xl shadow-xl',
-                  'border border-max/5',
-                )}
-              >
-                <div className="absolute inset-0 bg-gradient-to-r opacity-0 transition-opacity duration-300 from-purple-500/10 to-pink-500/10 group-hover:opacity-100" />
-                <div className="relative z-10">
-                  <div className="mb-2 text-sm font-medium text-max/60">
-                    Next Project
+              {caseStudy.navigation?.next && (
+                <Link
+                  to={`/casestudy/${caseStudy.navigation.next.slug}`}
+                  className={cn(
+                    'group p-8 rounded-2xl relative overflow-hidden transition-all duration-300 hover:scale-[1.02]',
+                    theme === 'dark'
+                      ? 'bg-min/90 backdrop-blur-xl'
+                      : 'bg-min/95 backdrop-blur-xl shadow-xl',
+                    'border border-max/5',
+                  )}
+                >
+                  <div className="absolute inset-0 bg-gradient-to-r opacity-0 transition-opacity duration-300 from-purple-500/10 to-pink-500/10 group-hover:opacity-100" />
+                  <div className="relative z-10">
+                    <div className="mb-2 text-sm font-medium text-max/60">
+                      Next Project
+                    </div>
+                    <div className="flex justify-end items-center space-x-3 text-xl font-semibold">
+                      <span>{caseStudy.navigation.next.name}</span>
+                      <FaArrowLeft className="transition-transform rotate-180 group-hover:translate-x-1" />
+                    </div>
                   </div>
-                  <div className="flex justify-end items-center space-x-3 text-xl font-semibold">
-                    <span>SVG Library</span>
-                    <FaArrowLeft className="transition-transform rotate-180 group-hover:translate-x-1" />
-                  </div>
-                </div>
-              </Link>
+                </Link>
+              )}
             </motion.section>
 
             {/* Footer */}
