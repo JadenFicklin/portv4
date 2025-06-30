@@ -471,4 +471,123 @@ export const caseStudies: CaseStudy[] = [
       },
     },
   },
+  {
+    slug: 'svg-library',
+    name: 'SVG Library',
+    overview:
+      'A modern, interactive SVG icon library built with React and TailwindCSS. The application provides a collection of customizable SVG icons with real-time color, size, and stroke width adjustments. The library emphasizes user experience with an intuitive interface and immediate visual feedback.',
+    myRole:
+      'Full Stack Developer (Solo)\nLed the development of the entire application, including component architecture, state management, and UI/UX design.',
+    problemStatement:
+      'Developers often struggle with finding customizable SVG icons that can be easily modified to match their design requirements. Most icon libraries offer limited customization options and require manual editing of SVG code. The goal was to create a user-friendly platform where developers can customize and preview SVG icons in real-time.',
+    keyFeatures: [
+      'Dynamic SVG Customization: Real-time adjustment of icon size, stroke width, and colors through an intuitive interface',
+      'Extensive Icon Collection: Large library of professionally designed SVG icons available for immediate use',
+      'Color Management: Advanced color picker with preset color schemes and custom color input support',
+      'Responsive Design: Mobile-first approach ensuring a seamless experience across all devices',
+      'State Management: Efficient state handling using Zustand for smooth real-time updates',
+      'Modern UI: Clean, minimalist interface with dark/light mode support based on selected colors',
+      'Performance Optimized: Lightweight implementation with minimal dependencies',
+    ],
+    technologies: [
+      {
+        name: 'Frontend Core',
+        items: [
+          { name: 'React 18', icon: 'react' },
+          { name: 'TailwindCSS', icon: 'tailwind' },
+          { name: 'Zustand', icon: 'other' },
+        ],
+      },
+      {
+        name: 'Development Tools',
+        items: [
+          { name: 'ESLint', icon: 'eslint' },
+          { name: 'rc-slider', icon: 'other' },
+          { name: 'classnames', icon: 'other' },
+        ],
+      },
+    ],
+    challenges: [
+      'SVG Manipulation: Implementing real-time SVG modifications while maintaining performance -> Used efficient state management with Zustand',
+      'Color System: Creating an intuitive color selection system with both presets and custom inputs -> Developed a hybrid approach with color picker and preset swatches',
+      'Responsive Design: Ensuring consistent icon preview and controls across different screen sizes -> Implemented mobile-first design with TailwindCSS',
+      'State Synchronization: Maintaining synchronized state across multiple components -> Centralized state management with Zustand store',
+    ],
+    stats: [
+      { value: '100+ SVG icons', icon: 'code' },
+      { value: '3 customization options', icon: 'check' },
+      { value: 'Fast load times', icon: 'speed' },
+    ],
+    results: [
+      'Created a user-friendly platform for SVG icon customization',
+      'Implemented real-time preview and adjustment capabilities',
+      'Built an extensive library of professional SVG icons',
+      'Achieved smooth performance with efficient state management',
+    ],
+    whatILearned: [
+      'Advanced SVG manipulation techniques in React',
+      'Efficient state management with Zustand',
+      'Real-time UI updates with optimized performance',
+      'Color system implementation and management',
+      'Mobile-first responsive design principles',
+    ],
+    screenshots: [
+      {
+        src: '/images/casestudies/svg/svglanding1.webp',
+        description:
+          'Landing Page: Clean, modern interface showcasing the SVG icon library with customization controls.',
+      },
+      {
+        src: '/images/casestudies/svg/svgcolor2.webp',
+        description:
+          'Color Customization: Intuitive color picker interface for real-time icon color adjustments.',
+      },
+      {
+        src: '/images/casestudies/svg/svgsize3.webp',
+        description:
+          'Size Controls: Precise size adjustment controls with immediate visual feedback.',
+      },
+      {
+        src: '/images/casestudies/svg/svgstroke4.webp',
+        description:
+          'Stroke Width: Dynamic stroke width modification for line-based icons.',
+      },
+      {
+        src: '/images/casestudies/svg/svghex5.webp',
+        description:
+          'Hex Color Input: Direct hex color input support for precise color matching.',
+      },
+      {
+        src: '/images/casestudies/svg/svgcopied6.webp',
+        description:
+          'Copy Feedback: Smooth copy-to-clipboard functionality with visual confirmation.',
+      },
+      {
+        src: '/images/casestudies/svg/svgsearch7.webp',
+        description:
+          'Search Feature: Quick icon search and filtering capabilities.',
+      },
+      {
+        src: '/images/casestudies/svg/svgdarkmode8.webp',
+        description:
+          'Dark Mode: Elegant dark mode support with color-aware interface adjustments.',
+      },
+    ],
+    liveDemo: 'https://svg-library.web.app/',
+    callToAction: {
+      title: 'Start Customizing Your Icons',
+      description:
+        'Access our library of professional SVG icons and customize them to match your design needs perfectly.',
+    },
+    navigation: {
+      previous: {
+        slug: 'restoration-laser-cleaning',
+        name: 'RLC Laser Cleaning',
+      },
+      next: {
+        slug: 'oak-and-stone',
+        name: 'Oak & Stone',
+      },
+    },
+  },
 ]
