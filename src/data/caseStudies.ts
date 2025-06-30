@@ -70,62 +70,62 @@ export const caseStudies: CaseStudy[] = [
     ],
     screenshots: [
       {
-        src: '/src/assets/images/casestudies/pinasoulmate/pinalanding.webp',
+        src: '/images/casestudies/pinasoulmate/pinalanding.webp',
         description:
           'Landing Page: Modern, welcoming interface that introduces users to the platform and its core features.',
       },
       {
-        src: '/src/assets/images/casestudies/pinasoulmate/pinabrowse.webp',
+        src: '/images/casestudies/pinasoulmate/pinabrowse.webp',
         description:
           'Browse Page: Discover potential matches with advanced filtering and sorting options.',
       },
       {
-        src: '/src/assets/images/casestudies/pinasoulmate/pinaprofileoverview.webp',
+        src: '/images/casestudies/pinasoulmate/pinaprofileoverview.webp',
         description:
           'Profile Overview: Detailed user profiles with photos and personal information.',
       },
       {
-        src: '/src/assets/images/casestudies/pinasoulmate/pinaglobalchat.webp',
+        src: '/images/casestudies/pinasoulmate/pinaglobalchat.webp',
         description:
           'Global Chat: Real-time community chat room for all users to interact.',
       },
       {
-        src: '/src/assets/images/casestudies/pinasoulmate/pinaindividualchat.webp',
+        src: '/images/casestudies/pinasoulmate/pinaindividualchat.webp',
         description:
           'Individual Chat: Private messaging between users with emoji support and media sharing.',
       },
       {
-        src: '/src/assets/images/casestudies/pinasoulmate/pinaeditprofile.webp',
+        src: '/images/casestudies/pinasoulmate/pinaeditprofile.webp',
         description:
           'Edit Profile: User-friendly interface for updating profile information.',
       },
       {
-        src: '/src/assets/images/casestudies/pinasoulmate/pinauploadphotos.webp',
+        src: '/images/casestudies/pinasoulmate/pinauploadphotos.webp',
         description:
           'Photo Management: Drag-and-drop interface for managing profile photos.',
       },
       {
-        src: '/src/assets/images/casestudies/pinasoulmate/pinapreferences.webp',
+        src: '/images/casestudies/pinasoulmate/pinapreferences.webp',
         description:
           'Preferences: Customize match preferences and app settings.',
       },
       {
-        src: '/src/assets/images/casestudies/pinasoulmate/pinafblogin.webp',
+        src: '/images/casestudies/pinasoulmate/pinafblogin.webp',
         description:
           'Facebook Login: Seamless authentication with Facebook integration.',
       },
       {
-        src: '/src/assets/images/casestudies/pinasoulmate/pinareports.webp',
+        src: '/images/casestudies/pinasoulmate/pinareports.webp',
         description:
           'Admin Reports: Comprehensive reporting system for platform moderation.',
       },
       {
-        src: '/src/assets/images/casestudies/pinasoulmate/pinaanalytics.webp',
+        src: '/images/casestudies/pinasoulmate/pinaanalytics.webp',
         description:
           'Analytics Dashboard: Real-time user activity and engagement metrics.',
       },
       {
-        src: '/src/assets/images/casestudies/pinasoulmate/pinafacebookgroup.webp',
+        src: '/images/casestudies/pinasoulmate/pinafacebookgroup.webp',
         description:
           'Facebook Community: Thriving Facebook group with 119,900+ members.',
       },
