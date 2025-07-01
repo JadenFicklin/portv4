@@ -206,7 +206,7 @@ export const caseStudies: CaseStudy[] = [
 
   {
     slug: 'restoration-laser-cleaning',
-    name: 'RLC Laser Cleaning & Rust Removal',
+    name: 'Restoration Laser Cleaning & Rust Removal',
     overview:
       'A modern web platform showcasing eco-friendly laser cleaning services. Built with React and TailwindCSS, this site effectively presents the benefits of laser ablation technology while maintaining a clean, professional aesthetic.',
     myRole:
@@ -324,8 +324,8 @@ export const caseStudies: CaseStudy[] = [
         name: 'SVG Library',
       },
       next: {
-        slug: 'pina-soulmate',
-        name: 'Pina Soulmate',
+        slug: 'oak-and-stone',
+        name: 'Oak & Stone',
       },
     },
   },
@@ -463,7 +463,7 @@ export const caseStudies: CaseStudy[] = [
     navigation: {
       previous: {
         slug: 'restoration-laser-cleaning',
-        name: 'RLC Laser Cleaning',
+        name: 'Restoration Laser Cleaning',
       },
       next: {
         slug: 'pina-soulmate',
@@ -581,12 +581,12 @@ export const caseStudies: CaseStudy[] = [
     },
     navigation: {
       previous: {
-        slug: 'restoration-laser-cleaning',
-        name: 'RLC Laser Cleaning',
+        slug: 'pina-soulmate',
+        name: 'Pina Soulmate',
       },
       next: {
-        slug: 'oak-and-stone',
-        name: 'Oak & Stone',
+        slug: 'restoration-laser-cleaning',
+        name: 'Restoration Laser Cleaning',
       },
     },
   },

@@ -7,8 +7,6 @@ import {
   FaArrowLeft,
   FaArrowUpRightFromSquare,
   FaUsers,
-  FaChartLine,
-  FaFacebook,
   FaCode,
   FaLightbulb,
   FaPuzzlePiece,
@@ -16,14 +14,13 @@ import {
   FaGraduationCap,
   FaMountain,
   FaRocket,
-  FaStar,
-  FaBolt,
 } from 'react-icons/fa6'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { Nav } from '~/components/Nav'
 import { ImageModal } from '~/utils/ImageModal'
 import { morphingDiamonds, circuitBoard } from 'hero-patterns'
 import { getTechIcon } from '~/utils/getTechIcon'
+import PixelBackground from '~/components/PixelBackground'
 
 const TechItem: React.FC<{
   icon: React.ReactNode
@@ -259,15 +256,19 @@ const CaseStudy: React.FC = () => {
           theme === 'dark' ? 'bg-max/[0.05]' : 'bg-max/[0.08]',
         )}
       >
+        {/* Pixel Background */}
+        <PixelBackground theme={theme} />
+
         {/* Bubble Background */}
-        <div className="overflow-hidden absolute inset-0">
+        <div className="overflow-hidden absolute inset-0 z-[1]">
           {bubbles.map((bubble, index) => (
             <Bubble key={index} {...bubble} />
           ))}
           <div className="absolute inset-0 backdrop-blur-[120px]" />
         </div>
 
-        <div className="absolute inset-0 bg-gradient-to-b to-transparent from-min/90 via-min/80" />
+        <div className="absolute inset-0 bg-gradient-to-b to-transparent from-min/90 via-min/80 z-[2]" />
+
         <div className="container relative px-4 mx-auto h-full z-[5]">
           {/* Back Button */}
           <motion.div
@@ -287,7 +288,7 @@ const CaseStudy: React.FC = () => {
 
           <div className="grid gap-12 items-start h-full lg:items-center lg:grid-cols-2">
             {/* Left Column - Content */}
-            <div className="max-w-2xl relative z-[5]">
+            <div className="max-w-2xl xl:-mt-20 relative z-[5]">
               <motion.div
                 className="inline-block px-3 py-1.5 md:px-4 md:py-2 mb-4 md:mb-6 rounded-full bg-max/10 text-max/80 text-sm"
                 initial={{ opacity: 0, y: 30 }}
@@ -341,7 +342,7 @@ const CaseStudy: React.FC = () => {
               </motion.div>
 
               {/* Stats */}
-              {caseStudy.stats && caseStudy.stats.length > 0 && (
+              {/* {caseStudy.stats && caseStudy.stats.length > 0 && (
                 <motion.div
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -374,7 +375,7 @@ const CaseStudy: React.FC = () => {
                     </div>
                   ))}
                 </motion.div>
-              )}
+              )} */}
             </div>
 
             {/* Right Column - Image */}
