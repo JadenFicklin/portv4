@@ -11,6 +11,7 @@ import {
   cherryBlossom,
   blueTheme,
 } from '~/data/themeConfig'
+import Lenis from '@studio-freight/lenis'
 
 export const App = () => {
   const { theme } = useThemeStore()
@@ -28,6 +29,22 @@ export const App = () => {
       document.documentElement.style.setProperty(key, value)
     })
   }, [theme])
+
+  // Lenis smooth scroll
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 0.9,
+      touchMultiplier: 1.5,
+    })
+    function raf(time: number) {
+      lenis.raf(time)
+      requestAnimationFrame(raf)
+    }
+    requestAnimationFrame(raf)
+    return () => {
+      lenis.destroy()
+    }
+  }, [])
 
   return (
     <Router>

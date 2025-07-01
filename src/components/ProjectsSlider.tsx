@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom'
 
 export const ProjectsSlider = () => {
   const [scrollY, setScrollY] = useState({ down: 0, up: 0 })
+  const [overlayOpacity, setOverlayOpacity] = useState(0.5)
 
   const parentRef = useRef<HTMLDivElement>(null)
 
@@ -28,10 +29,15 @@ export const ProjectsSlider = () => {
           up /= 2
         }
 
+        // Calculate overlay opacity based on scroll position
+        const maxScroll = window.innerHeight
+        const newOpacity = Math.max(0.15, 0.5 - relativeScrollY / maxScroll)
+
         setScrollY({
           down,
           up,
         })
+        setOverlayOpacity(newOpacity)
       }
     }
 
@@ -48,6 +54,28 @@ export const ProjectsSlider = () => {
         to="/archive"
         className="w-full h-[60vh] md:h-[80vh] xl:h-[250vh] bg-black bg-opacity-90 overflow-hidden grid grid-cols-4 gap-4 px-4 relative"
       >
+        {/* Top gradient overlay */}
+        <div
+          className="absolute inset-x-0 top-0 h-24 pointer-events-none z-10"
+          style={{
+            background: `linear-gradient(to bottom, 
+              rgba(0,0,0,${overlayOpacity}) 0%, 
+              rgba(0,0,0,0) 100%
+            )`,
+          }}
+        />
+
+        {/* Bottom gradient overlay */}
+        <div
+          className="absolute inset-x-0 bottom-0 h-24 pointer-events-none z-10"
+          style={{
+            background: `linear-gradient(to top, 
+              rgba(0,0,0,${overlayOpacity}) 0%, 
+              rgba(0,0,0,0) 100%
+            )`,
+          }}
+        />
+
         <div
           className="flex flex-wrap gap-4 h-max"
           style={{ transform: `translateY(${scrollY.down}px)` }}
