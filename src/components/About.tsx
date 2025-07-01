@@ -76,7 +76,7 @@ export const About = () => {
                 image && 'left-0',
               )}
             >
-              <img src={image} alt={image} className="w-full" />
+              <img src={image} alt={image} className="w-full" loading="lazy" />
             </div>
           </div>
           {/* FAQ section */}
