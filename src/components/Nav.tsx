@@ -63,8 +63,8 @@ export const Nav = () => {
             displayNav ? 'top-0' : '-top-full',
           )}
         ></div>
-        <div
-          onClick={() => handleNavClick(navOptions[0].to)}
+        <Link
+          to="/"
           className={cn(
             'fixed left-[5%] size-16 grid place-content-center cursor-pointer duration-200 bg-transparent',
           )}
@@ -75,7 +75,7 @@ export const Nav = () => {
             text="JF"
             speed={50}
           />
-        </div>
+        </Link>
         {/* theme changer */}
         <Theme />
         <div

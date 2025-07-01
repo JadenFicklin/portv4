@@ -10,6 +10,8 @@ import { useElementsLocationStore } from '~/globalState/elementsLocationStore'
 import { motion, AnimatePresence } from 'framer-motion'
 import { caseStudies } from '~/data/caseStudies'
 import { Nav } from '~/components/Nav'
+import { ImagePreloader } from '~/utils/ImagePreloader'
+import { scrollToTop, scrollToPosition } from '~/utils/scrollUtils'
 
 type ProjectProps = {
   year: number
@@ -26,6 +28,7 @@ type ViewMode = 'table' | 'grid'
 export const Archive = () => {
   const [viewMode, setViewMode] = useState<ViewMode>('table')
   const [expandedProject, setExpandedProject] = useState<string | null>(null)
+  const [imagesLoaded, setImagesLoaded] = useState(false)
   const navigate = useNavigate()
   const cardRefs = useRef<{ [key: string]: HTMLDivElement | null }>({})
 
@@ -33,17 +36,30 @@ export const Archive = () => {
     archive: state.archive,
   }))
 
+  // Preload images
   useEffect(() => {
-    window.scrollTo(0, 0)
+    const imagePromises = projectArchiveArray.map((project) => {
+      return new Promise((resolve) => {
+        const img = new Image()
+        img.src = project.image
+        img.onload = resolve
+        img.onerror = resolve // Resolve even on error to continue loading
+      })
+    })
+
+    Promise.all(imagePromises).then(() => {
+      setImagesLoaded(true)
+    })
+  }, [])
+
+  useEffect(() => {
+    scrollToTop(true) // Scroll to top immediately when component mounts
   }, [])
 
   const handleLinkClick = () => {
     navigate('/')
     setTimeout(() => {
-      window.scrollTo({
-        top: archive,
-        behavior: 'smooth',
-      })
+      scrollToPosition(archive, { duration: 1.2 }) // Smooth scroll to archive section
     }, 0)
   }
 
@@ -278,12 +294,42 @@ export const Archive = () => {
     )
   }
 
+  if (!imagesLoaded) {
+    return (
+      <>
+        <Nav />
+        <div className="flex fixed inset-0 justify-center items-center bg-min">
+          <div className="w-10 h-10 rounded-full border-4 animate-spin border-max/20 border-t-max/80" />
+        </div>
+      </>
+    )
+  }
+
   return (
-    <>
+    <ImagePreloader
+      images={projectArchiveArray.map((project) => project.image)}
+    >
       <Nav />
-      <main className="px-4 pt-28 pb-12 min-h-screen sm:px-6 lg:px-8 sm:pt-32 sm:pb-16 bg-min">
+      <motion.main
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1 }}
+        transition={{
+          duration: 0.8,
+          ease: [0.04, 0.62, 0.23, 0.98],
+        }}
+        className="px-4 pt-28 pb-12 min-h-screen sm:px-6 lg:px-8 sm:pt-32 sm:pb-16 bg-min"
+      >
         <div className="mx-auto max-w-7xl">
-          <div className="flex flex-col gap-4 justify-between items-start mb-8 sm:flex-row sm:items-center sm:mb-12">
+          <motion.div
+            className="flex flex-col gap-4 justify-between items-start mb-8 sm:flex-row sm:items-center sm:mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 0.5,
+              ease: [0.04, 0.62, 0.23, 0.98],
+              delay: 0.2,
+            }}
+          >
             <div>
               <button
                 onClick={handleLinkClick}
@@ -320,113 +366,148 @@ export const Archive = () => {
                 <BsGrid className="w-5 h-5" />
               </button>
             </div>
-          </div>
+          </motion.div>
 
-          {viewMode === 'table' ? (
-            <div className="space-y-2">
-              <div className="hidden grid-cols-12 gap-4 px-6 py-3 text-sm font-medium rounded-lg sm:grid text-max/60 bg-max/5">
-                <div className="col-span-1">Year</div>
-                <div className="col-span-3">Project</div>
-                <div className="hidden col-span-2 sm:block">Made at</div>
-                <div className="hidden col-span-4 lg:block">Built with</div>
-                <div className="col-span-2"></div>
-              </div>
-
-              {projectArchiveArray.map((item) => (
-                <div
-                  key={item.project}
-                  ref={(el) => (cardRefs.current[item.project] = el)}
-                  onClick={(e) => handleProjectClick(item.project, e)}
-                  className={cn(
-                    'rounded-lg transition-all duration-300 hover:bg-max/5',
-                    expandedProject === item.project
-                      ? 'bg-max/5'
-                      : 'hover:shadow-sm',
-                  )}
-                >
-                  <div className="px-6 py-4">
-                    <ProjectDetails item={item} />
-                  </div>
+          <AnimatePresence mode="wait">
+            {viewMode === 'table' ? (
+              <motion.div
+                key="table"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{
+                  duration: 0.5,
+                  ease: [0.04, 0.62, 0.23, 0.98],
+                }}
+                className="space-y-2"
+              >
+                {/* Table header */}
+                <div className="hidden grid-cols-12 gap-4 px-6 py-3 text-sm font-medium rounded-lg sm:grid text-max/60 bg-max/5">
+                  <div className="col-span-1">Year</div>
+                  <div className="col-span-3">Project</div>
+                  <div className="hidden col-span-2 sm:block">Made at</div>
+                  <div className="hidden col-span-4 lg:block">Built with</div>
+                  <div className="col-span-2"></div>
                 </div>
-              ))}
-            </div>
-          ) : (
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {projectArchiveArray.map((item) => (
-                <div
-                  key={item.project}
-                  onClick={() => window.open(item.link, '_blank')}
-                  className="p-6 rounded-xl transition-all duration-300 cursor-pointer group bg-max/5 hover:shadow-lg"
-                >
-                  <div className="flex justify-between items-start mb-4">
-                    <div>
-                      <h3 className="mb-1 text-lg font-medium text-max">
-                        {item.project}
-                      </h3>
-                      <p className="text-sm text-max/60">{item.madeAt}</p>
-                    </div>
-                    <span className="text-sm text-max/60">{item.year}</span>
-                  </div>
-
-                  <div className="space-y-4">
-                    {item.image && (
-                      <div className="overflow-hidden rounded-lg aspect-video bg-max/10">
-                        <img
-                          src={item.image}
-                          alt={item.project}
-                          className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
-                        />
-                      </div>
+                {/* Table content */}
+                {projectArchiveArray.map((item, index) => (
+                  <motion.div
+                    key={item.project}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{
+                      duration: 0.3,
+                      delay: index * 0.1,
+                    }}
+                    ref={(el) => (cardRefs.current[item.project] = el)}
+                    onClick={(e) => handleProjectClick(item.project, e)}
+                    className={cn(
+                      'rounded-lg transition-all duration-300 hover:bg-max/5',
+                      expandedProject === item.project
+                        ? 'bg-max/5'
+                        : 'hover:shadow-sm',
                     )}
-
-                    <p className="text-sm text-max/80 line-clamp-3">
-                      {item.description ||
-                        'A creative project showcasing modern web development techniques and best practices.'}
-                    </p>
-
-                    <div className="flex flex-wrap gap-1.5">
-                      {item.builtWith.slice(0, 4).map((tech, index) => (
-                        <span
-                          key={index}
-                          className="px-2 py-1 text-xs rounded-full transition-all duration-200 bg-min/50 text-max/80 hover:bg-min hover:shadow-sm"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                      {item.builtWith.length > 4 && (
-                        <span className="px-2 py-1 text-xs text-max/60">
-                          +{item.builtWith.length - 4} more
-                        </span>
-                      )}
+                  >
+                    <div className="px-6 py-4">
+                      <ProjectDetails item={item} />
+                    </div>
+                  </motion.div>
+                ))}
+              </motion.div>
+            ) : (
+              <motion.div
+                key="grid"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{
+                  duration: 0.5,
+                  ease: [0.04, 0.62, 0.23, 0.98],
+                }}
+                className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
+              >
+                {projectArchiveArray.map((item, index) => (
+                  <motion.div
+                    key={item.project}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{
+                      duration: 0.3,
+                      delay: index * 0.1,
+                    }}
+                    onClick={() => window.open(item.link, '_blank')}
+                    className="p-6 rounded-xl transition-all duration-300 cursor-pointer group bg-max/5 hover:shadow-lg"
+                  >
+                    <div className="flex justify-between items-start mb-4">
+                      <div>
+                        <h3 className="mb-1 text-lg font-medium text-max">
+                          {item.project}
+                        </h3>
+                        <p className="text-sm text-max/60">{item.madeAt}</p>
+                      </div>
+                      <span className="text-sm text-max/60">{item.year}</span>
                     </div>
 
-                    <div className="flex gap-4 pt-2">
-                      <a
-                        href={item.link}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="inline-flex gap-2 items-center text-sm transition-colors duration-200 text-max/80 hover:text-hover-accent w-fit group/link"
-                      >
-                        Visit Project
-                        <IoMdArrowForward className="transition-transform duration-300 text-max/80 group-hover/link:text-hover-accent group-hover/link:translate-x-1" />
-                      </a>
-                      {hasCaseStudy(item.project) && (
-                        <Link
-                          to={`/case-study/${getCaseStudySlug(item.project)}`}
+                    <div className="space-y-4">
+                      {item.image && (
+                        <div className="overflow-hidden rounded-lg aspect-video bg-max/10">
+                          <img
+                            src={item.image}
+                            alt={item.project}
+                            className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
+                          />
+                        </div>
+                      )}
+
+                      <p className="text-sm text-max/80 line-clamp-3">
+                        {item.description ||
+                          'A creative project showcasing modern web development techniques and best practices.'}
+                      </p>
+
+                      <div className="flex flex-wrap gap-1.5">
+                        {item.builtWith.slice(0, 4).map((tech, index) => (
+                          <span
+                            key={index}
+                            className="px-2 py-1 text-xs rounded-full transition-all duration-200 bg-min/50 text-max/80 hover:bg-min hover:shadow-sm"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                        {item.builtWith.length > 4 && (
+                          <span className="px-2 py-1 text-xs text-max/60">
+                            +{item.builtWith.length - 4} more
+                          </span>
+                        )}
+                      </div>
+
+                      <div className="flex gap-4 pt-2">
+                        <a
+                          href={item.link}
+                          target="_blank"
+                          rel="noreferrer"
                           className="inline-flex gap-2 items-center text-sm transition-colors duration-200 text-max/80 hover:text-hover-accent w-fit group/link"
                         >
-                          Case Study
+                          Visit Project
                           <IoMdArrowForward className="transition-transform duration-300 text-max/80 group-hover/link:text-hover-accent group-hover/link:translate-x-1" />
-                        </Link>
-                      )}
+                        </a>
+                        {hasCaseStudy(item.project) && (
+                          <Link
+                            to={`/case-study/${getCaseStudySlug(item.project)}`}
+                            className="inline-flex gap-2 items-center text-sm transition-colors duration-200 text-max/80 hover:text-hover-accent w-fit group/link"
+                          >
+                            Case Study
+                            <IoMdArrowForward className="transition-transform duration-300 text-max/80 group-hover/link:text-hover-accent group-hover/link:translate-x-1" />
+                          </Link>
+                        )}
+                      </div>
                     </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
+                  </motion.div>
+                ))}
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
-      </main>
-    </>
+      </motion.main>
+    </ImagePreloader>
   )
 }
