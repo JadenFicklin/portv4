@@ -6,12 +6,11 @@ import { IoMdArrowForward } from 'react-icons/io'
 import { BsGrid, BsTable } from 'react-icons/bs'
 import { HiChevronDown } from 'react-icons/hi'
 import { cn } from '~/utils/cn'
-import { useElementsLocationStore } from '~/globalState/elementsLocationStore'
 import { motion, AnimatePresence } from 'framer-motion'
 import { caseStudies } from '~/data/caseStudies'
 import { Nav } from '~/components/Nav'
 import { ImagePreloader } from '~/utils/ImagePreloader'
-import { scrollToTop, scrollToPosition } from '~/utils/scrollUtils'
+import { scrollToTop } from '~/utils/scrollUtils'
 
 type ProjectProps = {
   year: number
@@ -31,10 +30,6 @@ export const Archive = () => {
   const [imagesLoaded, setImagesLoaded] = useState(false)
   const navigate = useNavigate()
   const cardRefs = useRef<{ [key: string]: HTMLDivElement | null }>({})
-
-  const { archive } = useElementsLocationStore((state) => ({
-    archive: state.archive,
-  }))
 
   // Preload images
   useEffect(() => {
@@ -56,11 +51,8 @@ export const Archive = () => {
     scrollToTop(true) // Scroll to top immediately when component mounts
   }, [])
 
-  const handleLinkClick = () => {
-    navigate('/')
-    setTimeout(() => {
-      scrollToPosition(archive, { duration: 1.2 }) // Smooth scroll to archive section
-    }, 0)
+  const handleBackClick = () => {
+    navigate(-1) // Go back to previous route
   }
 
   const toggleExpand = (projectName: string) => {
@@ -68,19 +60,99 @@ export const Archive = () => {
   }
 
   const hasCaseStudy = (projectName: string) => {
-    return caseStudies.some(
-      (study) =>
-        study.name.toLowerCase() === projectName.toLowerCase() ||
-        projectName.toLowerCase().includes(study.name.toLowerCase()),
+    const normalizedProjectName = projectName
+      .toLowerCase()
+      .trim()
+      .replace(/[&]/g, 'and')
+      .replace(/\s+/g, ' ') // normalize spaces
+      .replace(/construction/gi, '') // remove 'construction' since it's optional
+
+    console.log('Checking case study for:', {
+      originalName: projectName,
+      normalizedName: normalizedProjectName,
+    })
+
+    console.log(
+      'Available case studies:',
+      caseStudies.map((study) => ({
+        originalName: study.name,
+        normalizedName: study.name
+          .toLowerCase()
+          .trim()
+          .replace(/[&]/g, 'and')
+          .replace(/\s+/g, ' ')
+          .replace(/construction/gi, ''),
+        slug: study.slug,
+      })),
     )
+
+    const hasStudy = caseStudies.some((study) => {
+      const normalizedStudyName = study.name
+        .toLowerCase()
+        .trim()
+        .replace(/[&]/g, 'and')
+        .replace(/\s+/g, ' ')
+        .replace(/construction/gi, '')
+
+      const projectContainsStudy =
+        normalizedProjectName.includes(normalizedStudyName)
+      const studyContainsProject = normalizedStudyName.includes(
+        normalizedProjectName,
+      )
+
+      console.log('Comparing:', {
+        projectName: normalizedProjectName,
+        studyName: normalizedStudyName,
+        projectContainsStudy,
+        studyContainsProject,
+      })
+
+      return projectContainsStudy || studyContainsProject
+    })
+
+    console.log('Has case study:', hasStudy)
+    return hasStudy
   }
 
   const getCaseStudySlug = (projectName: string) => {
-    const study = caseStudies.find(
-      (study) =>
-        study.name.toLowerCase() === projectName.toLowerCase() ||
-        projectName.toLowerCase().includes(study.name.toLowerCase()),
-    )
+    const normalizedProjectName = projectName
+      .toLowerCase()
+      .trim()
+      .replace(/[&]/g, 'and')
+      .replace(/\s+/g, ' ')
+      .replace(/construction/gi, '')
+
+    console.log('Getting slug for:', {
+      originalName: projectName,
+      normalizedName: normalizedProjectName,
+    })
+
+    const study = caseStudies.find((study) => {
+      const normalizedStudyName = study.name
+        .toLowerCase()
+        .trim()
+        .replace(/[&]/g, 'and')
+        .replace(/\s+/g, ' ')
+        .replace(/construction/gi, '')
+
+      const projectContainsStudy =
+        normalizedProjectName.includes(normalizedStudyName)
+      const studyContainsProject = normalizedStudyName.includes(
+        normalizedProjectName,
+      )
+
+      console.log('Comparing for slug:', {
+        projectName: normalizedProjectName,
+        studyName: normalizedStudyName,
+        projectContainsStudy,
+        studyContainsProject,
+        slug: study.slug,
+      })
+
+      return projectContainsStudy || studyContainsProject
+    })
+
+    console.log('Found study:', study)
     return study?.slug
   }
 
@@ -275,7 +347,7 @@ export const Archive = () => {
                         </a>
                         {hasCaseStudy(item.project) && (
                           <Link
-                            to={`/case-study/${getCaseStudySlug(item.project)}`}
+                            to={`/casestudy/${getCaseStudySlug(item.project)}`}
                             className="inline-flex gap-2 items-center text-sm transition-colors duration-200 text-max/80 hover:text-hover-accent w-fit group/link"
                           >
                             Case Study
@@ -332,11 +404,11 @@ export const Archive = () => {
           >
             <div>
               <button
-                onClick={handleLinkClick}
+                onClick={handleBackClick}
                 className="inline-flex gap-2 items-center mb-4 text-sm transition-colors duration-200 sm:mb-6 text-max/60 hover:text-max/80"
               >
                 <GoArrowLeft className="w-4 h-4" />
-                Back to Home
+                Back
               </button>
               <h1 className="text-2xl font-semibold sm:text-3xl lg:text-4xl text-max">
                 All Projects
@@ -435,8 +507,7 @@ export const Archive = () => {
                       duration: 0.3,
                       delay: index * 0.1,
                     }}
-                    onClick={() => window.open(item.link, '_blank')}
-                    className="p-6 rounded-xl transition-all duration-300 cursor-pointer group bg-max/5 hover:shadow-lg"
+                    className="p-6 rounded-xl transition-all duration-300 group bg-max/5 hover:shadow-lg"
                   >
                     <div className="flex justify-between items-start mb-4">
                       <div>
@@ -450,13 +521,18 @@ export const Archive = () => {
 
                     <div className="space-y-4">
                       {item.image && (
-                        <div className="overflow-hidden rounded-lg aspect-video bg-max/10">
+                        <a
+                          href={item.link}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="block overflow-hidden rounded-lg aspect-video bg-max/10"
+                        >
                           <img
                             src={item.image}
                             alt={item.project}
-                            className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
+                            className="object-cover w-full h-full transition-transform duration-300 cursor-pointer group-hover:scale-105"
                           />
-                        </div>
+                        </a>
                       )}
 
                       <p className="text-sm text-max/80 line-clamp-3">
@@ -492,7 +568,7 @@ export const Archive = () => {
                         </a>
                         {hasCaseStudy(item.project) && (
                           <Link
-                            to={`/case-study/${getCaseStudySlug(item.project)}`}
+                            to={`/casestudy/${getCaseStudySlug(item.project)}`}
                             className="inline-flex gap-2 items-center text-sm transition-colors duration-200 text-max/80 hover:text-hover-accent w-fit group/link"
                           >
                             Case Study

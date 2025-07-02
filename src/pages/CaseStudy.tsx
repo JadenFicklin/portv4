@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useParams, Link } from 'react-router-dom'
+import { useParams, Link, useNavigate } from 'react-router-dom'
 import { caseStudies, type TechnologyCategory } from '~/data/caseStudies'
 import { useThemeStore } from '~/globalState/themeStore'
 import { cn } from '~/utils/cn'
@@ -77,6 +77,7 @@ const Bubble: React.FC<{
 
 const CaseStudy: React.FC = () => {
   const { slug } = useParams<{ slug: string }>()
+  const navigate = useNavigate()
   const caseStudy = caseStudies.find((cs) => cs.slug === slug)
   const { theme } = useThemeStore()
   const [isLoaded, setIsLoaded] = useState(false)
@@ -218,6 +219,10 @@ const CaseStudy: React.FC = () => {
     return () => clearTimeout(timer)
   }, [])
 
+  const handleBackClick = () => {
+    navigate(-1) // Go back to previous route
+  }
+
   if (!caseStudy) {
     return (
       <div className="min-h-screen bg-min text-max">
@@ -277,13 +282,13 @@ const CaseStudy: React.FC = () => {
             transition={{ delay: 0.2 }}
             className="relative z-10 mb-8 md:mb-12"
           >
-            <Link
-              to="/"
+            <button
+              onClick={handleBackClick}
               className="inline-flex items-center space-x-2 transition-colors group text-max/80 hover:text-max"
             >
               <FaArrowLeft className="transition-transform group-hover:-translate-x-1" />
-              <span>Back to Portfolio</span>
-            </Link>
+              <span>Back</span>
+            </button>
           </motion.div>
 
           <div className="grid gap-12 items-start h-full lg:items-center lg:grid-cols-2">

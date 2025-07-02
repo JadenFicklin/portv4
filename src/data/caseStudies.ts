@@ -195,7 +195,7 @@ export const caseStudies: CaseStudy[] = [
     navigation: {
       previous: {
         slug: 'oak-and-stone',
-        name: 'Oak & Stone',
+        name: 'Oak and Stone',
       },
       next: {
         slug: 'svg-library',
