@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useState, useRef, useMemo } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { GoArrowLeft } from 'react-icons/go'
 import { projectArchiveArray } from '~/data/projectArchive'
@@ -25,14 +25,22 @@ type ProjectProps = {
 type ViewMode = 'table' | 'grid'
 
 export const Archive = () => {
+  console.log('Archive component rendered')
   const [viewMode, setViewMode] = useState<ViewMode>('table')
   const [expandedProject, setExpandedProject] = useState<string | null>(null)
   const [imagesLoaded, setImagesLoaded] = useState(false)
   const navigate = useNavigate()
   const cardRefs = useRef<{ [key: string]: HTMLDivElement | null }>({})
 
+  const images = useMemo(() => {
+    const arr = projectArchiveArray.map((project) => project.image)
+    console.log('Memoized images array created:', arr)
+    return arr
+  }, [])
+
   // Preload images
   useEffect(() => {
+    console.log('Preloading images...')
     const imagePromises = projectArchiveArray.map((project) => {
       return new Promise((resolve) => {
         const img = new Image()
@@ -44,19 +52,26 @@ export const Archive = () => {
 
     Promise.all(imagePromises).then(() => {
       setImagesLoaded(true)
+      console.log('All images loaded!')
     })
   }, [])
 
   useEffect(() => {
+    console.log('Archive mounted, scrolling to top')
     scrollToTop(true) // Scroll to top immediately when component mounts
   }, [])
 
   const handleBackClick = () => {
+    console.log('Back button clicked')
     navigate(-1) // Go back to previous route
   }
 
   const toggleExpand = (projectName: string) => {
-    setExpandedProject((prev) => (prev === projectName ? null : projectName))
+    setExpandedProject((prev) => {
+      const newValue = prev === projectName ? null : projectName
+      console.log('toggleExpand:', { prev, projectName, newValue })
+      return newValue
+    })
   }
 
   const hasCaseStudy = (projectName: string) => {
@@ -157,10 +172,19 @@ export const Archive = () => {
   }
 
   const handleProjectClick = (projectName: string, e: React.MouseEvent) => {
+    console.log(
+      'Card clicked:',
+      projectName,
+      'event:',
+      e.type,
+      'target:',
+      e.target,
+    )
     if (
       (e.target as HTMLElement).closest('a') ||
       (e.target as HTMLElement).closest('button')
     ) {
+      console.log('Click was on a link or button, not toggling expand.')
       return
     }
     toggleExpand(projectName)
@@ -216,7 +240,15 @@ export const Archive = () => {
           <div className="flex col-span-2 justify-end sm:justify-start">
             <div className="flex gap-4 items-center">
               <button
-                onClick={() => toggleExpand(item.project)}
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation()
+                  console.log(
+                    'Expand/collapse button clicked for',
+                    item.project,
+                  )
+                  toggleExpand(item.project)
+                }}
                 className={cn(
                   'p-1.5 sm:p-2 rounded-lg transition-all duration-300 hover:bg-min hover:shadow-sm',
                   isExpanded && 'bg-min shadow-sm',
@@ -387,6 +419,7 @@ export const Archive = () => {
   }
 
   if (!imagesLoaded) {
+    console.log('Images not loaded yet, showing spinner')
     return (
       <>
         <Nav />
@@ -398,9 +431,7 @@ export const Archive = () => {
   }
 
   return (
-    <ImagePreloader
-      images={projectArchiveArray.map((project) => project.image)}
-    >
+    <ImagePreloader images={images}>
       <Nav />
       <motion.main
         initial={{ opacity: 0, y: 20 }}

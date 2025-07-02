@@ -15,7 +15,7 @@ import {
   FaMountain,
   FaRocket,
 } from 'react-icons/fa6'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { Nav } from '~/components/Nav'
 import { ImageModal } from '~/utils/ImageModal'
 import { morphingDiamonds, circuitBoard } from 'hero-patterns'
@@ -81,7 +81,6 @@ const CaseStudy: React.FC = () => {
   const caseStudy = caseStudies.find((cs) => cs.slug === slug)
   const { theme } = useThemeStore()
   const [isLoaded, setIsLoaded] = useState(false)
-  const { scrollY } = useScroll()
   const [modalOpen, setModalOpen] = useState(false)
   const [selectedImageIndex, setSelectedImageIndex] = useState(0)
 
@@ -107,9 +106,6 @@ const CaseStudy: React.FC = () => {
     backgroundImage: `${circuitBoard(getPatternColor(), 0.03)}`,
     backgroundSize: '40px 40px',
   })
-
-  // Parallax effect for hero section
-  const heroY = useTransform(scrollY, [0, 500], [0, 150])
 
   // Define bubble configurations
   const bubbles = [
@@ -472,10 +468,9 @@ const CaseStudy: React.FC = () => {
                   />
                 </div>
 
-                {/* Main Image Container */}
+                {/* Main Image Container - Removed parallax effect */}
                 <motion.div
                   className="overflow-hidden relative h-full rounded-2xl cursor-pointer bg-min/20 group z-[1]"
-                  style={{ y: heroY }}
                   onClick={() => window.open(caseStudy.liveDemo, '_blank')}
                 >
                   {/* Image Frame */}
