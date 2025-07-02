@@ -775,65 +775,56 @@ const CaseStudy: React.FC = () => {
               </h2>
 
               <div className="mt-8 space-y-8">
-                {caseStudy.challenges.map((challenge, i) => {
-                  const parts = challenge.split(':')
-                  const title = parts[0] || challenge
-                  const details = parts[1]?.split('->') || []
-                  const challengeText = details[0]?.trim() || challenge
-                  const solution =
-                    details[1]?.trim() || 'Solution implemented successfully'
+                {caseStudy.challenges.map((challenge, i) => (
+                  <motion.div
+                    key={i}
+                    initial="hidden"
+                    animate={isLoaded ? 'visible' : 'hidden'}
+                    variants={fadeInUp}
+                    transition={{ delay: 0.9 + i * 0.1 }}
+                    className="relative pl-12"
+                  >
+                    {/* Timeline Line */}
+                    <div className="absolute left-[11px] top-14 bottom-0 w-[2px] bg-gradient-to-b from-max/20 to-transparent" />
 
-                  return (
-                    <motion.div
-                      key={i}
-                      initial="hidden"
-                      animate={isLoaded ? 'visible' : 'hidden'}
-                      variants={fadeInUp}
-                      transition={{ delay: 0.9 + i * 0.1 }}
-                      className="relative pl-12"
-                    >
-                      {/* Timeline Line */}
-                      <div className="absolute left-[11px] top-14 bottom-0 w-[2px] bg-gradient-to-b from-max/20 to-transparent" />
+                    {/* Timeline Dot */}
+                    <div className="flex absolute left-0 top-2 justify-center items-center">
+                      <div className="w-6 h-6 bg-gradient-to-br rounded-full backdrop-blur-sm from-purple-500/20 to-pink-500/20" />
+                      <div className="absolute w-2 h-2 rounded-full bg-max/80" />
+                    </div>
 
-                      {/* Timeline Dot */}
-                      <div className="flex absolute left-0 top-2 justify-center items-center">
-                        <div className="w-6 h-6 bg-gradient-to-br rounded-full backdrop-blur-sm from-purple-500/20 to-pink-500/20" />
-                        <div className="absolute w-2 h-2 rounded-full bg-max/80" />
-                      </div>
+                    {/* Content */}
+                    <div className="relative">
+                      <h3 className="mb-4 text-lg font-medium text-transparent bg-clip-text bg-gradient-to-r from-max to-max/80">
+                        {challenge.challenge}
+                      </h3>
 
-                      {/* Content */}
-                      <div className="relative">
-                        <h3 className="mb-4 text-lg font-medium text-transparent bg-clip-text bg-gradient-to-r from-max to-max/80">
-                          {title}
-                        </h3>
-
-                        <div className="space-y-4">
-                          {/* Challenge */}
-                          <div className="relative pl-6">
-                            <div className="absolute left-0 top-[0.6rem] w-1.5 h-1.5 rounded-full bg-red-400/60" />
-                            <div>
-                              <div className="mb-1 text-sm font-medium text-max/60">
-                                Challenge
-                              </div>
-                              <p className="text-max/80">{challengeText}</p>
+                      <div className="space-y-4">
+                        {/* Challenge */}
+                        <div className="relative pl-6">
+                          <div className="absolute left-0 top-[0.6rem] w-1.5 h-1.5 rounded-full bg-red-400/60" />
+                          <div>
+                            <div className="mb-1 text-sm font-medium text-max/60">
+                              Challenge
                             </div>
+                            <p className="text-max/80">{challenge.challenge}</p>
                           </div>
+                        </div>
 
-                          {/* Solution */}
-                          <div className="relative pl-6">
-                            <div className="absolute left-0 top-[0.6rem] w-1.5 h-1.5 rounded-full bg-green-400/60" />
-                            <div>
-                              <div className="mb-1 text-sm font-medium text-max/60">
-                                Solution
-                              </div>
-                              <p className="text-max/80">{solution}</p>
+                        {/* Solution */}
+                        <div className="relative pl-6">
+                          <div className="absolute left-0 top-[0.6rem] w-1.5 h-1.5 rounded-full bg-green-400/60" />
+                          <div>
+                            <div className="mb-1 text-sm font-medium text-max/60">
+                              Solution
                             </div>
+                            <p className="text-max/80">{challenge.solution}</p>
                           </div>
                         </div>
                       </div>
-                    </motion.div>
-                  )
-                })}
+                    </div>
+                  </motion.div>
+                ))}
               </div>
             </motion.section>
 
