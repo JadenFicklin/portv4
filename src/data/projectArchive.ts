@@ -31,7 +31,7 @@ export const projectArchiveArray: Project[] = [
     link: 'https://oakandstoneremodel.com/',
     image: getThumbnailUrl('src/assets/images/archive/oakandstonelanding.jpg'),
     description:
-      'A visually rich portfolio for a remodeling company, featuring a categorized gallery, real-time lead capture, and seamless integration with project management tools.',
+      'An upgraded and visually rich portfolio for a remodeling company, featuring a categorized gallery, real-time lead capture, and seamless integration with project management tools.',
   },
   {
     year: 2025,
@@ -51,7 +51,7 @@ export const projectArchiveArray: Project[] = [
     link: 'https://jadenficklin.com/',
     image: getThumbnailUrl('src/assets/images/archive/archive-v4.jpg'),
     description:
-      'A modern web development agency website focused on creating beautiful, performant digital experiences for small businesses.',
+      'My current portfolio site, built with a focus on performance and responsive design.',
   },
   {
     year: 2024,
@@ -61,7 +61,7 @@ export const projectArchiveArray: Project[] = [
     link: 'https://jadenv3.netlify.app/',
     image: getThumbnailUrl('src/assets/images/archive/archive-v3.jpg'),
     description:
-      'A developer tool for quickly finding, customizing, and copying SVG code with real-time preview and color customization.',
+      'My third attempt at a personal portfolio site showcasing web development projects, skills, and experience, built with a focus on performance and responsive design.',
   },
   {
     year: 2023,
@@ -73,15 +73,15 @@ export const projectArchiveArray: Project[] = [
     description:
       'A social platform helping people find meaningful connections through shared interests and personality matching.',
   },
-  {
-    year: 2023,
-    project: 'Blck',
-    madeAt: 'Perspective Developers',
-    builtWith: ['React', 'Javascript', 'Tailwind', 'Firebase'],
-    link: 'https://theblck.io/',
-    image: getThumbnailUrl('src/assets/images/archive/archive-blck.jpg'),
-    description: '',
-  },
+  // {
+  //   year: 2023,
+  //   project: 'Blck',
+  //   madeAt: 'Perspective Developers',
+  //   builtWith: ['React', 'Javascript', 'Tailwind', 'Firebase'],
+  //   link: 'https://theblck.io/',
+  //   image: getThumbnailUrl('src/assets/images/archive/archive-blck.jpg'),
+  //   description: '',
+  // },
   {
     year: 2023,
     project: 'LuxVesting',
@@ -89,7 +89,8 @@ export const projectArchiveArray: Project[] = [
     builtWith: ['React', 'Javascript', 'Material UI', 'Firebase'],
     link: 'https://luxvesting.com/',
     image: getThumbnailUrl('src/assets/images/archive/archive-lux.jpg'),
-    description: '',
+    description:
+      'A modern investment platform for managing portfolios, tracking vesting schedules, and visualizing financial growth with a clean, intuitive UI. I was a frontend developer at perspective developers, a web development agency.',
   },
   {
     year: 2023,
@@ -98,26 +99,27 @@ export const projectArchiveArray: Project[] = [
     builtWith: ['React', 'Javascript', 'Tailwind', 'Firebase'],
     link: 'https://dashboard-ltr-app.firebaseapp.com/',
     image: getThumbnailUrl('src/assets/images/archive/archive-ltr.jpg'),
-    description: '',
+    description:
+      'purely helped with frontend development, working at perspective developers, a web development agency.',
   },
-  {
-    year: 2023,
-    project: 'CargoRx',
-    madeAt: 'Perspective Developers',
-    builtWith: ['React', 'Javascript', 'Tailwind', 'Firebase'],
-    link: 'https://dashboard-ltr-app.firebaseapp.com/',
-    image: getThumbnailUrl('src/assets/images/archive/archive-cargo.jpg'),
-    description: '',
-  },
-  {
-    year: 2023,
-    project: 'Thuja',
-    madeAt: 'Perspective Developers',
-    builtWith: ['React', 'Javascript', 'Tailwind', 'Firebase'],
-    link: 'https://jointhuja.dev/',
-    image: getThumbnailUrl('src/assets/images/archive/archive-thuja.jpg'),
-    description: '',
-  },
+  // {
+  //   year: 2023,
+  //   project: 'CargoRx',
+  //   madeAt: 'Perspective Developers',
+  //   builtWith: ['React', 'Javascript', 'Tailwind', 'Firebase'],
+  //   link: 'https://dashboard-ltr-app.firebaseapp.com/',
+  //   image: getThumbnailUrl('src/assets/images/archive/archive-cargo.jpg'),
+  //   description: '',
+  // },
+  // {
+  //   year: 2023,
+  //   project: 'Thuja',
+  //   madeAt: 'Perspective Developers',
+  //   builtWith: ['React', 'Javascript', 'Tailwind', 'Firebase'],
+  //   link: 'https://jointhuja.dev/',
+  //   image: getThumbnailUrl('src/assets/images/archive/archive-thuja.jpg'),
+  //   description: '',
+  // },
   {
     year: 2023,
     project: 'Portfolio V2',
@@ -125,7 +127,8 @@ export const projectArchiveArray: Project[] = [
     builtWith: ['React', 'Javascript', 'Tailwind', 'Firebase'],
     link: 'https://jadenv2.netlify.app/',
     image: getThumbnailUrl('src/assets/images/archive/archive-v2.jpg'),
-    description: '',
+    description:
+      'My second attempt at a personal portfolio site showcasing web development projects, skills, and experience, built with a focus on performance and responsive design.',
   },
   {
     year: 2023,
@@ -134,7 +137,8 @@ export const projectArchiveArray: Project[] = [
     builtWith: ['React', 'Javascript', 'Tailwind', 'Firebase'],
     link: 'https://svg-library.web.app/',
     image: getThumbnailUrl('src/assets/images/archive/archive-svg.jpg'),
-    description: '',
+    description:
+      'An interactive tool for browsing, customizing, and exporting SVG icons, designed for developers and designers seeking flexible vector assets.',
   },
   {
     year: 2022,
@@ -143,7 +147,8 @@ export const projectArchiveArray: Project[] = [
     builtWith: ['React', 'Javascript', 'CSS', 'Netlify'],
     link: 'https://oakandstone.netlify.app',
     image: getThumbnailUrl('src/assets/images/archive/archive-oakandstone.jpg'),
-    description: '',
+    description:
+      'my first attempt at a portfolio website for a construction and remodeling business, highlighting completed projects, services, and a contact form.',
   },
   {
     year: 2022,
@@ -152,7 +157,8 @@ export const projectArchiveArray: Project[] = [
     builtWith: ['React', 'Javascript', 'CSS', 'Netlify'],
     link: 'https://jadenv1.netlify.app/',
     image: getThumbnailUrl('src/assets/images/archive/archive-v1.jpg'),
-    description: '',
+    description:
+      'The first iteration of a developer portfolio, featuring early projects and foundational web development skills.',
   },
   {
     year: 2021,
@@ -161,7 +167,8 @@ export const projectArchiveArray: Project[] = [
     builtWith: ['React', 'Javascript', 'CSS', 'Heroku', 'SQL'],
     link: 'https://www.youtube.com/watch?v=8L-vkJSVaJs',
     image: getThumbnailUrl('src/assets/images/archive/archive-sopi.jpg'),
-    description: '',
+    description:
+      'My second project at Devmountain, allows users to upload and comment other users videos. focused on SQL and learning to create a backend for a frontend app.',
   },
   {
     year: 2021,
@@ -170,6 +177,7 @@ export const projectArchiveArray: Project[] = [
     builtWith: ['React', 'Javascript', 'CSS', 'Heroku'],
     link: 'https://www.youtube.com/watch?v=-Zj5KCwzMwg',
     image: getThumbnailUrl('src/assets/images/archive/archive-euka.jpg'),
-    description: '',
+    description:
+      'My first project at Devmountain, a shoes web shop. purely built using the tools I learned in the first 2 weeks of the bootcamp to build a simple frontend app with minimal javascript.',
   },
 ]
