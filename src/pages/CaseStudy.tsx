@@ -20,7 +20,6 @@ import { Nav } from '~/components/Nav'
 import { ImageModal } from '~/utils/ImageModal'
 import { morphingDiamonds, circuitBoard } from 'hero-patterns'
 import { getTechIcon } from '~/utils/getTechIcon'
-import PixelBackground from '~/components/PixelBackground'
 
 const TechItem: React.FC<{
   icon: React.ReactNode
@@ -42,36 +41,135 @@ const TechItem: React.FC<{
   </motion.div>
 )
 
-// Bubble component
-const Bubble: React.FC<{
-  size: number
-  position: { x: string; y: string }
-  delay: number
-  duration: number
-  colors: string[]
-}> = ({ size, position, delay, duration, colors }) => {
+// Responsive window size hook
+function useWindowSize() {
+  const [size, setSize] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  })
+  useEffect(() => {
+    const handleResize = () =>
+      setSize({ width: window.innerWidth, height: window.innerHeight })
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+  return size
+}
+
+// Minimal SVG Pattern Background Component
+const MinimalPatternBackground: React.FC<{ theme: string }> = ({ theme }) => {
+  // Create a subtle SVG pattern with wavy lines
+  const patternColor = theme === 'dark' ? 'ffffff' : '000000'
+  const patternOpacity = theme === 'dark' ? '0.03' : '0.04'
+
+  const svgPattern =
+    '<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="minimal-waves" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse"><path d="M0 30 Q15 15 30 30 T60 30" stroke="%23' +
+    patternColor +
+    '" stroke-width="0.5" fill="none" opacity="' +
+    patternOpacity +
+    '"/><path d="M0 45 Q15 30 30 45 T60 45" stroke="%23' +
+    patternColor +
+    '" stroke-width="0.3" fill="none" opacity="' +
+    patternOpacity +
+    '"/><circle cx="45" cy="15" r="1" fill="%23' +
+    patternColor +
+    '" opacity="' +
+    patternOpacity +
+    '"/><circle cx="15" cy="45" r="0.5" fill="%23' +
+    patternColor +
+    '" opacity="' +
+    patternOpacity +
+    '"/></pattern></defs><rect width="100%" height="100%" fill="url(%23minimal-waves)"/></svg>'
+
+  const noiseOpacity = theme === 'dark' ? '0.015' : '0.02'
+  const noiseSvg =
+    '<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="1" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noiseFilter)" opacity="' +
+    noiseOpacity +
+    '"/></svg>'
+
+  // Create noise texture using CSS
+  const noiseStyle = {
+    backgroundImage:
+      'url("data:image/svg+xml,' +
+      encodeURIComponent(svgPattern) +
+      '"), url("data:image/svg+xml,' +
+      encodeURIComponent(noiseSvg) +
+      '")',
+    backgroundSize: '60px 60px, 200px 200px',
+    backgroundPosition: 'center, center',
+  }
+
+  // Use theme-aware accent color, with special handling for binary theme
+  const accentColor =
+    theme === 'binary' ? '#bbb' : theme === 'dark' ? '#fff' : '#222'
+  const hexOpacity = theme === 'binary' ? 0.13 : theme === 'dark' ? 0.22 : 0.18
+  const { width, height } = useWindowSize()
+  // Minimums for SSR safety
+  const svgW = Math.max(width, 320)
+  const svgH = Math.max(height, 400)
+
+  // Animation state
+  const [animate, setAnimate] = useState(false)
+  useEffect(() => {
+    const timer = setTimeout(() => setAnimate(true), 100)
+    return () => clearTimeout(timer)
+  }, [])
+
+  // Helper for hex perimeter
+  const hexPerimeter = (size: number) => 6 * size
+
   return (
-    <motion.div
-      className="absolute rounded-full opacity-20 backdrop-blur-3xl"
-      style={{
-        width: size,
-        height: size,
-        left: position.x,
-        top: position.y,
-        background: `linear-gradient(45deg, ${colors.join(', ')})`,
-      }}
-      animate={{
-        y: [0, -30, 0],
-        scale: [1, 1.1, 1],
-        opacity: [0.1, 0.2, 0.1],
-      }}
-      transition={{
-        duration,
-        delay,
-        repeat: Infinity,
-        ease: 'easeInOut',
-      }}
-    />
+    <>
+      <div className="absolute inset-0 z-[1]" style={noiseStyle} />
+      {/* Responsive Full-bleed SVG: Hexagonal Grid */}
+      <svg
+        className="absolute inset-0 w-full h-full z-[2] pointer-events-none select-none"
+        viewBox={`0 0 ${svgW} ${svgH}`}
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+        style={{ width: '100%', height: '100%' }}
+      >
+        {(() => {
+          const hexes = []
+          const size = 48
+          const w = size * Math.sqrt(3)
+          const cols = Math.ceil((svgW + w) / w) + 2
+          const rows = Math.ceil(svgH / (size * 1.5)) + 2
+          for (let row = 0; row < rows; row++) {
+            for (let col = 0; col < cols; col++) {
+              const x = -w + col * w + (row % 2 ? w / 2 : 0)
+              const y = row * (size * 1.5)
+              const points = Array.from({ length: 6 }, (_, i) => {
+                const angle = (Math.PI / 3) * i
+                return [
+                  x + size * Math.cos(angle),
+                  y + size * Math.sin(angle),
+                ].join(',')
+              }).join(' ')
+              const perimeter = hexPerimeter(size)
+              const style = {
+                transition: 'stroke-dashoffset 1.1s cubic-bezier(.7,.2,.2,1)',
+                strokeDasharray: perimeter,
+                strokeDashoffset: animate ? 0 : perimeter,
+              }
+              hexes.push(
+                <polygon
+                  key={`hex-${row}-${col}`}
+                  points={points}
+                  stroke={accentColor}
+                  strokeWidth="1.5"
+                  opacity={hexOpacity}
+                  fill="none"
+                  style={style}
+                />,
+              )
+            }
+          }
+          return hexes
+        })()}
+      </svg>
+    </>
   )
 }
 
@@ -106,108 +204,6 @@ const CaseStudy: React.FC = () => {
     backgroundImage: `${circuitBoard(getPatternColor(), 0.03)}`,
     backgroundSize: '40px 40px',
   })
-
-  // Define bubble configurations
-  const bubbles = [
-    {
-      size: 600,
-      position: { x: '10%', y: '-20%' },
-      delay: 0,
-      duration: 8,
-      colors: ['#FF69B4', '#9370DB'],
-    },
-    {
-      size: 800,
-      position: { x: '70%', y: '15%' },
-      delay: 2,
-      duration: 10,
-      colors: ['#4B0082', '#8A2BE2'],
-    },
-    {
-      size: 550,
-      position: { x: '80%', y: '-15%' },
-      delay: 1,
-      duration: 7,
-      colors: ['#9370DB', '#4169E1'],
-    },
-    {
-      size: 750,
-      position: { x: '20%', y: '40%' },
-      delay: 3,
-      duration: 9,
-      colors: ['#4169E1', '#FF69B4'],
-    },
-    {
-      size: 500,
-      position: { x: '40%', y: '-25%' },
-      delay: 2,
-      duration: 6,
-      colors: ['#8A2BE2', '#9370DB'],
-    },
-    {
-      size: 900,
-      position: { x: '-10%', y: '10%' },
-      delay: 4,
-      duration: 11,
-      colors: ['#FF1493', '#4B0082'],
-    },
-    {
-      size: 700,
-      position: { x: '90%', y: '45%' },
-      delay: 1.5,
-      duration: 8.5,
-      colors: ['#8B008B', '#4169E1'],
-    },
-    {
-      size: 850,
-      position: { x: '50%', y: '-30%' },
-      delay: 2.5,
-      duration: 9.5,
-      colors: ['#9400D3', '#FF69B4'],
-    },
-    {
-      size: 650,
-      position: { x: '30%', y: '90%' },
-      delay: 3.5,
-      duration: 7.5,
-      colors: ['#FF69B4', '#4B0082'],
-    },
-    {
-      size: 950,
-      position: { x: '60%', y: '-5%' },
-      delay: 2.8,
-      duration: 10.5,
-      colors: ['#8A2BE2', '#FF1493'],
-    },
-    {
-      size: 800,
-      position: { x: '25%', y: '-25%' },
-      delay: 2.2,
-      duration: 9.8,
-      colors: ['#FF1493', '#9400D3'],
-    },
-    {
-      size: 700,
-      position: { x: '75%', y: '-20%' },
-      delay: 3.2,
-      duration: 8.8,
-      colors: ['#4B0082', '#FF69B4'],
-    },
-    {
-      size: 600,
-      position: { x: '45%', y: '-15%' },
-      delay: 1.8,
-      duration: 7.8,
-      colors: ['#9370DB', '#FF1493'],
-    },
-    {
-      size: 850,
-      position: { x: '5%', y: '-10%' },
-      delay: 2.6,
-      duration: 10.2,
-      colors: ['#8A2BE2', '#4169E1'],
-    },
-  ]
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -257,16 +253,8 @@ const CaseStudy: React.FC = () => {
           theme === 'dark' ? 'bg-max/[0.05]' : 'bg-max/[0.08]',
         )}
       >
-        {/* Pixel Background */}
-        <PixelBackground theme={theme} />
-
-        {/* Bubble Background */}
-        <div className="overflow-hidden absolute inset-0 z-[1]">
-          {bubbles.map((bubble, index) => (
-            <Bubble key={index} {...bubble} />
-          ))}
-          <div className="absolute inset-0 backdrop-blur-[120px]" />
-        </div>
+        {/* Minimal Pattern Background */}
+        <MinimalPatternBackground theme={theme} />
 
         <div className="absolute inset-0 bg-gradient-to-b to-transparent from-min/90 via-min/80 z-[2]" />
 
