@@ -77,6 +77,7 @@ export const Nav = () => {
           />
         </Link>
         {/* theme changer */}
+        <Theme isMobile={true} />
         <Theme />
         <div
           className={cn(
@@ -114,12 +115,16 @@ export const Nav = () => {
       >
         <video
           className={cn(
-            'absolute md:block top-1/2 w-2/5 h-screen hidden left-1/2 translate-x-[-125%] -translate-y-1/2 object-cover',
+            'absolute md:block top-1/2 w-2/5 h-screen hidden left-1/2 translate-x-[-125%] -translate-y-1/2 object-cover pointer-events-none select-none',
           )}
           src={Video}
           autoPlay
           muted
           loop
+          playsInline
+          disablePictureInPicture
+          controlsList="nodownload nofullscreen noremoteplayback noplaybackrate"
+          controls={false}
         />
         <div className="pl-[8%] pt-24 md:left-[45%] md:pl-0 md:pt-0 md:top-[19%] md:absolute">
           {navOptions.map((option, index) => {

@@ -1,28 +1,20 @@
-import Lenis from '@studio-freight/lenis'
-
-// Declare global lenis instance type
-declare global {
-  interface Window {
-    lenis: Lenis
-  }
-}
-
 /**
  * Utility functions for handling scroll behavior consistently across the app
  */
 
 /**
- * Scrolls to the top of the page using the global Lenis instance
+ * Scrolls to the top of the page
  * @param immediate Whether to scroll immediately or with animation
  */
 export const scrollToTop = (immediate: boolean = true) => {
-  if (window.lenis) {
-    window.lenis.scrollTo(0, { immediate })
-  }
+  window.scrollTo({
+    top: 0,
+    behavior: immediate ? 'auto' : 'smooth',
+  })
 }
 
 /**
- * Scrolls to a specific position using the global Lenis instance
+ * Scrolls to a specific position
  * @param position The position to scroll to
  * @param options Scroll options
  */
@@ -30,12 +22,10 @@ export const scrollToPosition = (
   position: number,
   options: { duration?: number; immediate?: boolean } = {},
 ) => {
-  if (window.lenis) {
-    window.lenis.scrollTo(position, {
-      duration: options.duration || 1.2,
-      immediate: options.immediate || false,
-    })
-  }
+  window.scrollTo({
+    top: position,
+    behavior: options.immediate ? 'auto' : 'smooth',
+  })
 }
 
 /**

@@ -13,6 +13,10 @@ interface ThemeProps {
   theme: ThemeName
 }
 
+interface ThemeComponentProps {
+  isMobile?: boolean
+}
+
 const themes: ThemeProps[] = [
   {
     name: <FaSun className="size-5 fill-max" />,
@@ -36,7 +40,7 @@ const themes: ThemeProps[] = [
   },
 ]
 
-export const Theme = () => {
+export const Theme = ({ isMobile = false }: ThemeComponentProps) => {
   const [themeOpen, setThemeOpen] = useState(() => {
     const stored = localStorage.getItem('themeOpen')
     return stored ? stored === 'true' : false
@@ -57,16 +61,16 @@ export const Theme = () => {
     setTheme(item.theme)
   }
 
-  return (
-    <>
+  if (isMobile) {
+    return (
       <div
         className={cn(
-          'hidden md:flex rounded-full size-8 bg-min absolute right-[25%] xs:right-[20%] sm:right-[15%] md:right-[12%] lg:right-[10%] top-4 duration-300 overflow-hidden items-center',
+          'md:hidden flex rounded-full size-8 bg-min absolute right-[25%] xs:right-[20%] sm:right-[15%] top-4 duration-300 overflow-hidden items-center',
           themeOpen ? 'w-[195px]' : 'w-8',
         )}
       >
-        <div className="relative flex items-center w-full h-full overflow-hidden ">
-          <div className="grid grid-cols-5  w-[160px] relative -left-[5px]">
+        <div className="relative flex items-center w-full h-full overflow-hidden">
+          <div className="grid grid-cols-5 w-[160px] relative -left-[5px]">
             {themes.map((item, index) => (
               <div
                 key={index}
@@ -89,6 +93,39 @@ export const Theme = () => {
           </div>
         </div>
       </div>
-    </>
+    )
+  }
+
+  return (
+    <div
+      className={cn(
+        'hidden md:flex rounded-full size-8 bg-min absolute right-[25%] xs:right-[20%] sm:right-[15%] md:right-[12%] lg:right-[10%] top-4 duration-300 overflow-hidden items-center',
+        themeOpen ? 'w-[195px]' : 'w-8',
+      )}
+    >
+      <div className="relative flex items-center w-full h-full overflow-hidden ">
+        <div className="grid grid-cols-5  w-[160px] relative -left-[5px]">
+          {themes.map((item, index) => (
+            <div
+              key={index}
+              className={cn(
+                'size-7 rounded-full ml-2 grid place-content-center duration-300 cursor-pointer',
+                themeSelected === item.theme ? 'bg-max/40' : '',
+                themeOpen ? 'opacity-100' : 'opacity-0',
+              )}
+              onClick={() => handleThemeClicked(item)}
+            >
+              {item.name}
+            </div>
+          ))}
+        </div>
+        <div
+          className="absolute top-0 right-0 grid duration-300 rounded-full cursor-pointer place-content-center size-8 bg-min"
+          onClick={() => setThemeOpen(!themeOpen)}
+        >
+          <IoColorPalette className="rounded-full size-5 fill-max" />
+        </div>
+      </div>
+    </div>
   )
 }
