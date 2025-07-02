@@ -27,13 +27,3 @@ export const scrollToPosition = (
     behavior: options.immediate ? 'auto' : 'smooth',
   })
 }
-
-/**
- * Stops the current scroll animation
- */
-export const stopScrolling = () => {
-  if (window.lenis) {
-    window.lenis.stop()
-    setTimeout(() => window.lenis.start(), 100)
-  }
-}
