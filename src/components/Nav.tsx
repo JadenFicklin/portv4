@@ -82,6 +82,12 @@ export const Nav = () => {
           className={cn(
             'fixed left-[5%] size-16 grid place-content-center cursor-pointer duration-200 bg-transparent',
           )}
+          onClick={(e) => {
+            if (location.pathname === '/') {
+              e.preventDefault()
+              window.scrollTo({ top: 0, behavior: 'smooth' })
+            }
+          }}
         >
           <HoverText
             wrapperClassName="hover:pl-0"
