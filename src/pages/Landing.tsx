@@ -7,8 +7,24 @@ import { Works } from '~/components/Works'
 import { ProjectsSlider } from '~/components/ProjectsSlider'
 import { Contact } from '~/components/Contact'
 import GetScrollPosition from '~/utils/GetScrollPosition'
+import { useLocation } from 'react-router-dom'
+import { useElementsLocationStore } from '~/globalState/elementsLocationStore'
+import { useEffect } from 'react'
 
 export const Landing = () => {
+  const location = useLocation()
+  const { contact } = useElementsLocationStore()
+
+  useEffect(() => {
+    if (location.state && location.state.scrollToContact) {
+      setTimeout(() => {
+        window.scrollTo({ top: contact, behavior: 'smooth' })
+      }, 300)
+      // Remove scrollToContact from history state so it doesn't trigger again
+      window.history.replaceState({}, document.title)
+    }
+  }, [location.state, contact])
+
   return (
     <>
       {/* hero and mobile page load*/}

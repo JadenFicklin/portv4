@@ -4,7 +4,7 @@ import { HoverText } from '~/utils/HoverText'
 import { cn } from '~/utils/cn'
 import Video from '~/assets/videos/GroupAtWork.mp4'
 import { Theme } from '~/utils/Theme'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
 
 export const Nav = () => {
   const normalDisplaySpeed = true
@@ -17,6 +17,9 @@ export const Nav = () => {
     work: state.work,
     contact: state.contact,
   }))
+
+  const navigate = useNavigate()
+  const location = useLocation()
 
   interface NavOption {
     name: string
@@ -39,7 +42,18 @@ export const Nav = () => {
     }, 500)
   }, [normalDisplaySpeed])
 
-  const handleNavClick = (to: string | number, isRoute: boolean = false) => {
+  const handleNavClick = (
+    to: string | number,
+    isRoute: boolean = false,
+    name?: string,
+  ) => {
+    if (name === 'Contact') {
+      if (location.pathname !== '/') {
+        navigate('/', { state: { scrollToContact: true } })
+        setMenuClicked(false)
+        return
+      }
+    }
     if (!isRoute) {
       window.scrollTo({
         top: typeof to === 'number' ? to : 0,
@@ -130,7 +144,15 @@ export const Nav = () => {
           {navOptions.map((option, index) => {
             if (option.isRoute) {
               return (
-                <Link key={index} to={option.to} className="cursor-pointer">
+                <Link
+                  key={index}
+                  to={option.to}
+                  className={cn(
+                    'cursor-pointer',
+                    !menuClicked && 'pointer-events-none opacity-50',
+                  )}
+                  tabIndex={!menuClicked ? -1 : 0}
+                >
                   <HoverText
                     wrapperClassName="hover:pl-10"
                     className="text-3xl font-semibold tracking-wider cursor-pointer xs:text-5xl sm:text-6xl md:text-8xl max-h-710:text-6xl"
@@ -143,8 +165,14 @@ export const Nav = () => {
               return (
                 <div
                   key={index}
-                  onClick={() => handleNavClick(option.to)}
-                  className="cursor-pointer"
+                  onClick={() =>
+                    menuClicked && handleNavClick(option.to, false, option.name)
+                  }
+                  className={cn(
+                    'cursor-pointer',
+                    !menuClicked && 'pointer-events-none opacity-50',
+                  )}
+                  tabIndex={!menuClicked ? -1 : 0}
                 >
                   <HoverText
                     wrapperClassName="hover:pl-10"
