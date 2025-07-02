@@ -278,12 +278,32 @@ export const Archive = () => {
               >
                 <div className="grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2">
                   {item.image && (
-                    <div className="overflow-hidden rounded-lg aspect-video bg-max/10">
+                    <div className="overflow-hidden relative rounded-lg aspect-video bg-max/10 group/image">
+                      {/* Glow effect */}
+                      <div className="absolute -inset-1 bg-gradient-to-r rounded-lg opacity-0 blur-xl transition-all duration-500 from-hover-accent/30 via-hover-accent/10 to-hover-accent/30 group-hover/image:opacity-100" />
+
+                      {/* Background blur effect */}
+                      <div className="absolute inset-0 backdrop-blur-[2px] opacity-0 group-hover/image:opacity-100 transition-all duration-500" />
+
                       <img
                         src={item.image}
                         alt={item.project}
-                        className="object-cover w-full h-full"
+                        className="relative object-cover w-full h-full transition-all duration-500 group-hover/image:scale-[1.02] z-10"
                       />
+                      {/* Hover overlay */}
+                      <div
+                        onClick={() => window.open(item.link, '_blank')}
+                        className="flex absolute inset-0 z-20 justify-center items-center"
+                      >
+                        <div className="opacity-0 transition-all duration-300 transform scale-95 group-hover/image:opacity-100 group-hover/image:scale-100">
+                          <div className="flex gap-2 items-center px-6 py-3 rounded-full border backdrop-blur-md transition-all duration-300 cursor-pointer border-max/10 bg-min/80 text-max hover:bg-min hover:border-max/20 group/button">
+                            <span className="text-sm font-medium">
+                              Visit Project
+                            </span>
+                            <IoMdArrowForward className="transition-transform duration-300 group-hover/button:translate-x-1" />
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   )}
                   <motion.div
