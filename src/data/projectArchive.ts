@@ -12,10 +12,42 @@ type Project = {
 
 export const projectArchiveArray: Project[] = [
   {
+    year: 2025,
+    project: 'Restoration Laser Cleaning',
+    madeAt: 'Freelance',
+    builtWith: ['React', 'Javascript', 'Tailwind', 'Netlify'],
+    link: 'https://renewlasercleaning.com/',
+    image: getThumbnailUrl(
+      'src/assets/images/archive/RestorationLaserCleaningLanding.jpg',
+    ),
+    description:
+      'A modern, informative site for a laser cleaning business, highlighting eco-friendly rust removal and restoration services with a clean, educational design.',
+  },
+  {
+    year: 2025,
+    project: 'Oak and Stone V2',
+    madeAt: 'Freelance',
+    builtWith: ['React', 'Javascript', 'Tailwind', 'Netlify'],
+    link: 'https://oakandstoneremodel.com/',
+    image: getThumbnailUrl('src/assets/images/archive/oakandstonelanding.jpg'),
+    description:
+      'A visually rich portfolio for a remodeling company, featuring a categorized gallery, real-time lead capture, and seamless integration with project management tools.',
+  },
+  {
+    year: 2025,
+    project: 'Camvio clone',
+    madeAt: 'Freelance',
+    builtWith: ['React', 'Javascript', 'Tailwind', 'Netlify'],
+    link: 'https://camvio-clone.netlify.app/',
+    image: getThumbnailUrl('src/assets/images/archive/camviolanding.jpg'),
+    description:
+      'A functional clone of the Camvio platform, built to demonstrate modern React techniques, responsive design, and real-world SaaS UI/UX patterns.',
+  },
+  {
     year: 2024,
     project: 'Portfolio V4',
     madeAt: 'Freelance',
-    builtWith: ['React', 'Javascript', 'Tailwind', 'Vercel'],
+    builtWith: ['React', 'Javascript', 'Tailwind', 'Netlify'],
     link: 'https://jadenficklin.com/',
     image: getThumbnailUrl('src/assets/images/archive/archive-v4.jpg'),
     description:
