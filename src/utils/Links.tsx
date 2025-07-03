@@ -11,7 +11,7 @@ export const Links = () => {
           className="flex py-1 font-semibold group/link text-max"
         >
           Github{' '}
-          <FaArrowRight className="relative duration-150 top-1 left-2 group-hover/link:-rotate-45" />
+          <FaArrowRight className="relative top-1 left-2 duration-150 group-hover/link:-rotate-45" />
         </a>
         <a
           href="https://www.linkedin.com/in/jaden-ficklin-b1686a21a/"
@@ -20,7 +20,7 @@ export const Links = () => {
           className="flex py-1 font-semibold group/link text-max"
         >
           Linkedin{' '}
-          <FaArrowRight className="relative duration-150 top-1 left-2 group-hover/link:-rotate-45" />
+          <FaArrowRight className="relative top-1 left-2 duration-150 group-hover/link:-rotate-45" />
         </a>
         <a
           href="https://docs.google.com/document/d/1QVo9-KNAfNvJGrWKi83bLLg9VnD8pmwkMbX9GV65tzc/edit?usp=sharing"
@@ -29,7 +29,7 @@ export const Links = () => {
           className="flex py-1 font-semibold group/link text-max"
         >
           Resume{' '}
-          <FaArrowRight className="relative duration-150 top-1 left-2 group-hover/link:-rotate-45" />
+          <FaArrowRight className="relative top-1 left-2 duration-150 group-hover/link:-rotate-45" />
         </a>
       </div>
     </>
